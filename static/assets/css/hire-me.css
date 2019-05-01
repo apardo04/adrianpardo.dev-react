@@ -1,0 +1,43 @@
+.col-50{
+    width: 48.5%;
+    float: left;
+    margin-right: 3%;
+}
+#questionnaire {
+    padding: 50px 15px;
+    text-align: center;
+    border-top: 1px solid var(--yellow);
+    border-bottom: 1px solid var(--yellow);
+}
+.help-radio-container {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 35px;
+    text-align: left;
+}
+.help-radio {
+    width: 33%;
+}
+.checkbox {
+    height: 20px;
+    width: 20px !important;
+    float: left;
+}
+span.check-text {
+    padding-left: 10px;
+}
+#select-timeline {
+    background-color: var(--darkblue);
+    border: 1px solid var(--yellow);
+    color: white;
+    padding: 7px;
+}
+@media only screen and (max-width: 992px) {
+    .col-50 {
+        width: 100%;
+        margin-right: 0;
+    }
+    .help-radio {
+        width: 100%;
+    }
+}
