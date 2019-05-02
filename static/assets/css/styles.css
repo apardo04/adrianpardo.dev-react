@@ -263,6 +263,18 @@ footer {
 .neon-blue {
     color: var(--blue); 
 }
+.no-margin {
+    margin: 0 !important;
+}
+.padding-bottom-15 {
+    padding-bottom: 15px;
+}
+.padding-top-10 {
+    padding-top:10px;
+}
+.bold {
+    font-weight: bold;
+}
 .slash {
     color: white;
     font-weight: 100;
@@ -407,7 +419,7 @@ a.lead-download-btn:hover #lead-arrow {
     color: white;
     margin: 0;
     font-weight: 300;
-    font-size: 22px;
+    font-size: 2rem;
 }
 /*
     -------------------------------
@@ -651,6 +663,7 @@ label {
     }
     #about p {
         text-align: left;
+        font-size: 1.5rem;
     }
     .skills-filter {
         width: 40%;

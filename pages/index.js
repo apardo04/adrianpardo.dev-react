@@ -1,17 +1,16 @@
 import React from 'react'
-import Link from 'next/link'
 import Head from '../components/head'
 import Nav from '../components/nav'
-import Home from "./home";
 import Footer from '../components/footer'
+import Home from './home';
 
 const App = () => (
-  <div>
-    <Head title="Home" />
-    <Nav />
+  <app>
+    <Head page="home" title="&lt;Adrian Pardo/&gt; Freelance Fullstack Web Developer | Programmer | Portfolio" />
+    <Nav page="home" />
     <Home />
     <Footer />
-  </div>
+  </app>
 )
 
 export default App

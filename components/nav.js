@@ -1,38 +1,47 @@
-import React from 'react'
 import Link from 'next/link'
 
-const links = [
-  { href: 'https://github.com/segmentio/create-next-app', label: 'Github' }
-].map(link => {
-  link.key = `nav-link-${link.href}-${link.label}`
-  return link
-})
-
-const Nav = () => (
-  <nav>
-      <div id="mobile-menu-open" class="shadow-large">
-        <i class="fa fa-bars" aria-hidden="true" id="menu-bars"></i>
-      </div>
+const Nav = props => (
+  <div>
+    <div id="mobile-menu-open" className="shadow-large">
+      <i className="fa fa-bars" aria-hidden="true" id="menu-bars"></i>
+    </div>
+    <nav>
       {/* End #mobile-menu-toggle */}
       <div id="mobile-menu-close">
-            <span>Close</span> <i class="fa fa-times" aria-hidden="true"></i>
+            <span>Close</span><i className="fa fa-times" aria-hidden="true"></i>
         </div>
-        {/*<ul id="menu" class="shadow">*/}
+        {/*<ul id="menu" className="shadow">*/}
         <ul id="menu">
             <li>
-                <a href="#about" tabindex="0" class="hover-border prevent-default">About</a>
+            {props.page == "home" ?
+              <Link href="index#about">
+                <a tabIndex="0" className="hover-border prevent-default">About</a>
+              </Link>
+            :     
+              <Link href="index">
+                <a tabIndex="0" className="hover-border prevent-default">Home</a>
+              </Link>
+            }
+
             </li>
             <li>
-                <a href="#projects" tabindex="0" class="hover-border prevent-default">Projects</a>
+              <Link href="index#projects">
+                <a tabIndex="0" className="hover-border prevent-default">Projects</a>
+              </Link>
             </li>
             <li>
-                <a href="#skills" tabindex="0" class="hover-border prevent-default">Skills</a>
+                <Link href="index#skills">
+                  <a tabIndex="0" className="hover-border prevent-default">Skills</a>
+                </Link>
             </li>
             <li>
-                <a href="hire-me.html" tabindex="0" class="hover-border">Need a Developer?</a>
+                <Link href="/hire-me">
+                  <a tabIndex="0" className="hover-border">Need a Developer?</a>
+                </Link>
             </li>
         </ul>
-  </nav>
+    </nav>
+  </div>
 )
 
 export default Nav

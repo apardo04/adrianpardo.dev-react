@@ -23,7 +23,9 @@ const Head = props => (
     <link rel="stylesheet" href="static/assets/css/font-awesome/css/font-awesome.min.css" />
     <link href="static/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/static/assets/css/styles.css" />
-
+    {props.page == "hire-me" &&
+      <link rel="stylesheet" href="/static/assets/css/hire-me.css" />
+    }
     <meta property="og:url" content={props.url || defaultOGURL} />
     <meta property="og:title" content={props.title || ''} />
     <meta
@@ -36,8 +38,6 @@ const Head = props => (
     <meta property="og:image" content={props.ogImage || defaultOGImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <script src="static/assets/js/jquery-3.3.1.min.js"></script>
-    <script src="static/assets/js/scripts.js"></script>
   </NextHead>
 )
 
@@ -45,6 +45,7 @@ Head.propTypes = {
   title: string,
   description: string,
   url: string,
+  page: string,
   ogImage: string
 }
 
