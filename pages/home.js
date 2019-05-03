@@ -35,13 +35,13 @@ export default function Home() {
                             <h2 className="heading" tabIndex="0">About Me</h2>
                         </div>
                         <div className="col-md-8">
-                            <p>
-                                I'm an experienced full stack web developer based in Miami, Fl.<br />
-                                Currently working as a web developer for <a href="https://globalrose.com" target="_blank" rel="noopener">Globalrose.com LLC.</a><br /><br />
-                                I have maintained, developed and launched <a href="#projects">multiple projects</a> from scratch, carrying the development of its back-end and front-end codebases.<br /><br />
-                                Some of my <a href="#skills">skills</a> include implementing best E-Commerce practices, working with web frameworks & object oriented programming.<br /><br />
-                                I'm always looking to collaborate on interesting projects. Need a developer? - <a href="hire-me.html" className="underline-yellow">contact me</a>
-                            </p>
+                        <p>
+                            I'm an experienced full stack web developer based in Miami, Fl.<br />
+                            Currently working as a web developer for <a href="https://globalrose.com" target="_blank" rel="noopener">Globalrose.com LLC.</a><br /><br />
+                            I have developed, launched, and maintained <a href="#projects">multiple projects</a> from scratch.<br /><br />
+                            Some of my strongest <a href="#skills">skills</a> include E-Commerce development, web frameworks & object oriented programming.<br /><br />
+                            I'm always looking to collaborate on interesting projects. Need a developer? - <a href="hire-me.html" className="underline-yellow">contact me</a>
+                        </p>
                         </div>
                     </div>
                     <div className="row padding-top">

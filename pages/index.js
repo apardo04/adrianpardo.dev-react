@@ -3,13 +3,13 @@ import Head from '../components/head'
 import Nav from '../components/nav'
 import Footer from '../components/footer'
 import Home from './home';
+import Layout from '../components/layout'
 
 const App = () => (
   <app>
-    <Head page="home" title="&lt;Adrian Pardo/&gt; Freelance Fullstack Web Developer | Programmer | Portfolio" />
-    <Nav page="home" />
-    <Home />
-    <Footer />
+    <Layout page="home" title="&lt;Adrian Pardo/&gt; Freelance Fullstack Web Developer | Programmer | Portfolio">
+      <Home />
+    </Layout>
   </app>
 )
 

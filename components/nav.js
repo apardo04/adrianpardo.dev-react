@@ -14,24 +14,23 @@ const Nav = props => (
         <ul id="menu">
             <li>
             {props.page == "home" ?
-              <Link href="index#about">
+              <Link href="/index#about">
                 <a tabIndex="0" className="hover-border prevent-default">About</a>
               </Link>
             :     
-              <Link href="index">
+              <Link href="/index">
                 <a tabIndex="0" className="hover-border prevent-default">Home</a>
               </Link>
             }
-
             </li>
             <li>
-              <Link href="index#projects">
+              <Link href="/index#projects">
                 <a tabIndex="0" className="hover-border prevent-default">Projects</a>
               </Link>
             </li>
             <li>
-                <Link href="index#skills">
-                  <a tabIndex="0" className="hover-border prevent-default">Skills</a>
+                <Link href="/blog">
+                  <a tabIndex="0" className="hover-border prevent-default">Blog</a>
                 </Link>
             </li>
             <li>
