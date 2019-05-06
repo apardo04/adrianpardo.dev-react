@@ -1,6 +1,8 @@
+import SeeMore from '../components/SeeMore'
+
 export default function Home() {
     return(
-        <body>
+        <React.Fragment>
             <div className="lead">
                 <div id="lead-content">
                     <h1>ADRIAN PARDO</h1>
@@ -11,20 +13,8 @@ export default function Home() {
                     </a>
                 </div>
                 {/*  End #lead-content */}  
-                <div className="see-more" id="lead-see-more">
-                    <span>
-                        <a href="#about" className="see-more-arrows">
-                            <i className="fa fa-angle-down" aria-hidden="true"></i>
-                            <i className="fa fa-angle-down" aria-hidden="true"></i>
-                            <i className="fa fa-angle-down" aria-hidden="true"></i>
-                            <span className="hidden">Jump to next section</span>
-                        </a>
-                    </span>
-                </div>
-                {/*  End #see-more */}  
+                <SeeMore href="#about" />
                 <div id="lead-overlay"></div>
-
-
             </div>
             {/*  End #lead */}  
 
@@ -68,17 +58,7 @@ export default function Home() {
                         */}  
                     </div>
                 </div>
-                <div className="see-more">
-                    <span>
-                        <a href="#projects" className="see-more-arrows">
-                            <i className="fa fa-angle-down" aria-hidden="true"></i>
-                            <i className="fa fa-angle-down" aria-hidden="true"></i>
-                            <i className="fa fa-angle-down" aria-hidden="true"></i>
-                            <span className="hidden">Jump to next section</span>
-                        </a>
-                    </span>
-                </div>
-                {/* End #see-more */}
+                <SeeMore href="#projects" />
             </div>
 
             
@@ -242,7 +222,7 @@ export default function Home() {
                 <h2 className="heading" tabIndex="0">Get in Touch</h2>
                 <div className="form">
                     <form method="POST" action="https://formspree.io/apardo04@gmail.com">
-                        <input type="hidden" name="_subject" value="Contact request from personal website" />
+                        <input type="hidden" name="_subject" defaultValue="Contact request from personal website" />
                         <label htmlFor="contact-email">Email</label>
                         <input type="email" id="contact-email" name="_replyto" placeholder="Your email" required />
                         <label htmlFor="contact-message">Message</label>
@@ -253,6 +233,6 @@ export default function Home() {
                 {/*  End #contact-form */}  
             </div>
             {/*  End #contact */}  
-        </body>
+        </React.Fragment>
     )
 }
