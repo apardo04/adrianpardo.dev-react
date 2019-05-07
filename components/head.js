@@ -23,9 +23,6 @@ const Head = props => (
     <link rel="stylesheet" href="/static/assets/css/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/static/assets/css/styles.css" />
-    {props.page == "hire-me" &&
-      <link rel="stylesheet" href="/static/assets/css/hire-me.css" />
-    }
     <meta property="og:url" content={props.url || defaultOGURL} />
     <meta property="og:title" content={props.title || ''} />
     <meta

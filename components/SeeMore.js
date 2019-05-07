@@ -68,7 +68,7 @@ class SeeMore extends React.Component {
                     }
                 `}</style>
             </div>
-
+            
         )
     }
 }

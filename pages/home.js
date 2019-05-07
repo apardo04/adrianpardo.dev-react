@@ -1,23 +1,38 @@
 import SeeMore from '../components/SeeMore'
 
+function SkillsList(props) {
+    const skills = {
+        "web" : ["Responsive Design","UX/UI","HTML","CSS","Bootstrap","jQuery","Python","Flask","React","Wordpress","Wix","SEO","MySQL","MongoDB","Node","Linux","Apache","Amazon Web Services","Git","Client-side Optimization","Illustrator/Photoshop"]
+        ,"ecommerce" : ["UX/UI","Miva Merchant","Wordpress","Woocommerce","Client-side Optimization","E-Mail Marketing","PCI DSS","Illustrator/Photoshop"]   
+        ,"programming" : ["Python","C","Java","Multiprocessing","Selenium","MySQL","MongoDB","Linux","Git"]
+    }
+    const listItems = skills[props.filter].map((item) => 
+        <li className="skill">{item}</li>
+    )
+    return (
+        <ul>
+            {listItems}
+        </ul>
+    )
+}
+
 class Home extends React.Component {
     constructor(props) {
         super(props)
-            this.state = { moreProjects: false,
-                            skill: "web"
-                        },
-            this.showMoreProjects = this.showMoreProjects.bind(this)
-            this.filterSkills = this.filterSkills.bind(this)
+        this.state = { moreProjects: false,
+                        skill: "web"
+                    },
+        this.showMoreProjects = this.showMoreProjects.bind(this)
+        this.filterSkills = this.filterSkills.bind(this)      
     }
     showMoreProjects() {
-        this.setState({ moreProjects: true });
+        this.setState({ moreProjects: true })
     }
     filterSkills(e) {
         this.setState({ skill: e.currentTarget.dataset.filter })
-        console.log(e.currentTarget.dataset.filter)
     }
     render() {
-        const { moreProjects } = this.state;
+        const { moreProjects, skill } = this.state
         return(
             <React.Fragment>
                 <div className="lead">
@@ -199,42 +214,11 @@ class Home extends React.Component {
                 <div id="skills">
                     <h2 className="heading" tabIndex="0">Skills</h2>
                     <div className="row" id="skills-list">
-                        <div className="skills-filter"><span className={ this.state.skill == "web" ? "skills-text active" : "skills-text" } onClick={this.filterSkills.bind(this)} data-filter="web">Web Development</span></div>
-                        <div className="skills-filter"><span className={ this.state.skill == "programming" ? "skills-text active" : "skills-text" } onClick={this.filterSkills.bind(this)} data-filter="programming">Programming</span></div>
-                        <div className="skills-filter"><span className={ this.state.skill == "ecommerce" ? "skills-text active" : "skills-text" } onClick={this.filterSkills.bind(this)} data-filter="ecommerce">E-Commerce</span></div>
+                        <div className="skills-filter"><span className={ skill == "web" ? "skills-text active" : "skills-text" } onClick={this.filterSkills.bind(this)} data-filter="web">Web Development</span></div>
+                        <div className="skills-filter"><span className={ skill == "programming" ? "skills-text active" : "skills-text" } onClick={this.filterSkills.bind(this)} data-filter="programming">Programming</span></div>
+                        <div className="skills-filter"><span className={ skill == "ecommerce" ? "skills-text active" : "skills-text" } onClick={this.filterSkills.bind(this)} data-filter="ecommerce">E-Commerce</span></div>
                     </div>
-                    <ul>
-                        <li className="skill skills-web">Responsive Design</li>
-                        <li className="skill skills-web skills-ecommerce">UX/UI</li>
-                        <li className="skill skills-web">HTML</li>
-                        <li className="skill skills-web">CSS</li>
-                        <li className="skill skills-web">Bootstrap</li>
-                        <li className="skill skills-web">jQuery</li>
-                        <li className="skill skills-web">Python Flask</li>
-                        <li className="skill skills-web">React</li>
-                        <li className="skill skills-web">Wordpress</li>
-                        <li className="skill skills-web">Wix</li>
-                        <li className="skill skills-web">SEO</li>
-                        <li className="skill skills-programming hidden">Python</li>
-                        <li className="skill skills-programming hidden">C</li>
-                        <li className="skill skills-programming hidden">Java</li>
-                        <li className="skill skills-programming hidden">Multiprocessing</li>
-                        <li className="skill skills-programming hidden">Selenium</li>
-                        <li className="skill skills-web skills-programming">MySQL</li>
-                        <li className="skill skills-web skills-programming">MongoDB</li>
-                        <li className="skill skils-web">Node</li>
-                        <li className="skill skills-web skills-programming">Linux</li>
-                        <li className="skill skills-web">Apache</li>
-                        <li className="skill skills-web">Amazon Web Services</li>
-                        <li className="skill skills-web skills-programming">Git</li>
-                        <li className="skill skills-ecommerce hidden">Miva Merchant</li>
-                        <li className="skill skills-ecommerce hidden">Wordpress</li>
-                        <li className="skill skills-ecommerce hidden">Woocommerce</li>
-                        <li className="skill skills-web skills-ecommerce">Client-side Optimization</li>
-                        <li className="skill skills-ecommerce hidden">E-Mail Marketing</li>
-                        <li className="skill skills-ecommerce hidden">PCI DSS</li>
-                        <li className="skill skills-web skills-ecommerce">Illustrator/Photoshop</li>
-                    </ul>
+                    <SkillsList key={ skill } filter={ skill } />
                 </div>
                 {/*  End #skills */}  
 
