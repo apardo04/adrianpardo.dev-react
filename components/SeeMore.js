@@ -63,7 +63,7 @@ class SeeMore extends React.Component {
                     }
                     @media only screen and (max-width: 992px) {
                         .see-more {
-                            top: 70%;
+                            top: 50%;
                         }
                     }
                 `}</style>

@@ -1,13 +1,14 @@
 import SeeMore from '../components/SeeMore'
+import React, { useState } from 'react';
 
-function SkillsList(props) {
+const SkillsList = (props) => {
     const skills = {
         "web" : ["Responsive Design","UX/UI","HTML","CSS","Bootstrap","jQuery","Python","Flask","React","Wordpress","Wix","SEO","MySQL","MongoDB","Node","Linux","Apache","Amazon Web Services","Git","Client-side Optimization","Illustrator/Photoshop"]
         ,"ecommerce" : ["UX/UI","Miva Merchant","Wordpress","Woocommerce","Client-side Optimization","E-Mail Marketing","PCI DSS","Illustrator/Photoshop"]   
         ,"programming" : ["Python","C","Java","Multiprocessing","Selenium","MySQL","MongoDB","Linux","Git"]
     }
     const listItems = skills[props.filter].map((item) => 
-        <li className="skill">{item}</li>
+        <li className="skill" key={item}>{item}</li>
     )
     return (
         <ul>
@@ -23,13 +24,74 @@ class Home extends React.Component {
                         skill: "web"
                     },
         this.showMoreProjects = this.showMoreProjects.bind(this)
-        this.filterSkills = this.filterSkills.bind(this)      
+        this.filterSkills = this.filterSkills.bind(this)     
+        this.TxtType = this.TxtType.bind(this); 
+        this.tick = this.tick.bind(this); 
     }
     showMoreProjects() {
         this.setState({ moreProjects: true })
     }
     filterSkills(e) {
         this.setState({ skill: e.currentTarget.dataset.filter })
+    }
+    componentDidMount() {
+        //https://stackoverflow.com/questions/26059762/callback-when-dom-is-loaded-in-react-js
+        let element = document.getElementById('typewrite')
+        let toRotate = JSON.parse(element.getAttribute('data-type'))
+        let period = element.getAttribute('data-period')
+        this.TxtType(element, toRotate, period)
+        console.log("added")
+    }
+    componentWillUnmount() { 
+        console.log("removed")
+    }
+    componentDidUpdate() {
+        console.log("updated")
+    }
+    TxtType(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        Home.prototype.tick(el, this.toRotate, this.period, this.loopNum, this.txt, this.isDeleting);
+        this.isDeleting = false;
+    }
+    tick(el, toRotate, period, loopNum, txt, isDeleting, props) {
+        var i = loopNum;
+        var fullTxt = toRotate[i];
+        var keepTyping = true;
+     
+        if (isDeleting) {
+            txt = fullTxt.substring(0, txt.length - 1);
+        } else if (loopNum < toRotate.length) {
+            txt = fullTxt.substring(0, txt.length + 1);
+        }
+    
+        el.innerHTML = '<span class="wrap">'+txt+'</span>';
+        
+        var delta = 200 - Math.random() * 100;
+        if (isDeleting) { delta /= 2; }
+    
+        if (!isDeleting && txt === fullTxt && loopNum + 1 < toRotate.length) {
+            delta = period;
+            isDeleting = true;
+        } else if (isDeleting && txt === '') {
+            isDeleting = false;
+            loopNum++;
+            delta = 500;
+        }
+        else if(!isDeleting && txt === fullTxt) {
+            keepTyping = (loopNum < toRotate.length - 1)    
+        }
+        if (keepTyping) {  
+            setTimeout(function() {              
+                Home.prototype.tick(el, toRotate, period, loopNum, txt, isDeleting);
+            }, delta);     
+        }
+        else{
+            console.log("Done Typing, no more loops")
+        }
     }
     render() {
         const { moreProjects, skill } = this.state
@@ -38,7 +100,9 @@ class Home extends React.Component {
                 <div className="lead">
                     <div id="lead-content">
                         <h1>ADRIAN PARDO</h1>
-                        <h2>Web Developer | Programmer</h2>
+                        <h2 id="typewrite" className="typewrite" data-period="2000" data-type='[ "FullStack Developer", "Software Engineer", "FullStack Developer | Software Engineer" ]'>
+                            <span className="wrap"></span>
+                        </h2>
                         <a href="#projects" className="lead-download-btn">
                             Check out my work
                             <i className="fa fa-arrow-right" id="lead-arrow"></i>
@@ -101,13 +165,13 @@ class Home extends React.Component {
                             <div className="col-md-4">
                                 <h3>Lacayo Law Firm</h3>
                                 <p className="project-roles">
-                                    <span className="neon-blue">UX</span>
-                                    <span className="slash">/</span>
-                                    <span className="neon-blue">UI</span>
-                                    <span className="slash">/</span>
                                     <span className="neon-blue">Frontend</span>
-                                    <span className="slash">/</span>
+                                    <span className="slash"> / </span>
                                     <span className="neon-blue">SEO</span>
+                                    <span className="slash"> / </span>
+                                    <span className="neon-blue">UX</span>
+                                    <span className="slash"> / </span>
+                                    <span className="neon-blue">UI</span>
                                 </p>
                                 <p className="project-description">This project consisted of building a website based on the clients design. Web solutions I have provided for this project include search engine optimization, accessibility compliance, and ongoing website maintenance.</p>
                                 <a href="http://www.lacayolawfirm.com"  target="_blank" rel="noopener" tabIndex="0"><span className="project-url underline-yellow">See it live</span></a>
@@ -121,9 +185,9 @@ class Home extends React.Component {
                                 <h3>The Knights Code</h3>
                                 <p className="project-roles">
                                     <span className="neon-blue">Wix Code</span>
-                                    <span className="slash">/</span>
+                                    <span className="slash"> / </span>
                                     <span className="neon-blue">JavaScript</span>
-                                    <span className="slash">/</span>
+                                    <span className="slash"> / </span>
                                     <span className="neon-blue">CSS</span>
                                 </p>
                                 <p className="project-description">Educational multiplayer browser based game. Winner of <a href="https://shellhacks-2018.devpost.com/submissions" className="yellow">JP Morgan Chase Best Hack for STEM Education</a> at ShellHacks 2018.</p>
@@ -140,9 +204,9 @@ class Home extends React.Component {
                                         <h3>Awaken Atman</h3>
                                         <p className="project-roles">
                                             <span className="neon-blue">Woocommerce</span>
-                                            <span className="slash">/</span>
+                                            <span className="slash"> / </span>
                                             <span className="neon-blue">Backend</span>
-                                            <span className="slash">/</span>
+                                            <span className="slash"> / </span>
                                             <span className="neon-blue">Custom CSS</span>
                                         </p>
                                         <p className="project-description">Helped client setup backend for Woocommerce store. Also provided web solutions for search engine optimization and ongoing website maintenance. Store is currently under maintenace mode while redesigning.</p>
@@ -157,7 +221,7 @@ class Home extends React.Component {
                                         <h3>Let's Go Coo</h3>
                                         <p className="project-roles">
                                             <span className="neon-blue">JavaScript</span>
-                                            <span className="slash">/</span>
+                                            <span className="slash"> / </span>
                                             <span className="neon-blue">Animation</span>
                                         </p>
                                         <p className="project-description">Let's Go Coo is a desktop only web browser game made using HTML/CSS, p5.js and jQuery.</p>
@@ -171,14 +235,10 @@ class Home extends React.Component {
                                     <div className="col-md-4">
                                         <h3>Inter Custom Logistics</h3>
                                         <p className="project-roles">
-                                            <span className="neon-blue">UX</span>
-                                            <span className="slash">/</span>
-                                            <span className="neon-blue">UI</span>
-                                            <span className="slash">/</span>
                                             <span className="neon-blue">Frontend</span>
-                                            <span className="slash">/</span>
+                                            <span className="slash"> / </span>
                                             <span className="neon-blue">SEO</span>
-                                            <span className="slash">/</span>
+                                            <span className="slash"> / </span>
                                             <span className="neon-blue">Hosting</span>
                                         </p>
                                         <p className="project-description">My first freelance job (2015). Development solutions included hosting, design, SEO, installing a secure certificate, and ongoing website maintenance.</p>
@@ -193,7 +253,7 @@ class Home extends React.Component {
                                     <h3>Mine For Charity</h3>
                                     <p className="project-roles">
                                         <span className="neon-blue">Chrome Extension</span>
-                                        <span className="slash">/</span>
+                                        <span className="slash"> / </span>
                                         <span className="neon-blue">JavaScript</span>
                                     </p>
                                     <p className="project-description">This project was created in the wake of Hurricane Maria, to collect funds for those impacted. The site/extension collected <a href="https://www.getmonero.org/" className="yellow">Monero</a> using CPU. As of March 8, 2019 mining has been disabled on the site.</p>
