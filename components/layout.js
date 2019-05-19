@@ -5,7 +5,7 @@ import { string } from 'prop-types'
 
 const Layout = props => (
     <React.Fragment>
-        <Head page={props.page} title={props.title} />
+        <Head page={props.page} title={props.title} description={props.description} />
         <Nav page={props.page} />
         {props.children}
         <Footer />

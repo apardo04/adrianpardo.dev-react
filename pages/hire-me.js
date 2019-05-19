@@ -13,7 +13,7 @@ class HireMe extends React.Component {
     render() {
         const { other } = this.state
         return (
-            <Layout page="hire-me" title="Hire Me &lt;Adrian Pardo/&gt; Freelance Fullstack Web Developer">
+            <Layout page="hire-me" title="Hire Me &lt;Adrian Pardo/&gt; Freelance Fullstack Web Developer" description="Freelance Web Developer for hire. Your all in one for SEO, E-Commerce, Site hosting, WooCommerce, Miva Merchant, Web Design, etc. Based in Miami, Florida">
                 <div className="lead" id="lead-beach">
                     <div id="lead-content">
                         <h1>HIRE ME</h1>

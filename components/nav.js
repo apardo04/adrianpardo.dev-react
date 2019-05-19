@@ -23,7 +23,7 @@ class Nav extends React.Component {
             </div>
             <ul id="menu">
                 <li>
-                {this.props.page == "home" ?
+                {this.props.page == "index" ?
                   <Link href="/index#about">
                     <a tabIndex="0" className="hover-border prevent-default">About</a>
                   </Link>
