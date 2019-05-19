@@ -25,7 +25,7 @@ class Home extends React.Component {
                     },
         this.showMoreProjects = this.showMoreProjects.bind(this)
         this.filterSkills = this.filterSkills.bind(this)     
-        this.TxtType = this.TxtType.bind(this); 
+        this.typingAnimation = this.typingAnimation.bind(this); 
         this.tick = this.tick.bind(this); 
     }
     showMoreProjects() {
@@ -39,7 +39,7 @@ class Home extends React.Component {
         let element = document.getElementById('typewrite')
         let toRotate = JSON.parse(element.getAttribute('data-type'))
         let period = element.getAttribute('data-period')
-        this.TxtType(element, toRotate, period)
+        this.typingAnimation(element, toRotate, period)
         console.log("added")
     }
     componentWillUnmount() { 
@@ -48,7 +48,7 @@ class Home extends React.Component {
     componentDidUpdate() {
         console.log("updated")
     }
-    TxtType(el, toRotate, period) {
+    typingAnimation(el, toRotate, period) {
         this.toRotate = toRotate;
         this.el = el;
         this.loopNum = 0;
