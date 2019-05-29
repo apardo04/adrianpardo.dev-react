@@ -1,0 +1,28 @@
+https://nextjs.org/learn/basics/server-side-support-for-clean-urls/create-a-custom-server
+    Created a custom server using Express for having server side clean URL's. 
+    Instead of just client side. Which, when refreshing a clean URL, would return 404.
+    So, I changed package.json scripts and ran into this issue:
+        On Windows, NODE_ENV=production will not work by default. 
+        One solution is to install the npm module cross-env into your app. ( npm install --save-dev cross-env )
+        Then update the start script like this: "start": "cross-env NODE_ENV=production node server.js"
+
+
+next-css:
+    https://stackoverflow.com/questions/49992423/using-reactstrap-with-next-js
+
+next-css & semantic-ui-css: ModuleParseError: Module parse failed: Unexpected character '':
+    https://github.com/zeit/next-plugins/issues/432
+
+CSS Loader Invalid Options Error:
+    https://github.com/zeit/next-plugins/issues/392
+        https://github.com/zeit/next-plugins/issues/392#issuecomment-473557273
+
+How You deploy a new version:
+    git pull
+    yarn install
+    yarn build
+    pm2 restart nextjs
+    https://tech.willandskill.se/nextjs-with-pm2-nginx-and-yarn-on-ubuntu-1804/
+
+Inisital Deploy:
+    pm2 start npm --name "adrianpardo.dev" -- start

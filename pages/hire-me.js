@@ -135,6 +135,10 @@ const HireMe = props => {
             </div>
             {/* End #questionnaire */}
             <style jsx>{`
+                #lead-beach {
+                    background: url("../static/assets/images/lead-beach-bg.jpg");
+                    background-size: cover
+                }
                 .col-50{
                     width: 48.5%;
                     float: left;

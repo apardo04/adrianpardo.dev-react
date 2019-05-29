@@ -1,0 +1,5 @@
+rel="noopener"
+https://jakearchibald.com/2016/performance-benefits-of-rel-noopener/
+
+passing empty array to useEffect() only runs it the first time. Any arguments in the array, will re-run when values of args change!
+https://reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects

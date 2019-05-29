@@ -22,8 +22,6 @@ const Head = props => (
     <link rel="icon" href="/static/assets/images/favicon.ico" />
     <link href="https://fonts.googleapis.com/css?family=Merriweather:300,700|Raleway:900|MedievalSharp" rel="stylesheet" />
     <link rel="stylesheet" href="/static/assets/css/font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/static/assets/css/styles.css" />
     <meta property="og:url" content={`https://adrianpardo.dev/${props.page}`} />
     <meta property="og:title" content={props.title || ''} />
     <meta

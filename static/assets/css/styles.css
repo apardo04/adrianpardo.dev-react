@@ -149,10 +149,6 @@ ul.small {
     padding: 15px;
     overflow: hidden;
 }
-#lead-beach {
-    background: url("../images/lead-beach-bg.jpg");
-    background-size: cover
-}
 #lead-content {
     position: absolute;
     z-index: 10;
