@@ -6,7 +6,6 @@ https://nextjs.org/learn/basics/server-side-support-for-clean-urls/create-a-cust
         One solution is to install the npm module cross-env into your app. ( npm install --save-dev cross-env )
         Then update the start script like this: "start": "cross-env NODE_ENV=production node server.js"
 
-
 next-css:
     https://stackoverflow.com/questions/49992423/using-reactstrap-with-next-js
 
@@ -19,10 +18,10 @@ CSS Loader Invalid Options Error:
 
 How You deploy a new version:
     git pull
-    yarn install
-    yarn build
-    pm2 restart nextjs
+    npm install
+    ynpm run build
+    pm2 restart adrianpardo.dev
     https://tech.willandskill.se/nextjs-with-pm2-nginx-and-yarn-on-ubuntu-1804/
 
-Inisital Deploy:
+Initial Deploy:
     pm2 start npm --name "adrianpardo.dev" -- start

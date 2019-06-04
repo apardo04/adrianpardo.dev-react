@@ -1,2 +1,2 @@
-google analytics
-stop tick() calls upon unmount
+test google analytics production
+stop tick() calls on new useEffect()
