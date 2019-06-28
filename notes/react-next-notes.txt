@@ -16,7 +16,7 @@ CSS Loader Invalid Options Error:
     https://github.com/zeit/next-plugins/issues/392
         https://github.com/zeit/next-plugins/issues/392#issuecomment-473557273
 
-How You deploy a new version:
+How You deploy a new version on server:
     git pull
     npm install
     ynpm run build
@@ -25,3 +25,4 @@ How You deploy a new version:
 
 Initial Deploy:
     pm2 start npm --name "adrianpardo.dev" -- start
+    pm2 start npm --name StockApp -- run start2
