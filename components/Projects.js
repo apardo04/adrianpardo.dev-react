@@ -27,18 +27,18 @@ const Projects = props => {
                     </div>
                     <div className="row project-block">
                         <div className="col-md-4">
-                            <h3>Stock Portfolio</h3>
+                            <h3>Stockify App</h3>
                             <p className="project-roles">
                                 <span className="neon-blue">React</span>
                                 <span className="slash"> / </span>
                                 <span className="neon-blue">MySQL</span>
                                 <span className="slash"> / </span>
-                                <span className="neon-blue">API</span>
+                                <span className="neon-blue">REST API</span>
                                 <span className="slash"> / </span>
                                 <span className="neon-blue">Next.js</span>
                             </p>
-                            <p className="project-description">Full Stack App made for stock portfolio management. Implemented REST API and user authentication.</p>
-                            <a href="https://eliteweb.dev"  target="_blank" rel="noopener" tabIndex="0"><span className="project-url underline-yellow">See it live</span></a>
+                            <p className="project-description">Full Stack App made for stock/investment portfolio management. Implemented REST API and user authentication.</p>
+                            <a href="https://stockify.app"  target="_blank" rel="noopener" tabIndex="0"><span className="project-url underline-yellow">See it live</span></a>
                             <span className="project-url yellow"> | </span> 
                             <a href="https://github.com/apardo04/stock-market-react-app"  target="_blank" rel="noopener" tabIndex="0"><span className="project-url underline-yellow">Github</span></a>
                         </div>
