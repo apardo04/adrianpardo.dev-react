@@ -24,5 +24,8 @@ How You deploy a new version on server:
     https://tech.willandskill.se/nextjs-with-pm2-nginx-and-yarn-on-ubuntu-1804/
 
 Initial Deploy:
-    pm2 start npm --name "adrianpardo.dev" -- start
+    pm2 start npm --name "adrianpardo.dev-next9" -- start
     pm2 start npm --name StockApp -- run start2
+
+issues after next9 update:
+    going directly to a page thats not homepage, doesnt load css
