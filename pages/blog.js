@@ -4,9 +4,9 @@ import fetch from 'isomorphic-unfetch'
 
 const PostLink = props => (
     <li>
-      <Link as={`/blog/${props.id}`} href={`/post?title=${props.title}`}>
-        <a>{props.title}</a>
-      </Link>
+        <Link href="/p/[id]" as={`/p/${props.id}`}>
+            <a>{props.id}</a>
+        </Link>
     </li>
 )
 
@@ -23,29 +23,30 @@ const Blog = props => (
                 </div>
             </React.Fragment> 
         : 
-        <React.Fragment>
-            <div className="lead">
-                <div id="lead-content">
-                    <h1>Batman TV Shows</h1>
-                    <ul>
-                        {props.shows.map(show => (
-                            <li key={show.id}>
-                            <Link as={`/batman/${show.id}`} href={`/batman_post?id=${show.id}`}>
-                                <a>{show.name}</a>
-                            </Link>
-                            </li>
-                        ))}
-                    </ul>
-                    <h1>Blogs</h1>
-                    <ul>
-                        <PostLink id="hello-nextjs" title="Hello Next.js" />
-                        <PostLink id="learn-nextjs" title="Learn Next.js is awesome" />
-                        <PostLink id="deploy-nextjs" title="Deploy apps with Zeit" />
-                    </ul>
+            <React.Fragment>
+                <div className="lead">
+                    <div id="lead-content">
+                        <h1>Batman TV Shows</h1>
+                        <ul>
+                            {props.shows.map(show => (
+                                <li key={show.id}>
+                                    <Link href="/batman/[id]" as={`/batman/${show.id}`}>
+                                        <a>{show.name}</a>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                        <h1>Blogs</h1>
+                        <ul>
+                            <PostLink id="hello-nextjs" title="Hello Next.js" />
+                            <PostLink id="learn-nextjs" title="Learn Next.js is awesome" />
+                            <PostLink id="deploy-nextjs" title="Deploy apps with Zeit" />
+                        </ul>
+                    </div>
+                    <div id="lead-overlay"></div>
                 </div>
-                <div id="lead-overlay"></div>
-            </div>
-        </React.Fragment>}
+            </React.Fragment>
+        }
     </Layout>
 )
 
