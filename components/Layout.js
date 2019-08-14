@@ -1,6 +1,6 @@
 import Head from './Head'
 import Nav from './Nav'
-import Footer from './footer'
+import Footer from './Footer'
 import React, { useEffect } from 'react';
 import { string } from 'prop-types'
 import { initGA, logPageView } from '../utils/analytics'
