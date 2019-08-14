@@ -1,4 +1,4 @@
-import Layout from '../../components/layout';
+import Layout from '../../components/Layout';
 import fetch from 'isomorphic-unfetch';
 
 const Batman_Post = props => (

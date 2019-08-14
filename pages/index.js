@@ -1,5 +1,5 @@
 import Home from './home';
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 import '../static/assets/css/bootstrap.min.css'
 import '../static/assets/css/styles.css'
 

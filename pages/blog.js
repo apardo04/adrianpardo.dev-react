@@ -1,6 +1,8 @@
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
+import '../static/assets/css/bootstrap.min.css'
+import '../static/assets/css/styles.css'
 
 const PostLink = props => (
     <li>
