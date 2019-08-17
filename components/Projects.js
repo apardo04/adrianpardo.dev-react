@@ -99,23 +99,6 @@ const Projects = props => {
                                 </div>
                             </div>
                             <div className="row project-block">
-                                <div className="col-md-4">
-                                    <h3>Inter Custom Logistics</h3>
-                                    <p className="project-roles">
-                                        <span className="neon-blue">Frontend</span>
-                                        <span className="slash"> / </span>
-                                        <span className="neon-blue">SEO</span>
-                                        <span className="slash"> / </span>
-                                        <span className="neon-blue">Hosting</span>
-                                    </p>
-                                    <p className="project-description">My first freelance job (2015). Development solutions included hosting, design, SEO, installing a secure certificate, and ongoing website maintenance.</p>
-                                    <a href="https://intercustom.com" target="_blank" rel="noopener" tabIndex="0"><span className="project-url underline-yellow">See it live</span></a>
-                                </div>
-                                <div className="col-md-8">
-                                    <img src="static/assets/images/intercustom.jpg" alt="Intercustom Screenshot"/>
-                                </div>
-                            </div>
-                            <div className="row project-block">
                             <div className="col-md-4">
                                 <h3>Mine For Charity</h3>
                                 <p className="project-roles">
