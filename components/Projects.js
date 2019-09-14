@@ -6,26 +6,7 @@ const Projects = props => {
         <div id="projects" className="background-alt">
                 <h2 className="heading" tabIndex="0">Projects</h2>
                 <div className="container">
-                    <div className="row project-block">
-                        <div className="col-md-4">
-                            <h3>Lacayo Law Firm</h3>
-                            <p className="project-roles">
-                                <span className="neon-blue">Frontend</span>
-                                <span className="slash"> / </span>
-                                <span className="neon-blue">SEO</span>
-                                <span className="slash"> / </span>
-                                <span className="neon-blue">UX</span>
-                                <span className="slash"> / </span>
-                                <span className="neon-blue">UI</span>
-                            </p>
-                            <p className="project-description">This project consisted of building a website based on the clients design. Web solutions I have provided for this project include search engine optimization, accessibility compliance, and ongoing website maintenance.</p>
-                            <a href="http://www.lacayolawfirm.com"  target="_blank" rel="noopener" tabIndex="0"><span className="project-url underline-yellow">See it live</span></a>
-                        </div>
-                        <div className="col-md-8">
-                            <img src="static/assets/images/lacayolawfirm.jpg" alt="Lacayo Law Firm Screenshot"/>
-                        </div>
-                    </div>
-                    <div className="row project-block">
+                <div className="row project-block">
                         <div className="col-md-4">
                             <h3>Stockify App</h3>
                             <p className="project-roles">
@@ -46,7 +27,25 @@ const Projects = props => {
                             <img src="static/assets/images/stockportfolio.jpg" alt="Lacayo Law Firm Screenshot"/>
                         </div>
                     </div>
-                    
+                    <div className="row project-block">
+                        <div className="col-md-4">
+                            <h3>Lacayo Law Firm</h3>
+                            <p className="project-roles">
+                                <span className="neon-blue">Frontend</span>
+                                <span className="slash"> / </span>
+                                <span className="neon-blue">SEO</span>
+                                <span className="slash"> / </span>
+                                <span className="neon-blue">UX</span>
+                                <span className="slash"> / </span>
+                                <span className="neon-blue">UI</span>
+                            </p>
+                            <p className="project-description">This project consisted of building a website based on the clients design. Web solutions I have provided for this project include search engine optimization, accessibility compliance, and ongoing website maintenance.</p>
+                            <a href="http://www.lacayolawfirm.com"  target="_blank" rel="noopener" tabIndex="0"><span className="project-url underline-yellow">See it live</span></a>
+                        </div>
+                        <div className="col-md-8">
+                            <img src="static/assets/images/lacayolawfirm.jpg" alt="Lacayo Law Firm Screenshot"/>
+                        </div>
+                    </div>           
                     { moreProjects ? 
                         <React.Fragment>
                             <div className="row project-block">
