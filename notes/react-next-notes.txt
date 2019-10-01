@@ -20,7 +20,7 @@ How You deploy a new version on server:
     git pull
     npm install
     ynpm run build
-    pm2 restart adrianpardo.dev
+    pm2 restart adrianpardo.dev-next9
     https://tech.willandskill.se/nextjs-with-pm2-nginx-and-yarn-on-ubuntu-1804/
 
 Initial Deploy:

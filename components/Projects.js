@@ -105,8 +105,7 @@ const Projects = props => {
                                     <span className="slash"> / </span>
                                     <span className="neon-blue">JavaScript</span>
                                 </p>
-                                <p className="project-description">This project was created in the wake of Hurricane Maria, to collect funds for those impacted. The site/extension collected <a href="https://www.getmonero.org/" className="yellow">Monero</a> using CPU. As of March 8, 2019 mining has been disabled on the site.</p>
-                                <a href="https://www.mineforcharity.org" target="_blank" rel="noopener" tabIndex="0"><span className="project-url underline-yellow">See it live</span></a>
+                                <p className="project-description">This project was created in the wake of Hurricane Maria, to collect funds for those impacted. The site/extension collected <a href="https://www.getmonero.org/" className="yellow">Monero</a> using CPU. As of March 8, 2019 the site has been disabled.</p>
                             </div>
                             <div className="col-md-8">
                                 <img src="static/assets/images/mineforcharity.jpg" alt="Mine For Charity Screenshot"/>
