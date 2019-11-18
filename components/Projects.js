@@ -24,7 +24,7 @@ const Projects = props => {
                             <a href="https://github.com/apardo04/stock-market-react-app"  target="_blank" rel="noopener" tabIndex="0"><span className="project-url underline-yellow">Github</span></a>
                         </div>
                         <div className="col-md-8">
-                            <img src="static/assets/images/stockportfolio.jpg" alt="Lacayo Law Firm Screenshot"/>
+                            <img src="/assets/images/stockportfolio.jpg" alt="Lacayo Law Firm Screenshot"/>
                         </div>
                     </div>
                     <div className="row project-block">
@@ -43,7 +43,7 @@ const Projects = props => {
                             <a href="http://www.lacayolawfirm.com"  target="_blank" rel="noopener" tabIndex="0"><span className="project-url underline-yellow">See it live</span></a>
                         </div>
                         <div className="col-md-8">
-                            <img src="static/assets/images/lacayolawfirm.jpg" alt="Lacayo Law Firm Screenshot"/>
+                            <img src="/assets/images/lacayolawfirm.jpg" alt="Lacayo Law Firm Screenshot"/>
                         </div>
                     </div>           
                     { moreProjects ? 
@@ -62,7 +62,7 @@ const Projects = props => {
                                     <a href="https://awakenatman.com" target="_blank" rel="noopener" tabIndex="0"><span className="project-url underline-yellow">See it live</span></a>
                                 </div>
                                 <div className="col-md-8">
-                                    <img src="static/assets/images/awakenatman.jpg" alt="Awaken Atman Screenshot"/>
+                                    <img src="/assets/images/awakenatman.jpg" alt="Awaken Atman Screenshot"/>
                                 </div>
                             </div>
                             <div className="row project-block">
@@ -79,7 +79,7 @@ const Projects = props => {
                                     <a href="https://issacharv.wixsite.com/website"  target="_blank" rel="noopener" tabIndex="0"><span className="project-url underline-yellow">See it live</span></a>
                                 </div>
                                 <div className="col-md-8">
-                                    <img src="static/assets/images/knightscode.jpg" alt="The Knights Code Screenshot"/>
+                                    <img src="/assets/images/knightscode.jpg" alt="The Knights Code Screenshot"/>
                                 </div>
                             </div>
                             <div className="row project-block">
@@ -94,7 +94,7 @@ const Projects = props => {
                                     <a href="https://letsgocoo.com" target="_blank" rel="noopener" tabIndex="0"><span className="project-url underline-yellow">See it live</span></a>
                                 </div>
                                 <div className="col-md-8">
-                                    <img src="static/assets/images/letsgocoo.jpg" alt="Let's Go Coo Screenshot"/>
+                                    <img src="/assets/images/letsgocoo.jpg" alt="Let's Go Coo Screenshot"/>
                                 </div>
                             </div>
                             <div className="row project-block">
@@ -108,7 +108,7 @@ const Projects = props => {
                                 <p className="project-description">This project was created in the wake of Hurricane Maria, to collect funds for those impacted. The site/extension collected <a href="https://www.getmonero.org/" className="yellow">Monero</a> using CPU. As of March 8, 2019 the site has been disabled.</p>
                             </div>
                             <div className="col-md-8">
-                                <img src="static/assets/images/mineforcharity.jpg" alt="Mine For Charity Screenshot"/>
+                                <img src="/assets/images/mineforcharity.jpg" alt="Mine For Charity Screenshot"/>
                             </div>
                         </div>
                         </React.Fragment>

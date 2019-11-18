@@ -1,8 +1,8 @@
 import Layout from '../components/Layout'
 import SeeMore from '../components/SeeMore'
 import React, { useState } from 'react'
-import '../static/assets/css/bootstrap.min.css'
-import '../static/assets/css/styles.css'
+import '../public/assets/css/bootstrap.min.css'
+import '../public/assets/css/styles.css'
 
 const HireMe = props => {
     const [other, toggleOther] = useState(false);
@@ -138,7 +138,7 @@ const HireMe = props => {
             {/* End #questionnaire */}
             <style jsx>{`
                 #lead-beach {
-                    background: url("../static/assets/images/lead-beach-bg.jpg");
+                    background: url("../assets/images/lead-beach-bg.jpg");
                     background-size: cover
                 }
                 .col-50{

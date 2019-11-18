@@ -1,0 +1,505 @@
+/* File Contents:
+        1. Variables
+        2. Mixins
+        3. Global Styles
+        4. Lead Styles
+        5. About Styles
+        6. Education Styles
+        7. Project Styles
+        8. Skills Styles
+        9. Contact Styles
+        10. Media Queries
+*/
+/*  ------------------------
+    ----- 1. Variables -----
+    ------------------------*/
+/*https://coolors.co/030b22-9aefdd-ebca7d-993955-9395d3*/
+:root {
+    --blue: #9aefdd;
+    --darkblue: #030c22;
+    --altBlue: #20293f;
+    --yellow: #ebca7d;
+    --purple: #9395D3;
+    --purple2: #3e3e53;
+    --pink: #f078d9;
+}
+/*  ---------------------
+    ----- 2. Mixins -----
+    ---------------------*/
+/*  ----------------------------
+    ----- 3. Global Styles -----
+    ----------------------------*/
+html {
+    scroll-behavior: smooth;
+}
+body {
+    margin: 0;
+    font-family: 'Merriweather',sans-serif;
+    font-size: 16px;
+    background-color: var(--darkblue);
+}
+html,body {
+height:auto!important;
+min-height:100vh;
+}
+body.active {
+    overflow: hidden;
+    z-index: -1;
+}
+a, a:hover, a:focus  {
+    color:var(--yellow);
+    text-decoration:none;
+}
+ul.small {
+    color: #a9b0b3;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 0.8em;
+}
+
+.lead-download-btn {
+    display: inline-block;
+    color: var(--blue);
+    font-weight: bold;
+    padding: 15px 25px;
+    border: 3px solid var(--blue);
+    border-radius: 5px;
+    -webkit-transition: 0.5s ease all;
+    transition: 0.5s ease all;
+}
+.lead-download-btn:hover, .lead-download-btn:focus, .fill {
+    color: var(--purple2);
+    background: var(--blue);
+    text-decoration: none;
+    border: 3px solid var(--blue);
+}
+.shadow {
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.shadow-large {
+    -webkit-box-shadow: 0 3px 6px rgba(0,0,0,0.08), 0 3px 6px rgba(0,0,0,0.15);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.08), 0 3px 6px rgba(0,0,0,0.15);
+}
+.heading {
+    font-family: 'Merriweather',serif;
+    font-weight: 400;
+    position: relative;
+    font-size: 2em;
+    margin: 0 0 30px 0;
+    border-bottom: 4px solid var(--blue);
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    display: inline-block;
+    padding-bottom: .25rem;
+    margin-bottom: .5rem;
+    text-align: center;
+    color: #e5e7e8;
+    margin-bottom: 50px;
+}
+.background-alt .heading {
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+.background-alt {
+    background: var(--altBlue);
+}
+.padding-top {
+    padding-top:75px;
+}
+.underline-yellow {
+    color: var(--yellow);
+    border-bottom: 1px solid var(--yellow);
+}
+.yellow {
+    color: var(--yellow);
+}
+.neon-blue {
+    color: var(--blue); 
+}
+.no-margin {
+    margin: 0 !important;
+}
+.padding-bottom-15 {
+    padding-bottom: 15px;
+}
+.padding-top-10 {
+    padding-top:10px;
+}
+.bold {
+    font-weight: bold;
+}
+.slash {
+    color: white;
+    font-weight: 100;
+}
+
+/*
+    --------------------------
+    ----- 4. Lead Styles -----
+    --------------------------
+*/
+.lead {
+    position: relative;
+    height: 100vh;
+    min-height: 500px;
+    max-height: 1080px;
+    background: url("../images/lead-bg.jpg");
+    background-size: cover;
+    padding: 15px;
+    overflow: hidden;
+}
+#lead-content {
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+h1 {
+    font-family: 'Raleway',sans-serif;
+    font-weight: 700;
+}
+#lead-content h1,
+#lead-content h2 {
+    margin: 0;
+}
+#lead-content h1 {
+    color: #e5e7e8;
+    font-weight: 900;
+    font-size: 5em;
+    /*text-transform: uppercase;*/
+    letter-spacing: 0.05em;
+    line-height: 0.9em;
+    /*text-shadow: 1px 1px 0 var(--yellow);, -1px -1px 0 var(--yellow);, 1px -1px 0 var(--yellow);, -1px 1px 0 var(--blue);, 1px 1px 0 var(--yellow);*/
+}
+#lead-content h2 {
+    color: var(--yellow);
+    font-weight: 500;
+    font-size: 2.25em;
+    margin-bottom: 15px;
+}
+.typewrite > .wrap{
+    border-right: 2px solid rgba(255,255,255,.75);
+}
+#lead-overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(32, 41, 63, 0.55);
+    z-index: 1;
+}
+#lead-arrow {
+    padding-left: 12px;
+    font-size: 20px;
+    transition: transform .5s ease-in-out;
+}
+a.lead-download-btn:hover #lead-arrow {
+    transform: translateX(4px) translateY(-3px) rotate(90deg);
+    transition: transform .5s ease-in-out;
+ }
+/*
+    ---------------------------
+    ----- 5. About Styles -----
+    ---------------------------
+*/
+#about {
+    padding: 75px 15px;
+    border-top: 1px solid var(--yellow);
+    border-bottom: 1px solid var(--yellow);
+}
+#about .container {
+    margin-bottom: 15px;
+}
+#about p {
+    color: white;
+    margin: 0;
+    font-weight: 300;
+    font-size: 2rem;
+}
+/*
+    -------------------------------
+    ----- 6. Education Styles -----
+    -------------------------------
+*/
+.education-block {
+    max-width: 700px;
+    margin-bottom: 25px;
+    padding: 15px;
+    background: var(--altBlue);
+    border: 1px solid #a9b0b3;
+    text-align: left;
+}
+.education-block h3 {
+    font-weight: 500;
+    float: left;
+    margin: 0;
+    color: #e5e7e8;
+}
+.education-block h4 {
+    color: #a9b0b3;
+    clear: both;
+    font-weight: 500;
+    margin: 0 0 15px 0;
+}
+/*
+    -------------------------------
+    ----- 7. Project Styles -----
+    -------------------------------
+*/
+#projects {
+    padding: 75px 15px;
+    border-bottom: 1px solid var(--yellow);
+    text-align: center;
+}
+#projects h3 {
+    font-weight: 900;
+    font-size: 2.4em;
+    color: white;
+    margin: 0;
+    font-family: 'raleway';
+}
+.project-block {
+    text-align: left;
+    margin-bottom: 50px;
+}
+span#show-more-projects {
+    font-size: 1.6em;
+    border-bottom: 4px solid var(--yellow);
+    cursor: pointer;
+    border-top: 4px solid var(--altBlue);
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+    padding: 5px;
+}
+span#show-more-projects:hover {
+    border: 4px solid var(--yellow);
+}
+.hidden-project {
+    display: none;
+}
+.project-roles {
+    margin-top: .3rem;
+}
+.project-description {
+    line-height: 1.66666;
+    max-width: 500px;
+    font-size: 1.8rem;
+    color: white;
+}
+span.project-url {
+    font-size: 1.8rem;
+}
+.project-block a:hover {
+    text-decoration: none;
+}
+.project-block img {
+    width: 100%;
+    border-radius: 10px;
+}
+/*
+    -------------------------------
+    ----- 8. Skills Styles -----
+    -------------------------------
+*/
+#skills {
+    padding: 50px 15px;
+    text-align: center;
+    border-bottom: 1px solid var(--yellow);
+}
+#skills p {
+    color: #a9b0b3;
+    margin-bottom: 50px;
+}
+div#skills-list {
+    margin-bottom: 20px;
+}
+.skills-filter {
+    margin: 0 auto;
+    color: white;
+    width: 15%;
+    display: inline-block;
+}
+span.skills-text {
+    cursor: pointer;
+}
+span.skills-text.active {
+    border-bottom: 4px solid var(--yellow);
+    border-right: 3px solid transparent;
+    border-left: 3px solid transparent;
+    padding: 3px;
+}
+#skills ul {
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 800px;
+}
+#skills li {
+    display: inline-block;
+    margin: 7px;
+    padding: 5px 10px;
+    color: var(--yellow);
+    background: #283450;
+    list-style: none;
+    cursor: default;
+    font-size: 1.2em;
+}
+/*
+    --------------------------------
+    ----- 9. Contact Styles -----
+    --------------------------------
+*/
+#contact {
+    padding:50px 15px;text-align:center;
+}
+#contact h2 {
+    margin:0 0 15px 0;
+    color:#fff;
+    font-weight:500;
+}
+.form {
+    max-width:500px;
+    margin:0 auto;
+}
+label {
+    color: white;
+    font-size: 20px;
+    padding-bottom: 10px;
+    cursor: default;
+    float: left;
+    text-align: left;
+}
+.form input, .form textarea {
+    display:block;
+    width:100%;
+    padding:10px;
+    border-radius:4px;
+    border: 1px solid var(--yellow);
+    margin-bottom:10px;
+    background:var(--purple2);
+    color:#fff;
+    -webkit-transition:.5s ease all;
+    transition:.5s ease all;
+}
+.form input::-webkit-input-placeholder,.form textarea::-webkit-input-placeholder {
+    color:#fff;
+}
+.form input:-moz-placeholder,.form textarea:-moz-placeholder {
+    color:#fff;
+    opacity:1;
+}
+.form input::-moz-placeholder,.form textarea::-moz-placeholder {
+    color:#fff;
+    opacity:1;
+}
+.form input:-ms-input-placeholder,.form textarea:-ms-input-placeholder {
+    color:#fff;
+}
+.form input:focus,.form textarea:focus {
+    outline:none;
+    background:var(--darkblue);
+}
+.form textarea {
+    height:150px;
+    resize:none;
+}
+.form button {
+    display:block;
+    width:100%;
+    background:#fff;
+    border-radius:4px;
+    padding:5px 10px;
+    background: var(--yellow);
+    border: 1px solid var(--purple2);
+    color:#333;
+    font-weight:700;
+    box-shadow:0 1px 3px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.24);
+    -webkit-transition:.5s ease all;
+    transition:.5s ease all;
+}
+.form button:hover {
+    box-shadow:0 10px 20px rgba(0,0,0,0.19),0 6px 6px rgba(0,0,0,0.23);
+}
+/*
+    ----------------------------
+    ----- 10. Media Queries -----
+    ----------------------------
+*/
+@media only screen and (max-width: 1282px) {
+    #lead-content h1 {
+        font-size: 3.8em;
+    }
+    #lead-content h2 {
+        font-size: 2.1em;
+    }
+}
+@media only screen and (max-width: 992px) {
+    .lead {
+        height: 100vh;
+        min-height: auto;
+        max-height: auto;
+        padding: 100px 15px;
+    }
+    #lead-content {
+        position: relative;
+        top: 45%;
+    }
+    #lead-content h1 {
+        font-size: 3em;
+    }
+    #lead-content h2 {
+        font-size: 1.75em;
+    }
+    #about {
+        text-align: center;
+    }
+    #about p {
+        text-align: left;
+        font-size: 1.5rem;
+    }
+    .skills-filter {
+        width: 40%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    span.skills-text.active {
+        padding: 0;
+    }
+}
+@media only screen and (max-width: 768px) {
+    #lead-content h1 {
+        font-size: 2em;
+    }
+    #lead-content h2 {
+        font-size: 1.3em;
+    }
+    #lead-content a {
+        padding: 10px 20px;
+    }
+    .project-image {
+        display: none;
+    }
+    .project-info {
+        position: relative;
+        margin: 0;
+        top: auto;
+        -webkit-transform: none;
+        transform: none;
+    }
+    .project-block img {
+        margin-top: 18px;
+    }
+}
+@media only screen and (max-width: 480px) {
+    #lead-content a {
+        font-size: 0.9em;
+        padding: 5px 10px;
+    }
+}

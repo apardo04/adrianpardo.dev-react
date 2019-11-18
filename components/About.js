@@ -34,12 +34,6 @@ const About = props => {
                         </div>
                         {/*  End .education-block */}  
                     </div>
-                    {/* 
-                    <a href="/static/assets/resume_placeholder.pdf" className="lead-download-btn" download>
-                        Download Resume
-                        <i className="fa fa-arrow-right" id="lead-arrow"></i>
-                    </a>
-                    */}  
                 </div>
             </div>
             <SeeMore href="#projects" />
