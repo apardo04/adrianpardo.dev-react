@@ -464,6 +464,9 @@ label {
         text-align: left;
         font-size: 1.5rem;
     }
+    .project-block img {
+        margin-top: 18px;
+    }
     .skills-filter {
         width: 40%;
         text-align: center;
@@ -492,9 +495,6 @@ label {
         top: auto;
         -webkit-transform: none;
         transform: none;
-    }
-    .project-block img {
-        margin-top: 18px;
     }
 }
 @media only screen and (max-width: 480px) {
