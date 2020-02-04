@@ -19,7 +19,7 @@ CSS Loader Invalid Options Error:
 How You deploy a new version on server:
     git pull
     npm install
-    ynpm run build
+    npm run build
     pm2 restart adrianpardo.dev-next9
     https://tech.willandskill.se/nextjs-with-pm2-nginx-and-yarn-on-ubuntu-1804/
 
@@ -29,3 +29,8 @@ Initial Deploy:
 
 issues after next9 update:
     going directly to a page thats not homepage, doesnt load css
+    
+
+https://steveholgado.com/nginx-for-nextjs/
+Docker:
+    docker build --tag adrianpardo-dev .

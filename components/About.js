@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import SeeMore from '../components/SeeMore';
 
 const About = props => {
@@ -14,7 +15,7 @@ const About = props => {
                         Currently working as a web developer for <a href="https://globalrose.com" target="_blank" rel="noopener">Globalrose.com LLC.</a><br /><br />
                         I have developed, launched, and maintained <a href="#projects">multiple projects</a> from scratch.<br /><br />
                         Some of my strongest <a href="#skills">skills</a> include E-Commerce development, web frameworks & object oriented programming.<br /><br />
-                        I'm always looking to collaborate on interesting projects. Need a developer? - <a href="hire-me.html" className="underline-yellow">contact me</a>
+                        I'm always looking to collaborate on interesting projects. Need a developer? - <Link href="/hire-me"><a className="underline-yellow">contact me</a></Link>
                     </p>
                     </div>
                 </div>
