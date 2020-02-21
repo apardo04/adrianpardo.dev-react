@@ -3,7 +3,7 @@
         2. Mixins
         3. Global Styles
         4. Lead Styles
-        5. About Styles
+        5. Info Container Styles
         6. Education Styles
         7. Project Styles
         8. Skills Styles
@@ -144,8 +144,6 @@ ul.small {
     height: 100vh;
     min-height: 500px;
     max-height: 1080px;
-    background: url("../images/lead-bg.jpg");
-    background-size: cover;
     padding: 15px;
     overflow: hidden;
 }
@@ -205,23 +203,41 @@ a.lead-download-btn:hover #lead-arrow {
     transition: transform .5s ease-in-out;
  }
 /*
-    ---------------------------
-    ----- 5. About Styles -----
-    ---------------------------
+    --------------------------------
+    ----- 5. Info Container --------
+    -------- About Styles ----------
+    -------- Questionaire Styles ---
+    -------- Blog Styles -----------
+    --------------------------------
 */
-#about {
+.info-container {
     padding: 75px 15px;
     border-top: 1px solid var(--yellow);
     border-bottom: 1px solid var(--yellow);
 }
-#about .container {
+.info-container .container {
     margin-bottom: 15px;
 }
-#about p {
+.info-container p, .info-container-2 p {
     color: white;
     margin: 0;
     font-weight: 300;
     font-size: 2rem;
+}
+.info-container-2 {
+    padding: 50px 15px;
+    text-align: center;
+    border-top: 1px solid var(--yellow);
+    border-bottom: 1px solid var(--yellow);
+}
+.info-container-2 .info {
+    max-width:850px;
+    margin: 0 auto;
+}
+.codeblock {
+    text-align: left;
+    background-color: var(--altBlue);
+    border: 1px solid #a9b0b3;
 }
 /*
     -------------------------------
@@ -457,10 +473,10 @@ label {
     #lead-content h2 {
         font-size: 1.75em;
     }
-    #about {
+    .info-container {
         text-align: center;
     }
-    #about p {
+    .info-container p {
         text-align: left;
         font-size: 1.5rem;
     }

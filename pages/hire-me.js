@@ -24,10 +24,10 @@ const HireMe = props => {
             </div>
             {/* End #lead */}
 
-            <div id="questionnaire">
+            <div className="info-container-2" id="questionnaire">
                 <div className="container">
                     <h2 className="heading" tabIndex="0">Questionnaire</h2>
-                    <div className="form" id="questionnaire-form">
+                    <div className="form info" id="questionnaire-form">
                         <form method="POST" action="https://formspree.io/apardo04@gmail.com">
                             <input type="hidden" name="_subject" defaultValue="Hire-me request from personal website" />
                             <div className="row">
@@ -145,15 +145,6 @@ const HireMe = props => {
                     width: 48.5%;
                     float: left;
                     margin-right: 3%;
-                }
-                #questionnaire {
-                    padding: 50px 15px;
-                    text-align: center;
-                    border-top: 1px solid var(--yellow);
-                    border-bottom: 1px solid var(--yellow);
-                }
-                #questionnaire-form {
-                    max-width:850px;
                 }
                 .help-radio-container {
                     display: inline-block;

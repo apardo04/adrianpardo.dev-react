@@ -3,7 +3,7 @@ import SeeMore from '../components/SeeMore';
 
 const About = props => {
     return(
-        <div id="about">
+        <div className="info-container" id="about">
             <div className="container">
                 <div className="row">
                     <div className="col-md-4">

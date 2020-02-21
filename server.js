@@ -17,13 +17,6 @@ app
       app.render(req, res, actualPage, queryParams)
     })
 
-    // Blog posts
-    server.get('/blog/:id', (req, res) => {
-      const actualPage = '/post'
-      const queryParams = { title: req.params.id }
-      app.render(req, res, actualPage, queryParams)
-    })
-
     server.get('*', (req, res) => {
       return handle(req, res)
     })
