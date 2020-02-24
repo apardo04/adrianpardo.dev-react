@@ -8,16 +8,16 @@ export default function Post() {
   const router = useRouter();
 
   return (
-    <Layout page="blog" title="&lt;Adrian Pardo/&gt; CI/CD Github Actions to AWS ECR/ECS">
+    <Layout page="blog/github-actions-aws-ecs" title="&lt;Adrian Pardo/&gt; CI/CD Github Actions to AWS ECR/ECS" description="Step by step guide for automating deplyoment from Github Actions to AWS ECR and ECS" ogImage="/assets/images/github-actions-aws-ecs/ecs.png">
       <div className="lead">
         <div id="lead-content">
           <h1>CI/CD GITHUB ACTIONS TO AWS ECR/ECS</h1>
-          <h2>Feb 21, 2020</h2>
+          <h2>Feb 24, 2020 • Guide</h2>
         </div>
         <SeeMore href="#before-getting-started" />
         <div id="lead-overlay"></div>
       </div>
-      <div className="info-container-2" id="before-getting-started">
+      <div className="info-container-2 text-center" id="before-getting-started">
         <div className="container">
           <h2 className="heading" tabIndex="0">Objectives</h2>
           <div className="info">
@@ -28,7 +28,7 @@ export default function Post() {
                 Before getting started, make sure you have an AWS account and have Git, Node and Docker installed.
             </p>
             <p>
-              We will start by forking this simple full stack <a href="https://github.com/apardo04/github-actions-to-aws-ecr-ecs">React/Express application</a>. Once forked into your account, make a clone.
+              We will start by forking this simple full stack <a href="https://github.com/apardo04/github-actions-to-aws-ecr-ecs">React/Express application</a>. Once forked into your Github account, make a clone on your local machine.
             </p>
             <p>
               For local development I am using a <a href="https://docs.docker.com/compose/">docker-compose</a> enivornment. 
@@ -41,7 +41,7 @@ export default function Post() {
 
             <h2 className="heading" tabIndex="0" id="docker-compose">Docker Compose</h2>
             <p>
-                To get the local docker-compose environment running, there are a few steps to take
+                To get the local docker-compose environment running, there are a few steps to take.
             </p>
             <p>
                 1) Build the front end client, by running the following commands.
@@ -84,10 +84,13 @@ export default function Post() {
                 4) Click the "Attach existing policies directly" option.
             </p>
             <p>
-                5) Search for "ECS" and check the policies shown below.
+                5) Search for "ECS", check the following policies, search for "registry" and select the following policy.
             </p>
             <p>
                 <img src="../../assets/images/github-actions-aws-ecs/iam-user-ecr-ecs-permissions.png" className="yellow-border" />
+            </p>
+            <p>
+                <img src="../../assets/images/github-actions-aws-ecs/iam-user-ecr-ecs-permissions-3.png" className="yellow-border" />
             </p>
             <p>
                 6) Click the "Next: Tags" button.
@@ -106,7 +109,7 @@ export default function Post() {
             </p>
             <h2 className="heading" tabIndex="0" id="iam-role">Identity and Access Management (IAM) Role</h2>
             <p>
-                Now we need to create an IAM Role for......
+                Now we need to create an IAM Role. This will provide access to other AWS service resources that are required to run Amazon ECS tasks.
             </p>
             <p>
               1) Navigate back to <a href="https://console.aws.amazon.com/iam">AWS IAM</a> and click on "Roles" and then click the "Create role" button.
@@ -121,7 +124,7 @@ export default function Post() {
               3) Click "Next: Permissions" button.
             </p>
             <p>
-              4) Search "ecs" and select the policy shown below.
+              4) Search "ecs" and select the policies shown below.
             </p>
             <p>
                 <img src="../../assets/images/github-actions-aws-ecs/iam-role-policy.png" className="yellow-border" />
@@ -133,18 +136,10 @@ export default function Post() {
               6) Click the "Next: Review" button.
             </p>
             <p>
-              7) We're going to give our role the name "ecsTaskExecutionRole"
+              7) We're going to give our role the name "ecsTaskExecutionRole".
             </p>
             <p>
                 <img src="../../assets/images/github-actions-aws-ecs/iam-role-name.png" className="yellow-border" />
-            </p>
-
-            <h2 className="heading" tabIndex="0" id="iam-policy">Identity and Access Management (IAM) Policy</h2>
-            <p>
-                <img src="../../assets/images/github-actions-aws-ecs/iam-policy-registry-full-access.png" className="yellow-border" />
-            </p>
-            <p>
-                <img src="../../assets/images/github-actions-aws-ecs/iam-policy-registry-full-access-2.png" className="yellow-border" />
             </p>
 
             <h2 className="heading" tabIndex="0" id="ecr">Elastic Container Registry (ECR)</h2>
@@ -177,14 +172,13 @@ export default function Post() {
               2) Under "Container definition" select the "custom" image option and hit the "edit" button, as shown below.
             </p>
             <p>
-                <img src="../../assets/images/github-actions-aws-ecs/ecs-custom-image.png" className="yellow-border" />
+                <img src="../../assets/images/github-actions-aws-ecs/ecs-container-definition.png" className="yellow-border" />
             </p>
             <p>
               3) We're going to name the container "my-container", set image to "my-ecr-repo" and map port 80 to tcp.
             </p>
-            <p>
-                <img src="../../assets/images/github-actions-aws-ecs/ecs-container-settings.png" className="yellow-border" />
-            </p>
+            <img src="../../assets/images/github-actions-aws-ecs/ecs-container-settings.png" className="yellow-border" />
+
             <p>
               4) Click the "Update" button.
             </p>
@@ -201,7 +195,7 @@ export default function Post() {
               7) Click the "Save" button and the side panel should disappear.
             </p>
             <p>
-              8) Click "Next" button.
+              8) Click the "Next" button.
             </p>
             <p>
               9) By default "Service name" should be "my-container-service". If not, change it to that and click the "Next" button.
@@ -524,14 +518,12 @@ export default function Post() {
 
 
             <h2 className="heading" tabIndex="0" id="application-running">See The Application Running</h2>
-            <p>
-              If you got no errors, then lets go back to our <a href="https://console.aws.amazon.com/ecs/">AWS ECS Console</a>.<br />
-              Click on "my-cluster"<br />
-              Click on "my-container-service"<br />
-              Click the "Tasks" tab<br />
-              Click on the task it self that has a status "RUNNING"<br />
-              Look in the "Network" section for a "Public IP", copy and paste that IP into your web browser and you should see the application running and talking to the database (meaning you're recieving fortunes), like below:
-            </p>
+            <p>If you got no errors, then lets go back to our <a href="https://console.aws.amazon.com/ecs/">AWS ECS Console</a>.</p>
+            <p>Click on "my-cluster"</p>
+            <p>Click on "my-container-service"</p>
+            <p>Click the "Tasks" tab</p>
+            <p>Click on the task it self that has a status "RUNNING"</p>
+            <p>Look in the "Network" section for a "Public IP", copy and paste that IP into your web browser and you should see the application running and talking to the database (meaning you're recieving fortunes), like below:</p>
             <p>
               <img src="../../assets/images/github-actions-aws-ecs/application-running.png" className="yellow-border" />
             </p>
@@ -542,8 +534,11 @@ export default function Post() {
       </div>
       <style jsx>{`
         .lead {
-            background: url("../../assets/images/ecs.png");
+            background: url("../../assets/images/github-actions-aws-ecs/ecs.png");
             background-size: contain;
+        }
+        #lead-overlay {
+          background: rgba(32, 46, 64, 0.65);
         }
         p {
           margin-bottom: 50px;

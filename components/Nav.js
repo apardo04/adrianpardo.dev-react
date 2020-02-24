@@ -16,15 +16,16 @@ const Nav = props => {
           </div>
           <ul id="menu">
               <li>
-              {props.page == "index" ?
-                <Link href="/index#about">
-                  <a tabIndex="0" className="hover-border prevent-default">About</a>
-                </Link>
-              :     
+              {props.page != "index" &&
                 <Link href="/index">
                   <a tabIndex="0" className="hover-border prevent-default">Home</a>
                 </Link>
               }
+              </li>
+              <li>
+                  <Link href="/blog">
+                    <a tabIndex="0" className="hover-border">Blog</a>
+                  </Link>
               </li>
               <li>
                 <Link href="/index#projects">
@@ -36,6 +37,7 @@ const Nav = props => {
                     <a target="_blank" tabIndex="0" className="hover-border prevent-default">Github</a>
                   </Link>
               </li>
+
               <li>
                   <Link href="/hire-me">
                     <a tabIndex="0" className="hover-border">Need a Developer?</a>

@@ -1,66 +1,38 @@
 import Layout from '../components/Layout'
-import Link from 'next/link'
-import fetch from 'isomorphic-unfetch'
 import '../public/assets/css/bootstrap.min.css'
 import '../public/assets/css/styles.css'
 
-const PostLink = props => (
-    <li>
-        <Link href="/p/[id]" as={`/p/${props.id}`}>
-            <a>{props.id}</a>
-        </Link>
-    </li>
-)
-
 const Blog = props => ( 
-    <Layout page="blog" title="Blog &lt;Adrian Pardo/&gt; Freelance Fullstack Web Developer">
-        
-        { true ? 
-            <React.Fragment>
-                <div className="lead">
-                    <div id="lead-content">
-                        <h1>Blog Coming Soon</h1>
-                    </div>
-                    <div id="lead-overlay"></div>
+    <Layout page="blog" title="Blog &lt;Adrian Pardo/&gt; Freelance Fullstack Web Developer"> 
+        <div className="info-container-2 text-center" id="blog">
+            <div className="container">
+                <h2 className="heading" tabIndex="0">Blog</h2>
+                <div className="info text-left">
+                    <h3 className=""><a href="blog/github-actions-aws-ecs">CI/CD Github Actions to AWS ECR/ECS</a></h3>
+                    <div className="small-text">February 24, 2020 • Guide</div>
+                    <p>
+                        
+                    </p>
                 </div>
-            </React.Fragment> 
-        : 
-            <React.Fragment>
-                <div className="lead">
-                    <div id="lead-content">
-                        <h1>Batman TV Shows</h1>
-                        <ul>
-                            {props.shows.map(show => (
-                                <li key={show.id}>
-                                    <Link href="/batman/[id]" as={`/batman/${show.id}`}>
-                                        <a>{show.name}</a>
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                        <h1>Blogs</h1>
-                        <ul>
-                            <PostLink id="hello-nextjs" title="Hello Next.js" />
-                            <PostLink id="learn-nextjs" title="Learn Next.js is awesome" />
-                            <PostLink id="deploy-nextjs" title="Deploy apps with Zeit" />
-                        </ul>
-                    </div>
-                    <div id="lead-overlay"></div>
-                </div>
-            </React.Fragment>
-        }
+            </div>
+        </div>
+        <style jsx>{`
+            .container {
+                padding: 75px 15px;
+            }
+            h3 {
+                font-family: Montserrat, sans-serif;
+                font-size: 30px;
+                margin-bottom: 0.4375rem;
+                font-weight: 900;
+                color: var(--yellow);
+            }
+            .small-text {
+                color: white;
+                font-size: 19px;
+            }
+        `}</style>
     </Layout>
 )
 
-Blog.getInitialProps = async function() {
-    const res = await fetch('https://api.tvmaze.com/search/shows?q=batman')
-    const data = await res.json()
-  
-    console.log(`Show data fetched. Count: ${data.length}`)
-  
-    return {
-      shows: data.map(entry => entry.show)
-    }
-  }
-
-  export default Blog
+export default Blog

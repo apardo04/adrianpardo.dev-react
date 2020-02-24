@@ -107,6 +107,12 @@ ul.small {
 .padding-top {
     padding-top:75px;
 }
+.text-left {
+    text-align: left;
+}
+.text-center {
+    text-align: center;
+}
 .underline-yellow {
     color: var(--yellow);
     border-bottom: 1px solid var(--yellow);
@@ -226,7 +232,6 @@ a.lead-download-btn:hover #lead-arrow {
 }
 .info-container-2 {
     padding: 50px 15px;
-    text-align: center;
     border-top: 1px solid var(--yellow);
     border-bottom: 1px solid var(--yellow);
 }

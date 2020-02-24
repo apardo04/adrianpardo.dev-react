@@ -15,7 +15,7 @@ const Layout = props => {
       });
     return (
         <React.Fragment>
-            <Head page={props.page} title={props.title} description={props.description} />
+            <Head page={props.page} title={props.title} description={props.description} ogImage={"https://adrianpardo.dev"+props.ogImage} />
             <Nav page={props.page} />
             {props.children}
             <Footer />
