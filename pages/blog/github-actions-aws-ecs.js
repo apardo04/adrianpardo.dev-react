@@ -1,12 +1,10 @@
-import { useRouter } from 'next/router';
 import Layout from '../../components/Layout';
 import SeeMore from '../../components/SeeMore';
+import BlogImage from '../../components/BlogImage'
 import '../../public/assets/css/bootstrap.min.css'
 import '../../public/assets/css/styles.css'
 
 export default function Post() {
-  const router = useRouter();
-
   return (
     <Layout page="blog/github-actions-aws-ecs" title="&lt;Adrian Pardo/&gt; CI/CD Github Actions to AWS ECR/ECS" description="Step by step guide for automating deplyoment from Github Actions to AWS ECR and ECS" ogImage="/assets/images/github-actions-aws-ecs/ecs.png">
       <div className="lead">
@@ -22,16 +20,16 @@ export default function Post() {
           <h2 className="heading" tabIndex="0">Objectives</h2>
           <div className="info">
             <p>
-              The goal is to use <a href="https://github.com/features/actions">Github Actions</a> for continous deployment to an <a href="https://aws.amazon.com/ecs/">AWS ECS cluster</a>.
+              The goal is to use <a href="https://github.com/features/actions" target="new">Github Actions</a> for continous deployment to an <a href="https://aws.amazon.com/ecs/" target="new">AWS ECS cluster</a>.
             </p>
             <p>
                 Before getting started, make sure you have an AWS account and have Git, Node and Docker installed.
             </p>
             <p>
-              We will start by forking this simple full stack <a href="https://github.com/apardo04/github-actions-to-aws-ecr-ecs">React/Express application</a>. Once forked into your Github account, make a clone on your local machine.
+              We will start by forking this simple full stack <a href="https://github.com/apardo04/github-actions-to-aws-ecr-ecs" target="new">React/Express application</a>. Once forked into your Github account, make a clone on your local machine.
             </p>
             <p>
-              For local development I am using a <a href="https://docs.docker.com/compose/">docker-compose</a> enivornment. 
+              For local development I am using a <a href="https://docs.docker.com/compose/" target="new">docker-compose</a> enivornment. 
               Docker Compose makes it very simple to link, build, and run multiple containers at the same time.
               For this project we have two containers, one for the React application and the other for MongoDB.
             </p>
@@ -60,22 +58,22 @@ export default function Post() {
                 `}</pre>
             </p>
             <p>
-                You should now see the application runnning on <a href="http://localhost:3001/">http://localhost:3001/</a>.
+                You should now see the application runnning on <a href="http://localhost:3001/" target="new">http://localhost:3001/</a>.
             </p>
 
 
             <h2 className="heading" tabIndex="0" id="iam-user">Identity and Access Management (IAM) User</h2>
             <p>
-                First we have to create a user within our AWS account that will have access to perform all the tasks required. For this we will use <a href="https://aws.amazon.com/iam/">Identity and Access Management (IAM)</a>
+                First we have to create a user within our AWS account that will have access to perform all the tasks required. For this we will use <a href="https://aws.amazon.com/iam/" target="new">Identity and Access Management (IAM)</a>
             </p>
             <p> 
-                1) Within the <a href="https://console.aws.amazon.com/ecs">ECS Console</a>, click "IAM" on the navigation pane, then click "Users" under IAM Resources and finally click the "Add user" button.<br />
+                1) Within the <a href="https://console.aws.amazon.com/ecs" target="new">ECS Console</a>, click "IAM" on the navigation pane, then click "Users" under IAM Resources and finally click the "Add user" button.<br />
             </p>
             <p>
                 2) We'll name the user "User-ECR-ECS" and give it "Programmatic access".
             </p>
             <p>
-                <img src="../../assets/images/github-actions-aws-ecs/iam-user-ecr-ecs.png" className="yellow-border" />
+              <BlogImage image="../../assets/images/github-actions-aws-ecs/iam-user-ecr-ecs.png" />
             </p>
             <p>
                 3) Click the "Next: Permissions" button.
@@ -87,10 +85,10 @@ export default function Post() {
                 5) Search for "ECS", check the following policies, search for "registry" and select the following policy.
             </p>
             <p>
-                <img src="../../assets/images/github-actions-aws-ecs/iam-user-ecr-ecs-permissions.png" className="yellow-border" />
+              <BlogImage image="../../assets/images/github-actions-aws-ecs/iam-user-ecr-ecs-permissions.png" />
             </p>
             <p>
-                <img src="../../assets/images/github-actions-aws-ecs/iam-user-ecr-ecs-permissions-3.png" className="yellow-border" />
+                <BlogImage image="../../assets/images/github-actions-aws-ecs/iam-user-ecr-ecs-permissions-3.png" />
             </p>
             <p>
                 6) Click the "Next: Tags" button.
@@ -112,13 +110,13 @@ export default function Post() {
                 Now we need to create an IAM Role. This will provide access to other AWS service resources that are required to run Amazon ECS tasks.
             </p>
             <p>
-              1) Navigate back to <a href="https://console.aws.amazon.com/iam">AWS IAM</a> and click on "Roles" and then click the "Create role" button.
+              1) Navigate back to <a href="https://console.aws.amazon.com/iam" target="new">AWS IAM</a> and click on "Roles" and then click the "Create role" button.
             </p>
             <p>
               2) Keep the default trusted entity type which should be "AWS service", click on "Elastic Container Service" which is highlighted below and then "Elastic Container Service Task" which is also highlighted.
             </p>
             <p>
-                <img src="../../assets/images/github-actions-aws-ecs/iam-role-service.png" className="yellow-border" />
+                <BlogImage image="../../assets/images/github-actions-aws-ecs/iam-role-service.png" />
             </p>
             <p>
               3) Click "Next: Permissions" button.
@@ -127,7 +125,7 @@ export default function Post() {
               4) Search "ecs" and select the policies shown below.
             </p>
             <p>
-                <img src="../../assets/images/github-actions-aws-ecs/iam-role-policy.png" className="yellow-border" />
+                <BlogImage image="../../assets/images/github-actions-aws-ecs/iam-role-policy.png" />
             </p>
             <p>
               5) Click the "Next: Tags" button.
@@ -139,22 +137,22 @@ export default function Post() {
               7) We're going to give our role the name "ecsTaskExecutionRole".
             </p>
             <p>
-                <img src="../../assets/images/github-actions-aws-ecs/iam-role-name.png" className="yellow-border" />
+                <BlogImage image="../../assets/images/github-actions-aws-ecs/iam-role-name.png" />
             </p>
 
             <h2 className="heading" tabIndex="0" id="ecr">Elastic Container Registry (ECR)</h2>
             <p>
-                Next we want to setup our Amazon <a href="https://aws.amazon.com/ecr/">Elastic Container Registry (ECR)</a>.
+                Next we want to setup our Amazon <a href="https://aws.amazon.com/ecr/" target="new">Elastic Container Registry (ECR)</a>.
                 This is where AWS will store our images.
             </p>
             <p>
-                1) Within the <a href="https://console.aws.amazon.com/ecs">ECS Console</a>, click “ECR” on the navigation pane, and then click the “Create repository” button.
+                1) Within the <a href="https://console.aws.amazon.com/ecs" target="new">ECS Console</a>, click “ECR” on the navigation pane, and then click the “Create repository” button.
             </p>
             <p>
                 2) We will name our repo 'my-ecr-repo' and then click "Create repository".
             </p>
             <p>
-                <img src="../../assets/images/github-actions-aws-ecs/ecr.png" className="yellow-border" />
+                <BlogImage image="../../assets/images/github-actions-aws-ecs/ecr.png" />
             </p>
             <p>
                 3) You should now see a green banner that says "Successfully created repository my-ecr-repo"
@@ -162,22 +160,22 @@ export default function Post() {
 
             <h2 className="heading" tabIndex="0" id="ecs-cluster">Elastic Container Service (ECS) Cluster</h2>
             <p>
-              Next we want to setup our Amazon <a href="https://aws.amazon.com/ecS/">Elastic Container Service (ECS)</a> Cluster.
+              Next we want to setup our Amazon <a href="https://aws.amazon.com/ecS/" target="new">Elastic Container Service (ECS)</a> Cluster.
               This is where our images will be deplyed to.
             </p>
             <p>
-              1) Navigate to <a href="https://console.aws.amazon.com/ecs/">Amazon ECS</a> and click the "Get Started" button.
+              1) Navigate to <a href="https://console.aws.amazon.com/ecs/" target="new">Amazon ECS</a> and click the "Get Started" button.
             </p>
             <p>
               2) Under "Container definition" select the "custom" image option and hit the "edit" button, as shown below.
             </p>
             <p>
-                <img src="../../assets/images/github-actions-aws-ecs/ecs-container-definition.png" className="yellow-border" />
+                <BlogImage image="../../assets/images/github-actions-aws-ecs/ecs-container-definition.png" />
             </p>
             <p>
               3) We're going to name the container "my-container", set image to "my-ecr-repo" and map port 80 to tcp.
             </p>
-            <img src="../../assets/images/github-actions-aws-ecs/ecs-container-settings.png" className="yellow-border" />
+            <BlogImage image="../../assets/images/github-actions-aws-ecs/ecs-container-settings.png" />
 
             <p>
               4) Click the "Update" button.
@@ -189,7 +187,7 @@ export default function Post() {
               6) We're going to name the task definition "my-task-definition" and select our "ecsTaskExecutionRole". By default "awsvpc" and "FARGATE" should be the other two selected details.
             </p>
             <p>
-                <img src="../../assets/images/github-actions-aws-ecs/ecs-task-definition-settings.png" className="yellow-border" />
+                <BlogImage image="../../assets/images/github-actions-aws-ecs/ecs-task-definition-settings.png" />
             </p>
             <p>
               7) Click the "Save" button and the side panel should disappear.
@@ -201,19 +199,19 @@ export default function Post() {
               9) By default "Service name" should be "my-container-service". If not, change it to that and click the "Next" button.
             </p>
             <p>
-                <img src="../../assets/images/github-actions-aws-ecs/ecs-define-your-service.png" className="yellow-border" />
+                <BlogImage image="../../assets/images/github-actions-aws-ecs/ecs-define-your-service.png" />
             </p>
             <p>
               10) Under Cluster name, we will put "my-cluster" and click the "Next" button.
             </p>
             <p>
-                <img src="../../assets/images/github-actions-aws-ecs/ecs-configure-your-cluster.png" className="yellow-border" />
+                <BlogImage image="../../assets/images/github-actions-aws-ecs/ecs-configure-your-cluster.png" />
             </p>
             <p>
               11) Your settings should look like the screenshot below. If yes, click the "Create" button.
             </p>
             <p>
-                <img src="../../assets/images/github-actions-aws-ecs/ecs-final-settings.png" className="yellow-border" />
+                <BlogImage image="../../assets/images/github-actions-aws-ecs/ecs-final-settings.png" />
             </p>
             <p>
               12) Once the launch status is complete, click the "View service" button and you'll see our newly created cluster with an ACTIVE service named "my-container-service".
@@ -222,13 +220,13 @@ export default function Post() {
 
             <h2 className="heading" tabIndex="0" id="ecs-task">Configure and add Task Definition to Repo</h2>
             <p>
-              Now we want to copy our <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html">Task Definition</a> into our projects repo. A Task Definition is a configuration file that specifies the container information for your application, such as how many containers are part of your task, what resources they will use, how they are linked together, and which host ports they will use.
+              Now we want to copy our <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html" target="new">Task Definition</a> into our projects repo. A Task Definition is a configuration file that specifies the container information for your application, such as how many containers are part of your task, what resources they will use, how they are linked together, and which host ports they will use.
             </p>
             <p>
-              On the left side pane on the <a href="https://console.aws.amazon.com/ecs/">AWS ECS Console</a> click "Task Definitions". You should now see the newly created "my-task-definition".
+              On the left side pane on the <a href="https://console.aws.amazon.com/ecs/" target="new">AWS ECS Console</a> click "Task Definitions". You should now see the newly created "my-task-definition".
             </p>
             <p>
-              <img src="../../assets/images/github-actions-aws-ecs/ecs-task-definitions.png" className="yellow-border" />
+              <BlogImage image="../../assets/images/github-actions-aws-ecs/ecs-task-definitions.png" />
             </p>
             <p>
               Click on "my-task-definition".
@@ -332,7 +330,7 @@ export default function Post() {
               Value: Paste the value for the "Secret access key" column found in the csv.
             </p>
             <p>
-                <img src="../../assets/images/github-actions-aws-ecs/github-secrets.png" className="yellow-border" />
+                <BlogImage image="../../assets/images/github-actions-aws-ecs/github-secrets.png" />
             </p>
 
     
@@ -345,7 +343,7 @@ export default function Post() {
               From here, one of the recommended workflows will be "Deploy to Amazon ECS". Click the "Set up this workflow" button.
             </p>
             <p>
-              <img src="../../assets/images/github-actions-aws-ecs/github-actions-deploy-to-amazon-ecs.png" className="yellow-border" />
+              <BlogImage image="../../assets/images/github-actions-aws-ecs/github-actions-deploy-to-amazon-ecs.png" />
             </p>
             <p>
               Now Github will display text that is going to be part of our aws.yml file. This file will get triggered everytime we push to master, because of this code block:
@@ -518,14 +516,14 @@ export default function Post() {
 
 
             <h2 className="heading" tabIndex="0" id="application-running">See The Application Running</h2>
-            <p>If you got no errors, then lets go back to our <a href="https://console.aws.amazon.com/ecs/">AWS ECS Console</a>.</p>
+            <p>If you got no errors, then lets go back to our <a href="https://console.aws.amazon.com/ecs/" target="new">AWS ECS Console</a>.</p>
             <p>Click on "my-cluster"</p>
             <p>Click on "my-container-service"</p>
             <p>Click the "Tasks" tab</p>
             <p>Click on the task it self that has a status "RUNNING"</p>
             <p>Look in the "Network" section for a "Public IP", copy and paste that IP into your web browser and you should see the application running and talking to the database (meaning you're recieving fortunes), like below:</p>
             <p>
-              <img src="../../assets/images/github-actions-aws-ecs/application-running.png" className="yellow-border" />
+              <BlogImage image="../../assets/images/github-actions-aws-ecs/application-running.png" />
             </p>
           </div>
          
@@ -542,10 +540,6 @@ export default function Post() {
         }
         p {
           margin-bottom: 50px;
-        }
-        .yellow-border {
-            border: 1px solid var(--yellow);
-            max-width: 850px;
         }
       `}</style>
     </Layout>

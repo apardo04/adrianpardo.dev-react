@@ -117,6 +117,10 @@ ul.small {
     color: var(--yellow);
     border-bottom: 1px solid var(--yellow);
 }
+.yellow-border-image {
+    border: 1px solid var(--yellow);
+    max-width: 850px;
+}
 .yellow {
     color: var(--yellow);
 }
@@ -495,6 +499,9 @@ label {
     }
     span.skills-text.active {
         padding: 0;
+    }
+    .yellow-border-image {
+        max-width: 100%;
     }
 }
 @media only screen and (max-width: 768px) {
