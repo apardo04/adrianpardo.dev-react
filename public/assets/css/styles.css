@@ -239,9 +239,12 @@ a.lead-download-btn:hover #lead-arrow {
     border-top: 1px solid var(--yellow);
     border-bottom: 1px solid var(--yellow);
 }
-.info-container-2 .info {
+.info-container-2 .info-blog {
     max-width:850px;
     margin: 0 auto;
+}
+.info-blog p {
+    margin-bottom: 50px;
 }
 .codeblock {
     text-align: left;

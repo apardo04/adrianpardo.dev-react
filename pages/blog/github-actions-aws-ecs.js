@@ -3,543 +3,515 @@ import SeeMore from '../../components/SeeMore';
 import BlogImage from '../../components/BlogImage'
 import '../../public/assets/css/bootstrap.min.css'
 import '../../public/assets/css/styles.css'
+import Disqus from "disqus-react"
 
 export default function Post() {
+
+  let identifier = "github-actions-aws-ecs"
+  let title = "CI/CD Github ActionsS to AWS ECR/ECS"
+
+  const disqusShortname = "https-adrianpardo-dev" 
+  const disqusConfig = {
+      url: `https://adrianpardo.dev/blog/${identifier}`,
+      identifier: identifier+"-disqus",
+      title: title
+  }
   return (
-    <Layout page="blog/github-actions-aws-ecs" title="&lt;Adrian Pardo/&gt; CI/CD Github Actions to AWS ECR/ECS" description="Step by step guide for automating deplyoment from Github Actions to AWS ECR and ECS" ogImage="/assets/images/github-actions-aws-ecs/ecs.png">
+    <Layout page={"blog/" + identifier} title="&lt;Adrian Pardo/&gt; CI/CD Github Actions to AWS ECR/ECS" description="Step by step guide for automating deplyoment from Github Actions to AWS ECR and ECS" ogImage={"/assets/images/" + identifier + "/ecs.png"}>
       <div className="lead">
         <div id="lead-content">
-          <h1>CI/CD GITHUB ACTIONS TO AWS ECR/ECS</h1>
+        <h1>{title}</h1>
           <h2>Feb 24, 2020 • Guide</h2>
         </div>
-        <SeeMore href="#before-getting-started" />
+        <SeeMore href="#objectives" />
         <div id="lead-overlay"></div>
       </div>
-      <div className="info-container-2 text-center" id="before-getting-started">
-        <div className="container">
-          <h2 className="heading" tabIndex="0">Objectives</h2>
-          <div className="info">
-            <p>
-              The goal is to use <a href="https://github.com/features/actions" target="new">Github Actions</a> for continous deployment to an <a href="https://aws.amazon.com/ecs/" target="new">AWS ECS cluster</a>.
-            </p>
-            <p>
-                Before getting started, make sure you have an AWS account and have Git, Node and Docker installed.
-            </p>
-            <p>
-              We will start by forking this simple full stack <a href="https://github.com/apardo04/github-actions-to-aws-ecr-ecs" target="new">React/Express application</a>. Once forked into your Github account, make a clone on your local machine.
-            </p>
-            <p>
-              For local development I am using a <a href="https://docs.docker.com/compose/" target="new">docker-compose</a> enivornment. 
-              Docker Compose makes it very simple to link, build, and run multiple containers at the same time.
-              For this project we have two containers, one for the React application and the other for MongoDB.
-            </p>
-            <p>
-                For our production cloud environment we will be using AWS ECR and ECS.
-            </p>
+      <div className="info-container-2 text-center">
+        <div className="container info-blog">
+          <h2 className="heading" tabIndex="0" id="objectives">Objectives</h2>
+          <p>
+            The goal is to use <a href="https://github.com/features/actions" target="new">Github Actions</a> for continous deployment to an <a href="https://aws.amazon.com/ecs/" target="new">AWS ECS cluster</a>.
+          </p>
+          <p>
+              Before getting started, make sure you have an AWS account and have Git, Node and Docker installed.
+          </p>
+          <p>
+            We will start by forking this simple full stack <a href="https://github.com/apardo04/github-actions-to-aws-ecr-ecs" target="new">React/Express application</a>. Once forked into your Github account, make a clone on your local machine.
+          </p>
+          <p>
+            For local development I am using a <a href="https://docs.docker.com/compose/" target="new">docker-compose</a> enivornment. 
+            Docker Compose makes it very simple to link, build, and run multiple containers at the same time.
+            For this project we have two containers, one for the React application and the other for MongoDB.
+          </p>
+          <p>
+              For our production cloud environment we will be using AWS ECR and ECS.
+          </p>
 
-            <h2 className="heading" tabIndex="0" id="docker-compose">Docker Compose</h2>
-            <p>
-                To get the local docker-compose environment running, there are a few steps to take.
-            </p>
-            <p>
-                1) Build the front end client, by running the following commands.
-                <pre className="codeblock">{`  
-  $ cd client
-  $ npm install
-  $ npm run-script build
-  $ cd ..
-                `}</pre>
-            </p>
-            <p>
-                2) Run the docker-compose.yml file located in /server.
-                <pre className="codeblock">{`  
-  $ cd server
-  $ docker-compose up
-                `}</pre>
-            </p>
-            <p>
-                You should now see the application runnning on <a href="http://localhost:3001/" target="new">http://localhost:3001/</a>.
-            </p>
-
-
-            <h2 className="heading" tabIndex="0" id="iam-user">Identity and Access Management (IAM) User</h2>
-            <p>
-                First we have to create a user within our AWS account that will have access to perform all the tasks required. For this we will use <a href="https://aws.amazon.com/iam/" target="new">Identity and Access Management (IAM)</a>
-            </p>
-            <p> 
-                1) Within the <a href="https://console.aws.amazon.com/ecs" target="new">ECS Console</a>, click "IAM" on the navigation pane, then click "Users" under IAM Resources and finally click the "Add user" button.<br />
-            </p>
-            <p>
-                2) We'll name the user "User-ECR-ECS" and give it "Programmatic access".
-            </p>
-            <p>
-              <BlogImage image="../../assets/images/github-actions-aws-ecs/iam-user-ecr-ecs.png" />
-            </p>
-            <p>
-                3) Click the "Next: Permissions" button.
-            </p>
-            <p>
-                4) Click the "Attach existing policies directly" option.
-            </p>
-            <p>
-                5) Search for "ECS", check the following policies, search for "registry" and select the following policy.
-            </p>
-            <p>
-              <BlogImage image="../../assets/images/github-actions-aws-ecs/iam-user-ecr-ecs-permissions.png" />
-            </p>
-            <p>
-                <BlogImage image="../../assets/images/github-actions-aws-ecs/iam-user-ecr-ecs-permissions-3.png" />
-            </p>
-            <p>
-                6) Click the "Next: Tags" button.
-            </p>
-            <p>
-                7) Click the "Next: Review" button.
-            </p>
-            <p>
-                8) Click the "Create user" button.
-            </p>
-            <p>
-                9) Click the "Download .csv" button to download your user credentials.
-            </p>
-            <p>
-                10) Click the "Close" button.
-            </p>
-            <h2 className="heading" tabIndex="0" id="iam-role">Identity and Access Management (IAM) Role</h2>
-            <p>
-                Now we need to create an IAM Role. This will provide access to other AWS service resources that are required to run Amazon ECS tasks.
-            </p>
-            <p>
-              1) Navigate back to <a href="https://console.aws.amazon.com/iam" target="new">AWS IAM</a> and click on "Roles" and then click the "Create role" button.
-            </p>
-            <p>
-              2) Keep the default trusted entity type which should be "AWS service", click on "Elastic Container Service" which is highlighted below and then "Elastic Container Service Task" which is also highlighted.
-            </p>
-            <p>
-                <BlogImage image="../../assets/images/github-actions-aws-ecs/iam-role-service.png" />
-            </p>
-            <p>
-              3) Click "Next: Permissions" button.
-            </p>
-            <p>
-              4) Search "ecs" and select the policies shown below.
-            </p>
-            <p>
-                <BlogImage image="../../assets/images/github-actions-aws-ecs/iam-role-policy.png" />
-            </p>
-            <p>
-              5) Click the "Next: Tags" button.
-            </p>
-            <p>
-              6) Click the "Next: Review" button.
-            </p>
-            <p>
-              7) We're going to give our role the name "ecsTaskExecutionRole".
-            </p>
-            <p>
-                <BlogImage image="../../assets/images/github-actions-aws-ecs/iam-role-name.png" />
-            </p>
-
-            <h2 className="heading" tabIndex="0" id="ecr">Elastic Container Registry (ECR)</h2>
-            <p>
-                Next we want to setup our Amazon <a href="https://aws.amazon.com/ecr/" target="new">Elastic Container Registry (ECR)</a>.
-                This is where AWS will store our images.
-            </p>
-            <p>
-                1) Within the <a href="https://console.aws.amazon.com/ecs" target="new">ECS Console</a>, click “ECR” on the navigation pane, and then click the “Create repository” button.
-            </p>
-            <p>
-                2) We will name our repo 'my-ecr-repo' and then click "Create repository".
-            </p>
-            <p>
-                <BlogImage image="../../assets/images/github-actions-aws-ecs/ecr.png" />
-            </p>
-            <p>
-                3) You should now see a green banner that says "Successfully created repository my-ecr-repo"
-            </p>
-
-            <h2 className="heading" tabIndex="0" id="ecs-cluster">Elastic Container Service (ECS) Cluster</h2>
-            <p>
-              Next we want to setup our Amazon <a href="https://aws.amazon.com/ecS/" target="new">Elastic Container Service (ECS)</a> Cluster.
-              This is where our images will be deplyed to.
-            </p>
-            <p>
-              1) Navigate to <a href="https://console.aws.amazon.com/ecs/" target="new">Amazon ECS</a> and click the "Get Started" button.
-            </p>
-            <p>
-              2) Under "Container definition" select the "custom" image option and hit the "edit" button, as shown below.
-            </p>
-            <p>
-                <BlogImage image="../../assets/images/github-actions-aws-ecs/ecs-container-definition.png" />
-            </p>
-            <p>
-              3) We're going to name the container "my-container", set image to "my-ecr-repo" and map port 80 to tcp.
-            </p>
-            <BlogImage image="../../assets/images/github-actions-aws-ecs/ecs-container-settings.png" />
-
-            <p>
-              4) Click the "Update" button.
-            </p>
-            <p>
-              5) Under "Task definition" click the "Edit" button.
-            </p>
-            <p>
-              6) We're going to name the task definition "my-task-definition" and select our "ecsTaskExecutionRole". By default "awsvpc" and "FARGATE" should be the other two selected details.
-            </p>
-            <p>
-                <BlogImage image="../../assets/images/github-actions-aws-ecs/ecs-task-definition-settings.png" />
-            </p>
-            <p>
-              7) Click the "Save" button and the side panel should disappear.
-            </p>
-            <p>
-              8) Click the "Next" button.
-            </p>
-            <p>
-              9) By default "Service name" should be "my-container-service". If not, change it to that and click the "Next" button.
-            </p>
-            <p>
-                <BlogImage image="../../assets/images/github-actions-aws-ecs/ecs-define-your-service.png" />
-            </p>
-            <p>
-              10) Under Cluster name, we will put "my-cluster" and click the "Next" button.
-            </p>
-            <p>
-                <BlogImage image="../../assets/images/github-actions-aws-ecs/ecs-configure-your-cluster.png" />
-            </p>
-            <p>
-              11) Your settings should look like the screenshot below. If yes, click the "Create" button.
-            </p>
-            <p>
-                <BlogImage image="../../assets/images/github-actions-aws-ecs/ecs-final-settings.png" />
-            </p>
-            <p>
-              12) Once the launch status is complete, click the "View service" button and you'll see our newly created cluster with an ACTIVE service named "my-container-service".
-            </p>
-
-
-            <h2 className="heading" tabIndex="0" id="ecs-task">Configure and add Task Definition to Repo</h2>
-            <p>
-              Now we want to copy our <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html" target="new">Task Definition</a> into our projects repo. A Task Definition is a configuration file that specifies the container information for your application, such as how many containers are part of your task, what resources they will use, how they are linked together, and which host ports they will use.
-            </p>
-            <p>
-              On the left side pane on the <a href="https://console.aws.amazon.com/ecs/" target="new">AWS ECS Console</a> click "Task Definitions". You should now see the newly created "my-task-definition".
-            </p>
-            <p>
-              <BlogImage image="../../assets/images/github-actions-aws-ecs/ecs-task-definitions.png" />
-            </p>
-            <p>
-              Click on "my-task-definition".
-            </p>
-            <p>
-              Click on "my-task-definition:1"
-            </p>
-            <p>
-              Click on the "JSON" tab.
-            </p>
-            <p>
-              Copy the JSON.
-            </p>
-            <p>
-              Now, we will go back to our React application, create a file in the root of the project called "task-definition.json" and paste our copied JSON into the file.
-            </p> 
-            <p>
-              Now we need to change a few things in this file. First, we are going to add some environment information that our project requires. Look for the line that says:
-            </p> 
-            <p>
+          <h2 className="heading" tabIndex="0" id="docker-compose">Docker Compose</h2>
+          <p>
+              To get the local docker-compose environment running, there are a few steps to take.
+          </p>
+          <p>
+              1) Build the front end client, by running the following commands.
               <pre className="codeblock">{`  
-  "environment": [],
-                  `}</pre>
-            </p>
-            <p>
-              We're going to change it to:
-            </p>
-            <p>
-              <pre className="codeblock">{`  
-  "environment": [
-    {
-      "name": "DB_URL",
-      "value": "mongodb://localhost:27017/fortunate_prod_db"
-    },
-    {
-      "name": "PORT",
-      "value": "80"
-    }
-  ],
+$ cd client
+$ npm install
+$ npm run-script build
+$ cd ..
               `}</pre>
-            </p>
-            <p>
-              Next, we're going to add a mongo container to our deployment. Look for this line below, this is where our applications container configuration ends:
-            </p>
-            <p>
+          </p>
+          <p>
+              2) Run the docker-compose.yml file located in /server.
               <pre className="codeblock">{`  
-    "name": "my-container"
-  }
+$ cd server
+$ docker-compose up
               `}</pre>
-            </p>
-            <p>
-              We're going to add information about our mongo container right after it, like so:
-            </p>
-            <p>
-              <pre className="codeblock">{`  
-    "name": "my-container"
+          </p>
+          <p>
+              You should now see the application runnning on <a href="http://localhost:3001/" target="new">http://localhost:3001/</a>.
+          </p>
+
+
+          <h2 className="heading" tabIndex="0" id="iam-user">Identity and Access Management (IAM) User</h2>
+          <p>
+              First we have to create a user within our AWS account that will have access to perform all the tasks required. For this we will use <a href="https://aws.amazon.com/iam/" target="new">Identity and Access Management (IAM)</a>
+          </p>
+          <p> 
+              1) Within the <a href="https://console.aws.amazon.com/ecs" target="new">ECS Console</a>, click "IAM" on the navigation pane, then click "Users" under IAM Resources and finally click the "Add user" button.<br />
+          </p>
+          <p>
+              2) We'll name the user "User-ECR-ECS" and give it "Programmatic access".
+          </p>
+          <BlogImage image="../../assets/images/github-actions-aws-ecs/iam-user-ecr-ecs.png" />
+          <p>
+              3) Click the "Next: Permissions" button.
+          </p>
+          <p>
+              4) Click the "Attach existing policies directly" option.
+          </p>
+          <p>
+              5) Search for "ECS", check the following policies, search for "registry" and select the following policy.
+          </p>
+          <BlogImage image="../../assets/images/github-actions-aws-ecs/iam-user-ecr-ecs-permissions.png" />
+          <BlogImage image="../../assets/images/github-actions-aws-ecs/iam-user-ecr-ecs-permissions-3.png" />
+          <p>
+              6) Click the "Next: Tags" button.
+          </p>
+          <p>
+              7) Click the "Next: Review" button.
+          </p>
+          <p>
+              8) Click the "Create user" button.
+          </p>
+          <p>
+              9) Click the "Download .csv" button to download your user credentials.
+          </p>
+          <p>
+              10) Click the "Close" button.
+          </p>
+          <h2 className="heading" tabIndex="0" id="iam-role">Identity and Access Management (IAM) Role</h2>
+          <p>
+              Now we need to create an IAM Role. This will provide access to other AWS service resources that are required to run Amazon ECS tasks.
+          </p>
+          <p>
+            1) Navigate back to <a href="https://console.aws.amazon.com/iam" target="new">AWS IAM</a> and click on "Roles" and then click the "Create role" button.
+          </p>
+          <p>
+            2) Keep the default trusted entity type which should be "AWS service", click on "Elastic Container Service" which is highlighted below and then "Elastic Container Service Task" which is also highlighted.
+          </p>
+          <BlogImage image="../../assets/images/github-actions-aws-ecs/iam-role-service.png" />
+          <p>
+            3) Click "Next: Permissions" button.
+          </p>
+          <p>
+            4) Search "ecs" and select the policies shown below.
+          </p>
+          <BlogImage image="../../assets/images/github-actions-aws-ecs/iam-role-policy.png" />
+          <p>
+            5) Click the "Next: Tags" button.
+          </p>
+          <p>
+            6) Click the "Next: Review" button.
+          </p>
+          <p>
+            7) We're going to give our role the name "ecsTaskExecutionRole".
+          </p>
+          <BlogImage image="../../assets/images/github-actions-aws-ecs/iam-role-name.png" />
+          <h2 className="heading" tabIndex="0" id="ecr">Elastic Container Registry (ECR)</h2>
+          <p>
+              Next we want to setup our Amazon <a href="https://aws.amazon.com/ecr/" target="new">Elastic Container Registry (ECR)</a>.
+              This is where AWS will store our images.
+          </p>
+          <p>
+              1) Within the <a href="https://console.aws.amazon.com/ecs" target="new">ECS Console</a>, click “ECR” on the navigation pane, and then click the “Create repository” button.
+          </p>
+          <p>
+              2) We will name our repo 'my-ecr-repo' and then click "Create repository".
+          </p>
+          <BlogImage image="../../assets/images/github-actions-aws-ecs/ecr.png" />
+          <p>
+              3) You should now see a green banner that says "Successfully created repository my-ecr-repo"
+          </p>
+
+          <h2 className="heading" tabIndex="0" id="ecs-cluster">Elastic Container Service (ECS) Cluster</h2>
+          <p>
+            Next we want to setup our Amazon <a href="https://aws.amazon.com/ecS/" target="new">Elastic Container Service (ECS)</a> Cluster.
+            This is where our images will be deplyed to.
+          </p>
+          <p>
+            1) Navigate to <a href="https://console.aws.amazon.com/ecs/" target="new">Amazon ECS</a> and click the "Get Started" button.
+          </p>
+          <p>
+            2) Under "Container definition" select the "custom" image option and hit the "edit" button, as shown below.
+          </p>
+          <BlogImage image="../../assets/images/github-actions-aws-ecs/ecs-container-definition.png" />
+          <p>
+            3) We're going to name the container "my-container", set image to "my-ecr-repo" and map port 80 to tcp.
+          </p>
+          <BlogImage image="../../assets/images/github-actions-aws-ecs/ecs-container-settings.png" />
+          <p>
+            4) Click the "Update" button.
+          </p>
+          <p>
+            5) Under "Task definition" click the "Edit" button.
+          </p>
+          <p>
+            6) We're going to name the task definition "my-task-definition" and select our "ecsTaskExecutionRole". By default "awsvpc" and "FARGATE" should be the other two selected details.
+          </p>
+          <BlogImage image="../../assets/images/github-actions-aws-ecs/ecs-task-definition-settings.png" />
+          <p>
+            7) Click the "Save" button and the side panel should disappear.
+          </p>
+          <p>
+            8) Click the "Next" button.
+          </p>
+          <p>
+            9) By default "Service name" should be "my-container-service". If not, change it to that and click the "Next" button.
+          </p>
+          <BlogImage image="../../assets/images/github-actions-aws-ecs/ecs-define-your-service.png" />
+          <p>
+            10) Under Cluster name, we will put "my-cluster" and click the "Next" button.
+          </p>
+          <BlogImage image="../../assets/images/github-actions-aws-ecs/ecs-configure-your-cluster.png" />
+          <p>
+            11) Your settings should look like the screenshot below. If yes, click the "Create" button.
+          </p>
+          <BlogImage image="../../assets/images/github-actions-aws-ecs/ecs-final-settings.png" />
+          <p>
+            12) Once the launch status is complete, click the "View service" button and you'll see our newly created cluster with an ACTIVE service named "my-container-service".
+          </p>
+
+          <h2 className="heading" tabIndex="0" id="ecs-task">Configure and add Task Definition to Repo</h2>
+          <p>
+            Now we want to copy our <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html" target="new">Task Definition</a> into our projects repo. A Task Definition is a configuration file that specifies the container information for your application, such as how many containers are part of your task, what resources they will use, how they are linked together, and which host ports they will use.
+          </p>
+          <p>
+            On the left side pane on the <a href="https://console.aws.amazon.com/ecs/" target="new">AWS ECS Console</a> click "Task Definitions". You should now see the newly created "my-task-definition".
+          </p>
+          <BlogImage image="../../assets/images/github-actions-aws-ecs/ecs-task-definitions.png" />
+          <p>
+            Click on "my-task-definition".
+          </p>
+          <p>
+            Click on "my-task-definition:1"
+          </p>
+          <p>
+            Click on the "JSON" tab.
+          </p>
+          <p>
+            Copy the JSON.
+          </p>
+          <p>
+            Now, we will go back to our React application, create a file in the root of the project called "task-definition.json" and paste our copied JSON into the file.
+          </p> 
+          <p>
+            Now we need to change a few things in this file. First, we are going to add some environment information that our project requires. Look for the line that says:
+          </p> 
+          <p>
+            <pre className="codeblock">{`  
+"environment": [],
+                `}</pre>
+          </p>
+          <p>
+            We're going to change it to:
+          </p>
+          <p>
+            <pre className="codeblock">{`  
+"environment": [
+  {
+    "name": "DB_URL",
+    "value": "mongodb://localhost:27017/fortunate_prod_db"
   },
   {
-    "name": "mongo",
-    "image": "mongo:latest",
-    "portMappings": [
-      {
-        "hostPort": 27017,
-        "containerPort": 27017
-      }
-    ],
-    "memory": "512",
-    "cpu": "256",
-    "essential": true
+    "name": "PORT",
+    "value": "80"
   }
-              `}</pre>
-            </p>
-            <p>
-              Once done, we can git add, commit and push this file to the repo.
-            </p>
+],
+            `}</pre>
+          </p>
+          <p>
+            Next, we're going to add a mongo container to our deployment. Look for this line below, this is where our applications container configuration ends:
+          </p>
+          <p>
+            <pre className="codeblock">{`  
+  "name": "my-container"
+}
+            `}</pre>
+          </p>
+          <p>
+            We're going to add information about our mongo container right after it, like so:
+          </p>
+          <p>
+            <pre className="codeblock">{`  
+  "name": "my-container"
+},
+{
+  "name": "mongo",
+  "image": "mongo:latest",
+  "portMappings": [
+    {
+      "hostPort": 27017,
+      "containerPort": 27017
+    }
+  ],
+  "memory": "512",
+  "cpu": "256",
+  "essential": true
+}
+            `}</pre>
+          </p>
+          <p>
+            Once done, we can git add, commit and push this file to the repo.
+          </p>
 
 
-            <h2 className="heading" tabIndex="0" id="github-secrets">Github Secrets</h2>
-            <p>Github Secrets is .... </p>
-            <p>
-              Head over to the forked repo's webpage on Github and click the "Settings" tab.
-            </p>
-            <p>
-              Click on "Secrets" on the left menu.
-            </p>
-            <p>
-              Click "Add a new secret".
-            </p>
-            <p>
-              Now we need to open the credentials csv file we downloaded earlier from AWS.
-            </p>
-            <p>
-              We're going to add 2 secrets, that Github Actions will need to be able to deploy to our ECS Cluster. They will be:<br />
-            </p>
-            <p>
-              Name: AWS_ACCESS_KEY_ID<br />
-              Value: Paste the value for the "Access key ID" column found in the csv.
-            </p>
-            <p>
-              Name: AWS_SECRET_ACCESS_KEY<br />
-              Value: Paste the value for the "Secret access key" column found in the csv.
-            </p>
-            <p>
-                <BlogImage image="../../assets/images/github-actions-aws-ecs/github-secrets.png" />
-            </p>
+          <h2 className="heading" tabIndex="0" id="github-secrets">Github Secrets</h2>
+          <p>Github Secrets is .... </p>
+          <p>
+            Head over to the forked repo's webpage on Github and click the "Settings" tab.
+          </p>
+          <p>
+            Click on "Secrets" on the left menu.
+          </p>
+          <p>
+            Click "Add a new secret".
+          </p>
+          <p>
+            Now we need to open the credentials csv file we downloaded earlier from AWS.
+          </p>
+          <p>
+            We're going to add 2 secrets, that Github Actions will need to be able to deploy to our ECS Cluster. They will be:<br />
+          </p>
+          <p>
+            Name: AWS_ACCESS_KEY_ID<br />
+            Value: Paste the value for the "Access key ID" column found in the csv.
+          </p>
+          <p>
+            Name: AWS_SECRET_ACCESS_KEY<br />
+            Value: Paste the value for the "Secret access key" column found in the csv.
+          </p>
+          <BlogImage image="../../assets/images/github-actions-aws-ecs/github-secrets.png" />
 
-    
-           
-            <h2 className="heading" tabIndex="0" id="github-actions">Github Actions</h2>
-            <p>
-              Now click on the "Actions" tab.
-            </p>
-            <p>
-              From here, one of the recommended workflows will be "Deploy to Amazon ECS". Click the "Set up this workflow" button.
-            </p>
-            <p>
-              <BlogImage image="../../assets/images/github-actions-aws-ecs/github-actions-deploy-to-amazon-ecs.png" />
-            </p>
-            <p>
-              Now Github will display text that is going to be part of our aws.yml file. This file will get triggered everytime we push to master, because of this code block:
-            </p>
-            <p>
-              <pre className="codeblock">{`  
-  on:
-  push:
-    branches:
-      - master
-              `}</pre>
-            </p>
-            <p>
-              There a few changes we have to make to the aws.yml file for everything to line up correctly. At the end of this section, I will have the full aws.yml file with all changes that can be copied.
-            </p>
-            <p>
-              1) You may need to change the "aws-region" value, depending what region you setup your IAM user and cluster. Mine is in us-east-1, so I had to change it from the default us-east-2
-            </p>
-            <p>
-              <pre className="codeblock">{`  
+          <h2 className="heading" tabIndex="0" id="github-actions">Github Actions</h2>
+          <p>
+            Now click on the "Actions" tab.
+          </p>
+          <p>
+            From here, one of the recommended workflows will be "Deploy to Amazon ECS". Click the "Set up this workflow" button.
+          </p>
+          <BlogImage image="../../assets/images/github-actions-aws-ecs/github-actions-deploy-to-amazon-ecs.png" />
+          <p>
+            Now Github will display text that is going to be part of our aws.yml file. This file will get triggered everytime we push to master, because of this code block:
+          </p>
+          <p>
+            <pre className="codeblock">{`  
+on:
+push:
+  branches:
+    - master
+            `}</pre>
+          </p>
+          <p>
+            There a few changes we have to make to the aws.yml file for everything to line up correctly. At the end of this section, I will have the full aws.yml file with all changes that can be copied.
+          </p>
+          <p>
+            1) You may need to change the "aws-region" value, depending what region you setup your IAM user and cluster. Mine is in us-east-1, so I had to change it from the default us-east-2
+          </p>
+          <p>
+            <pre className="codeblock">{`  
+- name: Configure AWS credentials
+  uses: aws-actions/configure-aws-credentials@v1
+  with:
+    aws-access-key-id: ${"${{ secrets.AWS_ACCESS_KEY_ID }}"}
+    aws-secret-access-key: ${"${{ secrets.AWS_SECRET_ACCESS_KEY }}"}
+    aws-region: us-east-1
+            `}</pre>
+          </p>
+          <p>
+            Next we need to add a few lines of code that will build our client and copy it over to the server directory.
+          </p>
+          <p>
+            <pre className="codeblock">{`  
+- name: npm install client
+  run: npm install
+  working-directory: ./client
+- name: Build the client
+  run: npm run-script build
+  working-directory: ./client
+            `}</pre>
+          </p>
+          <p>
+            Next, we need to change the value for "ECR_REPOSITORY" to "my-ecr-repo" and docker build needs to occur in the server directory, so we add "./server"
+          </p>
+          <p>
+            <pre className="codeblock">{`  
+- name: Build, tag, and push image to Amazon ECR
+id: build-image
+env:
+  ECR_REGISTRY: ${"${{ steps.login-ecr.outputs.registry }}"}
+  ECR_REPOSITORY: my-ecr-repo
+  IMAGE_TAG: ${"${{ github.sha }}"}
+run: |
+  # Build a docker container and
+  # push it to ECR so that it can
+  # be deployed to ECS.
+  docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./server
+  docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+  echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+            `}</pre>
+          </p>
+          <p>
+            In the next section, we change the value of "container-name" to be "my-container".
+          </p>
+          <p>
+            <pre className="codeblock">{`  
+- name: Fill in the new image ID in the Amazon ECS task definition
+id: task-def
+uses: aws-actions/amazon-ecs-render-task-definition@v1
+with:
+  task-definition: task-definition.json
+  container-name: my-container
+  image: ${"${{ steps.build-image.outputs.image }}"}
+            `}</pre>
+          </p>
+          <p>
+            Finally, for the final section of the aws.yml file we change the value of "service" to be "my-container-service" and "cluster" to be "my-cluster".
+          </p>
+          <p>
+            <pre className="codeblock">{`  
+- name: Deploy Amazon ECS task definition
+uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+with:
+  task-definition: ${"${{ steps.task-def.outputs.task-definition }}"}
+  service: my-container-service
+  cluster: my-cluster
+  wait-for-service-stability: true
+            `}</pre>
+          </p>
+          <p>
+            The whole file should look like this with the the comments deleted:
+          </p>
+          <p>
+            <pre className="codeblock">{`  
+on:
+push:
+  branches:
+    - master
+
+name: Deploy to Amazon ECS
+
+jobs:
+deploy:
+  name: Deploy
+  runs-on: ubuntu-latest
+
+  env:
+    server-directory: ./server
+    client-directory: ./client
+  
+  steps:
+  - name: Checkout
+    uses: actions/checkout@v2
+
   - name: Configure AWS credentials
     uses: aws-actions/configure-aws-credentials@v1
     with:
       aws-access-key-id: ${"${{ secrets.AWS_ACCESS_KEY_ID }}"}
       aws-secret-access-key: ${"${{ secrets.AWS_SECRET_ACCESS_KEY }}"}
       aws-region: us-east-1
-              `}</pre>
-            </p>
-            <p>
-              Next we need to add a few lines of code that will build our client and copy it over to the server directory.
-            </p>
-            <p>
-              <pre className="codeblock">{`  
+
   - name: npm install client
     run: npm install
-    working-directory: ./client
+    working-directory: ${"${{ env.client-directory }}"}
   - name: Build the client
     run: npm run-script build
-    working-directory: ./client
-              `}</pre>
-            </p>
-            <p>
-              Next, we need to change the value for "ECR_REPOSITORY" to "my-ecr-repo" and docker build needs to occur in the server directory, so we add "./server"
-            </p>
-            <p>
-              <pre className="codeblock">{`  
+    working-directory: ${"${{ env.client-directory }}"}
+
+  - name: Login to Amazon ECR
+    id: login-ecr
+    uses: aws-actions/amazon-ecr-login@v1
+
   - name: Build, tag, and push image to Amazon ECR
-  id: build-image
-  env:
-    ECR_REGISTRY: ${"${{ steps.login-ecr.outputs.registry }}"}
-    ECR_REPOSITORY: my-ecr-repo
-    IMAGE_TAG: ${"${{ github.sha }}"}
-  run: |
-    # Build a docker container and
-    # push it to ECR so that it can
-    # be deployed to ECS.
-    docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./server
-    docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-    echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
-              `}</pre>
-            </p>
-            <p>
-              In the next section, we change the value of "container-name" to be "my-container".
-            </p>
-            <p>
-              <pre className="codeblock">{`  
-  - name: Fill in the new image ID in the Amazon ECS task definition
-  id: task-def
-  uses: aws-actions/amazon-ecs-render-task-definition@v1
-  with:
-    task-definition: task-definition.json
-    container-name: my-container
-    image: ${"${{ steps.build-image.outputs.image }}"}
-              `}</pre>
-            </p>
-            <p>
-              Finally, for the final section of the aws.yml file we change the value of "service" to be "my-container-service" and "cluster" to be "my-cluster".
-            </p>
-            <p>
-              <pre className="codeblock">{`  
-  - name: Deploy Amazon ECS task definition
-  uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-  with:
-    task-definition: ${"${{ steps.task-def.outputs.task-definition }}"}
-    service: my-container-service
-    cluster: my-cluster
-    wait-for-service-stability: true
-              `}</pre>
-            </p>
-            <p>
-              The whole file should look like this with the the comments deleted:
-            </p>
-            <p>
-              <pre className="codeblock">{`  
-  on:
-  push:
-    branches:
-      - master
-
-  name: Deploy to Amazon ECS
-
-  jobs:
-  deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
-
+    id: build-image
     env:
-      server-directory: ./server
-      client-directory: ./client
-    
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+      ECR_REGISTRY: ${"${{ steps.login-ecr.outputs.registry }}"}
+      ECR_REPOSITORY: my-ecr-repo
+      IMAGE_TAG: ${"${{ github.sha }}"}
+    run: |
+      # Build a docker container and
+      # push it to ECR so that it can
+      # be deployed to ECS.
+      docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./server
+      docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+      echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${"${{ secrets.AWS_ACCESS_KEY_ID }}"}
-        aws-secret-access-key: ${"${{ secrets.AWS_SECRET_ACCESS_KEY }}"}
-        aws-region: us-east-1
+  - name: Fill in the new image ID in the Amazon ECS task definition
+    id: task-def
+    uses: aws-actions/amazon-ecs-render-task-definition@v1
+    with:
+      task-definition: task-definition.json
+      container-name: my-container
+      image: ${"${{ steps.build-image.outputs.image }}"}
 
-    - name: npm install client
-      run: npm install
-      working-directory: ${"${{ env.client-directory }}"}
-    - name: Build the client
-      run: npm run-script build
-      working-directory: ${"${{ env.client-directory }}"}
-
-    - name: Login to Amazon ECR
-      id: login-ecr
-      uses: aws-actions/amazon-ecr-login@v1
-
-    - name: Build, tag, and push image to Amazon ECR
-      id: build-image
-      env:
-        ECR_REGISTRY: ${"${{ steps.login-ecr.outputs.registry }}"}
-        ECR_REPOSITORY: my-ecr-repo
-        IMAGE_TAG: ${"${{ github.sha }}"}
-      run: |
-        # Build a docker container and
-        # push it to ECR so that it can
-        # be deployed to ECS.
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./server
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
-
-    - name: Fill in the new image ID in the Amazon ECS task definition
-      id: task-def
-      uses: aws-actions/amazon-ecs-render-task-definition@v1
-      with:
-        task-definition: task-definition.json
-        container-name: my-container
-        image: ${"${{ steps.build-image.outputs.image }}"}
-
-    - name: Deploy Amazon ECS task definition
-      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-      with:
-        task-definition: ${"${{ steps.task-def.outputs.task-definition }}"}
-        service: my-container-service
-        cluster: my-cluster
-        wait-for-service-stability: true
-              `}</pre>
-            </p>
-            <p>
-              We're now done configuring the aws.yml file. We can now click the "Start commit" button, add a commit message and click the "Commit new file" button.
-            </p>
-            <p>
-              Now click on the "Actions" tab again and you will see Github is starting to run our aws.yml file that was triggered by our push.
-            </p>
+  - name: Deploy Amazon ECS task definition
+    uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+    with:
+      task-definition: ${"${{ steps.task-def.outputs.task-definition }}"}
+      service: my-container-service
+      cluster: my-cluster
+      wait-for-service-stability: true
+            `}</pre>
+          </p>
+          <p>
+            We're now done configuring the aws.yml file. We can now click the "Start commit" button, add a commit message and click the "Commit new file" button.
+          </p>
+          <p>
+            Now click on the "Actions" tab again and you will see Github is starting to run our aws.yml file that was triggered by our push.
+          </p>
 
 
-            <h2 className="heading" tabIndex="0" id="application-running">See The Application Running</h2>
-            <p>If you got no errors, then lets go back to our <a href="https://console.aws.amazon.com/ecs/" target="new">AWS ECS Console</a>.</p>
-            <p>Click on "my-cluster"</p>
-            <p>Click on "my-container-service"</p>
-            <p>Click the "Tasks" tab</p>
-            <p>Click on the task it self that has a status "RUNNING"</p>
-            <p>Look in the "Network" section for a "Public IP", copy and paste that IP into your web browser and you should see the application running and talking to the database (meaning you're recieving fortunes), like below:</p>
-            <p>
-              <BlogImage image="../../assets/images/github-actions-aws-ecs/application-running.png" />
-            </p>
-          </div>
-         
+          <h2 className="heading" tabIndex="0" id="application-running">See The Application Running</h2>
+          <p>If you got no errors, then lets go back to our <a href="https://console.aws.amazon.com/ecs/" target="new">AWS ECS Console</a>.</p>
+          <p>Click on "my-cluster"</p>
+          <p>Click on "my-container-service"</p>
+          <p>Click the "Tasks" tab</p>
+          <p>Click on the task it self that has a status "RUNNING"</p>
+          <p>Look in the "Network" section for a "Public IP", copy and paste that IP into your web browser and you should see the application running and talking to the database (meaning you're recieving fortunes), like below:</p>
+          <BlogImage image="../../assets/images/github-actions-aws-ecs/application-running.png" />
+
+          <Disqus.DiscussionEmbed
+            shortname={disqusShortname}
+            config={disqusConfig}
+          />
         </div>
-
       </div>
       <style jsx>{`
         .lead {
-            background: url("../../assets/images/github-actions-aws-ecs/ecs.png");
+            background: url("../../assets/images/${identifier}/ecs.png");
             background-size: contain;
         }
         #lead-overlay {
           background: rgba(32, 46, 64, 0.65);
-        }
-        p {
-          margin-bottom: 50px;
         }
       `}</style>
     </Layout>
