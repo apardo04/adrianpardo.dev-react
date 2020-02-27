@@ -175,6 +175,11 @@ export default function Post() {
                     </p>
 
                     <BlogImage identifier={identifier} image="docker-exec" />
+
+                    <Disqus.DiscussionEmbed
+                        shortname={disqusShortname}
+                        config={disqusConfig}
+                    />
                 </div>
             </div>
             <style jsx>{`
