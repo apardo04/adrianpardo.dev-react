@@ -8,7 +8,7 @@ import Disqus from "disqus-react"
 export default function Post() {
 
   let identifier = "github-actions-aws-ecs"
-  let title = "CI/CD Github ActionsS to AWS ECR/ECS"
+  let title = "CI/CD Github Actions to AWS ECR/ECS"
 
   const disqusShortname = "https-adrianpardo-dev" 
   const disqusConfig = {
@@ -54,17 +54,17 @@ export default function Post() {
           <p>
               1) Build the front end client, by running the following commands.
               <pre className="codeblock">{`  
-$ cd client
-$ npm install
-$ npm run-script build
-$ cd ..
+  $ cd client
+  $ npm install
+  $ npm run-script build
+  $ cd ..
               `}</pre>
           </p>
           <p>
               2) Run the docker-compose.yml file located in /server.
               <pre className="codeblock">{`  
-$ cd server
-$ docker-compose up
+  $ cd server
+  $ docker-compose up
               `}</pre>
           </p>
           <p>
@@ -82,7 +82,7 @@ $ docker-compose up
           <p>
               2) We'll name the user "User-ECR-ECS" and give it "Programmatic access".
           </p>
-          <BlogImage image="../../assets/images/github-actions-aws-ecs/iam-user-ecr-ecs.png" />
+          <BlogImage identifier={identifier} image="iam-user-ecr-ecs" />
           <p>
               3) Click the "Next: Permissions" button.
           </p>
@@ -92,8 +92,8 @@ $ docker-compose up
           <p>
               5) Search for "ECS", check the following policies, search for "registry" and select the following policy.
           </p>
-          <BlogImage image="../../assets/images/github-actions-aws-ecs/iam-user-ecr-ecs-permissions.png" />
-          <BlogImage image="../../assets/images/github-actions-aws-ecs/iam-user-ecr-ecs-permissions-3.png" />
+          <BlogImage identifier={identifier} image="iam-user-ecr-ecs-permissions" />
+          <BlogImage identifier={identifier} image="iam-user-ecr-ecs-permissions-3" />
           <p>
               6) Click the "Next: Tags" button.
           </p>
@@ -119,14 +119,14 @@ $ docker-compose up
           <p>
             2) Keep the default trusted entity type which should be "AWS service", click on "Elastic Container Service" which is highlighted below and then "Elastic Container Service Task" which is also highlighted.
           </p>
-          <BlogImage image="../../assets/images/github-actions-aws-ecs/iam-role-service.png" />
+          <BlogImage identifier={identifier} image="iam-role-service" />
           <p>
             3) Click "Next: Permissions" button.
           </p>
           <p>
             4) Search "ecs" and select the policies shown below.
           </p>
-          <BlogImage image="../../assets/images/github-actions-aws-ecs/iam-role-policy.png" />
+          <BlogImage identifier={identifier} image="iam-role-policy" />
           <p>
             5) Click the "Next: Tags" button.
           </p>
@@ -136,7 +136,7 @@ $ docker-compose up
           <p>
             7) We're going to give our role the name "ecsTaskExecutionRole".
           </p>
-          <BlogImage image="../../assets/images/github-actions-aws-ecs/iam-role-name.png" />
+          <BlogImage identifier={identifier} image="iam-role-name" />
           <h2 className="heading" tabIndex="0" id="ecr">Elastic Container Registry (ECR)</h2>
           <p>
               Next we want to setup our Amazon <a href="https://aws.amazon.com/ecr/" target="new">Elastic Container Registry (ECR)</a>.
@@ -148,7 +148,7 @@ $ docker-compose up
           <p>
               2) We will name our repo 'my-ecr-repo' and then click "Create repository".
           </p>
-          <BlogImage image="../../assets/images/github-actions-aws-ecs/ecr.png" />
+          <BlogImage identifier={identifier} image="ecr" />
           <p>
               3) You should now see a green banner that says "Successfully created repository my-ecr-repo"
           </p>
@@ -164,11 +164,11 @@ $ docker-compose up
           <p>
             2) Under "Container definition" select the "custom" image option and hit the "edit" button, as shown below.
           </p>
-          <BlogImage image="../../assets/images/github-actions-aws-ecs/ecs-container-definition.png" />
+          <BlogImage identifier={identifier} image="ecs-container-definition" />
           <p>
             3) We're going to name the container "my-container", set image to "my-ecr-repo" and map port 80 to tcp.
           </p>
-          <BlogImage image="../../assets/images/github-actions-aws-ecs/ecs-container-settings.png" />
+          <BlogImage identifier={identifier} image="ecs-container-settings" />
           <p>
             4) Click the "Update" button.
           </p>
@@ -178,7 +178,7 @@ $ docker-compose up
           <p>
             6) We're going to name the task definition "my-task-definition" and select our "ecsTaskExecutionRole". By default "awsvpc" and "FARGATE" should be the other two selected details.
           </p>
-          <BlogImage image="../../assets/images/github-actions-aws-ecs/ecs-task-definition-settings.png" />
+          <BlogImage identifier={identifier} image="ecs-task-definition-settings" />
           <p>
             7) Click the "Save" button and the side panel should disappear.
           </p>
@@ -188,15 +188,15 @@ $ docker-compose up
           <p>
             9) By default "Service name" should be "my-container-service". If not, change it to that and click the "Next" button.
           </p>
-          <BlogImage image="../../assets/images/github-actions-aws-ecs/ecs-define-your-service.png" />
+          <BlogImage identifier={identifier} image="ecs-define-your-service" />
           <p>
             10) Under Cluster name, we will put "my-cluster" and click the "Next" button.
           </p>
-          <BlogImage image="../../assets/images/github-actions-aws-ecs/ecs-configure-your-cluster.png" />
+          <BlogImage identifier={identifier} image="ecs-configure-your-cluster" />
           <p>
             11) Your settings should look like the screenshot below. If yes, click the "Create" button.
           </p>
-          <BlogImage image="../../assets/images/github-actions-aws-ecs/ecs-final-settings.png" />
+          <BlogImage identifier={identifier} image="ecs-final-settings" />
           <p>
             12) Once the launch status is complete, click the "View service" button and you'll see our newly created cluster with an ACTIVE service named "my-container-service".
           </p>
@@ -208,7 +208,7 @@ $ docker-compose up
           <p>
             On the left side pane on the <a href="https://console.aws.amazon.com/ecs/" target="new">AWS ECS Console</a> click "Task Definitions". You should now see the newly created "my-task-definition".
           </p>
-          <BlogImage image="../../assets/images/github-actions-aws-ecs/ecs-task-definitions.png" />
+          <BlogImage identifier={identifier} image="ecs-task-definitions" />
           <p>
             Click on "my-task-definition".
           </p>
@@ -229,7 +229,7 @@ $ docker-compose up
           </p> 
           <p>
             <pre className="codeblock">{`  
-"environment": [],
+  "environment": [],
                 `}</pre>
           </p>
           <p>
@@ -237,16 +237,16 @@ $ docker-compose up
           </p>
           <p>
             <pre className="codeblock">{`  
-"environment": [
-  {
-    "name": "DB_URL",
-    "value": "mongodb://localhost:27017/fortunate_prod_db"
-  },
-  {
-    "name": "PORT",
-    "value": "80"
-  }
-],
+  "environment": [
+    {
+      "name": "DB_URL",
+      "value": "mongodb://localhost:27017/fortunate_prod_db"
+    },
+    {
+      "name": "PORT",
+      "value": "80"
+    }
+  ],
             `}</pre>
           </p>
           <p>
@@ -254,8 +254,8 @@ $ docker-compose up
           </p>
           <p>
             <pre className="codeblock">{`  
-  "name": "my-container"
-}
+    "name": "my-container"
+  }
             `}</pre>
           </p>
           <p>
@@ -263,21 +263,21 @@ $ docker-compose up
           </p>
           <p>
             <pre className="codeblock">{`  
-  "name": "my-container"
-},
-{
-  "name": "mongo",
-  "image": "mongo:latest",
-  "portMappings": [
-    {
-      "hostPort": 27017,
-      "containerPort": 27017
-    }
-  ],
-  "memory": "512",
-  "cpu": "256",
-  "essential": true
-}
+    "name": "my-container"
+  },
+  {
+    "name": "mongo",
+    "image": "mongo:latest",
+    "portMappings": [
+      {
+        "hostPort": 27017,
+        "containerPort": 27017
+      }
+    ],
+    "memory": "512",
+    "cpu": "256",
+    "essential": true
+  }
             `}</pre>
           </p>
           <p>
@@ -310,7 +310,7 @@ $ docker-compose up
             Name: AWS_SECRET_ACCESS_KEY<br />
             Value: Paste the value for the "Secret access key" column found in the csv.
           </p>
-          <BlogImage image="../../assets/images/github-actions-aws-ecs/github-secrets.png" />
+          <BlogImage identifier={identifier} image="github-secrets" />
 
           <h2 className="heading" tabIndex="0" id="github-actions">Github Actions</h2>
           <p>
@@ -319,16 +319,16 @@ $ docker-compose up
           <p>
             From here, one of the recommended workflows will be "Deploy to Amazon ECS". Click the "Set up this workflow" button.
           </p>
-          <BlogImage image="../../assets/images/github-actions-aws-ecs/github-actions-deploy-to-amazon-ecs.png" />
+          <BlogImage identifier={identifier} image="github-actions-deploy-to-amazon-ecs" />
           <p>
             Now Github will display text that is going to be part of our aws.yml file. This file will get triggered everytime we push to master, because of this code block:
           </p>
           <p>
             <pre className="codeblock">{`  
-on:
-push:
-  branches:
-    - master
+  on:
+  push:
+    branches:
+      - master
             `}</pre>
           </p>
           <p>
@@ -339,12 +339,12 @@ push:
           </p>
           <p>
             <pre className="codeblock">{`  
-- name: Configure AWS credentials
-  uses: aws-actions/configure-aws-credentials@v1
-  with:
-    aws-access-key-id: ${"${{ secrets.AWS_ACCESS_KEY_ID }}"}
-    aws-secret-access-key: ${"${{ secrets.AWS_SECRET_ACCESS_KEY }}"}
-    aws-region: us-east-1
+  - name: Configure AWS credentials
+    uses: aws-actions/configure-aws-credentials@v1
+    with:
+      aws-access-key-id: ${"${{ secrets.AWS_ACCESS_KEY_ID }}"}
+      aws-secret-access-key: ${"${{ secrets.AWS_SECRET_ACCESS_KEY }}"}
+      aws-region: us-east-1
             `}</pre>
           </p>
           <p>
@@ -352,12 +352,12 @@ push:
           </p>
           <p>
             <pre className="codeblock">{`  
-- name: npm install client
-  run: npm install
-  working-directory: ./client
-- name: Build the client
-  run: npm run-script build
-  working-directory: ./client
+  - name: npm install client
+    run: npm install
+    working-directory: ./client
+  - name: Build the client
+    run: npm run-script build
+    working-directory: ./client
             `}</pre>
           </p>
           <p>
@@ -366,18 +366,18 @@ push:
           <p>
             <pre className="codeblock">{`  
 - name: Build, tag, and push image to Amazon ECR
-id: build-image
-env:
-  ECR_REGISTRY: ${"${{ steps.login-ecr.outputs.registry }}"}
-  ECR_REPOSITORY: my-ecr-repo
-  IMAGE_TAG: ${"${{ github.sha }}"}
-run: |
-  # Build a docker container and
-  # push it to ECR so that it can
-  # be deployed to ECS.
-  docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./server
-  docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-  echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+  id: build-image
+  env:
+    ECR_REGISTRY: ${"${{ steps.login-ecr.outputs.registry }}"}
+    ECR_REPOSITORY: my-ecr-repo
+    IMAGE_TAG: ${"${{ github.sha }}"}
+  run: |
+    # Build a docker container and
+    # push it to ECR so that it can
+    # be deployed to ECS.
+    docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./server
+    docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+    echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
             `}</pre>
           </p>
           <p>
@@ -386,12 +386,12 @@ run: |
           <p>
             <pre className="codeblock">{`  
 - name: Fill in the new image ID in the Amazon ECS task definition
-id: task-def
-uses: aws-actions/amazon-ecs-render-task-definition@v1
-with:
-  task-definition: task-definition.json
-  container-name: my-container
-  image: ${"${{ steps.build-image.outputs.image }}"}
+  id: task-def
+  uses: aws-actions/amazon-ecs-render-task-definition@v1
+  with:
+    task-definition: task-definition.json
+    container-name: my-container
+    image: ${"${{ steps.build-image.outputs.image }}"}
             `}</pre>
           </p>
           <p>
@@ -400,12 +400,12 @@ with:
           <p>
             <pre className="codeblock">{`  
 - name: Deploy Amazon ECS task definition
-uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-with:
-  task-definition: ${"${{ steps.task-def.outputs.task-definition }}"}
-  service: my-container-service
-  cluster: my-cluster
-  wait-for-service-stability: true
+  uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+  with:
+    task-definition: ${"${{ steps.task-def.outputs.task-definition }}"}
+    service: my-container-service
+    cluster: my-cluster
+    wait-for-service-stability: true
             `}</pre>
           </p>
           <p>
@@ -413,73 +413,73 @@ with:
           </p>
           <p>
             <pre className="codeblock">{`  
-on:
-push:
-  branches:
-    - master
+  on:
+  push:
+    branches:
+      - master
 
-name: Deploy to Amazon ECS
+  name: Deploy to Amazon ECS
 
-jobs:
-deploy:
-  name: Deploy
-  runs-on: ubuntu-latest
+  jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
 
-  env:
-    server-directory: ./server
-    client-directory: ./client
-  
-  steps:
-  - name: Checkout
-    uses: actions/checkout@v2
-
-  - name: Configure AWS credentials
-    uses: aws-actions/configure-aws-credentials@v1
-    with:
-      aws-access-key-id: ${"${{ secrets.AWS_ACCESS_KEY_ID }}"}
-      aws-secret-access-key: ${"${{ secrets.AWS_SECRET_ACCESS_KEY }}"}
-      aws-region: us-east-1
-
-  - name: npm install client
-    run: npm install
-    working-directory: ${"${{ env.client-directory }}"}
-  - name: Build the client
-    run: npm run-script build
-    working-directory: ${"${{ env.client-directory }}"}
-
-  - name: Login to Amazon ECR
-    id: login-ecr
-    uses: aws-actions/amazon-ecr-login@v1
-
-  - name: Build, tag, and push image to Amazon ECR
-    id: build-image
     env:
-      ECR_REGISTRY: ${"${{ steps.login-ecr.outputs.registry }}"}
-      ECR_REPOSITORY: my-ecr-repo
-      IMAGE_TAG: ${"${{ github.sha }}"}
-    run: |
-      # Build a docker container and
-      # push it to ECR so that it can
-      # be deployed to ECS.
-      docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./server
-      docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-      echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+      server-directory: ./server
+      client-directory: ./client
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
 
-  - name: Fill in the new image ID in the Amazon ECS task definition
-    id: task-def
-    uses: aws-actions/amazon-ecs-render-task-definition@v1
-    with:
-      task-definition: task-definition.json
-      container-name: my-container
-      image: ${"${{ steps.build-image.outputs.image }}"}
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${"${{ secrets.AWS_ACCESS_KEY_ID }}"}
+        aws-secret-access-key: ${"${{ secrets.AWS_SECRET_ACCESS_KEY }}"}
+        aws-region: us-east-1
 
-  - name: Deploy Amazon ECS task definition
-    uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-    with:
-      task-definition: ${"${{ steps.task-def.outputs.task-definition }}"}
-      service: my-container-service
-      cluster: my-cluster
-      wait-for-service-stability: true
+    - name: npm install client
+      run: npm install
+      working-directory: ${"${{ env.client-directory }}"}
+    - name: Build the client
+      run: npm run-script build
+      working-directory: ${"${{ env.client-directory }}"}
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+
+    - name: Build, tag, and push image to Amazon ECR
+      id: build-image
+      env:
+        ECR_REGISTRY: ${"${{ steps.login-ecr.outputs.registry }}"}
+        ECR_REPOSITORY: my-ecr-repo
+        IMAGE_TAG: ${"${{ github.sha }}"}
+      run: |
+        # Build a docker container and
+        # push it to ECR so that it can
+        # be deployed to ECS.
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./server
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+
+    - name: Fill in the new image ID in the Amazon ECS task definition
+      id: task-def
+      uses: aws-actions/amazon-ecs-render-task-definition@v1
+      with:
+        task-definition: task-definition.json
+        container-name: my-container
+        image: ${"${{ steps.build-image.outputs.image }}"}
+
+    - name: Deploy Amazon ECS task definition
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      with:
+        task-definition: ${"${{ steps.task-def.outputs.task-definition }}"}
+        service: my-container-service
+        cluster: my-cluster
+        wait-for-service-stability: true
             `}</pre>
           </p>
           <p>
@@ -497,7 +497,7 @@ deploy:
           <p>Click the "Tasks" tab</p>
           <p>Click on the task it self that has a status "RUNNING"</p>
           <p>Look in the "Network" section for a "Public IP", copy and paste that IP into your web browser and you should see the application running and talking to the database (meaning you're recieving fortunes), like below:</p>
-          <BlogImage image="../../assets/images/github-actions-aws-ecs/application-running.png" />
+          <BlogImage identifier={identifier} image="application-running" />
 
           <Disqus.DiscussionEmbed
             shortname={disqusShortname}

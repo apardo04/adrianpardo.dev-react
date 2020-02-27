@@ -228,7 +228,7 @@ a.lead-download-btn:hover #lead-arrow {
 .info-container .container {
     margin-bottom: 15px;
 }
-.info-container p, .info-container-2 p {
+.info-container p, .info-container-2 p, .contents-list {
     color: white;
     margin: 0;
     font-weight: 300;
