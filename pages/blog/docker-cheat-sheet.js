@@ -42,7 +42,7 @@ export default function Post() {
                     </ul>
                     <h2 className="heading" tabIndex="0" id="docker-run">Docker run</h2>
                     <p>
-                        The <a href="https://docs.docker.com/engine/reference/run/" target="new">docker run</a> command is used to run a container from an image.
+                        The <a href="https://docs.docker.com/engine/reference/run/" target="new" rel="noopener">docker run</a> command is used to run a container from an image.
                     </p>
                     <p>
                         <pre className="codeblock">{`  
@@ -50,7 +50,7 @@ export default function Post() {
                         `}</pre>
                     </p>
                     <p>
-                        The "docker run hello-world" command will run an instance of the <a href="https://hub.docker.com/_/hello-world" target="new"> official hello-world image</a> on the docker host if it already exists.
+                        The "docker run hello-world" command will run an instance of the <a href="https://hub.docker.com/_/hello-world" target="new" rel="noopener"> official hello-world image</a> on the docker host if it already exists.
                     </p>
                     <p>
                         If the image is not present on the host, it will go out to docker hub and pull the image, but this is only done the first time. For the subsequent executions the same image on the host will be reused.
@@ -62,7 +62,7 @@ export default function Post() {
 
                     <h2 className="heading" tabIndex="0" id="docker-ps">Docker ps</h2>
                     <p>
-                        The <a href="https://docs.docker.com/engine/reference/commandline/ps/" target="new">docker ps</a> command lists all running containers.
+                        The <a href="https://docs.docker.com/engine/reference/commandline/ps/" target="new" rel="noopener">docker ps</a> command lists all running containers.
                     </p>
                     <p>
                         <pre className="codeblock">{`  
@@ -103,7 +103,7 @@ export default function Post() {
                     <BlogImage identifier={identifier} image="docker-stop-ps" />
                     <h2 className="heading" tabIndex="0" id="docker-rm">Docker rm</h2>
                     <p>
-                        To permanently remove a stopped or exited container, the <a href="https://docs.docker.com/engine/reference/commandline/rm/">docker rm</a> command can be used.
+                        To permanently remove a stopped or exited container, the <a href="https://docs.docker.com/engine/reference/commandline/rm/" target="new" rel="noopener">docker rm</a> command can be used.
                     </p>
                     <p>
                         <pre className="codeblock">{`  
@@ -118,7 +118,7 @@ export default function Post() {
 
                     <h2 className="heading" tabIndex="0" id="docker-images">Docker images</h2>
                     <p>
-                        To see a list of images present on the host machine, the <a href="https://docs.docker.com/engine/reference/commandline/images/">docker images</a> command can be used.
+                        To see a list of images present on the host machine, the <a href="https://docs.docker.com/engine/reference/commandline/images/" target="new" rel="noopener">docker images</a> command can be used.
                     </p>
                     <p>
                         <pre className="codeblock">{`  
@@ -132,7 +132,7 @@ export default function Post() {
 
                     <h2 className="heading" tabIndex="0" id="docker-rmi">Docker rmi</h2>
                     <p>
-                        The <a href="https://docs.docker.com/engine/reference/commandline/rmi/">docker rmi</a> command can be used to remove an image that will no longer be used.
+                        The <a href="https://docs.docker.com/engine/reference/commandline/rmi/" target="new" rel="noopener">docker rmi</a> command can be used to remove an image that will no longer be used.
                     </p>
                     <p>
                         <pre className="codeblock">{`  
@@ -149,7 +149,7 @@ export default function Post() {
                         Earlier when the command 'docker run hello-world' was executed, the image had to be downloaded and then ran.
                     </p>
                     <p>
-                        But, what if all that was required was to download the image? The <a href="https://docs.docker.com/engine/reference/commandline/pull/">docker pull</a> command can be used.
+                        But, what if all that was required was to download the image? The <a href="https://docs.docker.com/engine/reference/commandline/pull/" target="new" rel="noopener">docker pull</a> command can be used.
                     </p>
                     <p>
                         <pre className="codeblock">{`  
@@ -163,7 +163,7 @@ export default function Post() {
 
                     <h2 className="heading" tabIndex="0" id="docker-exec">Docker exec</h2>
                     <p>
-                        To run a command on a running container the <a href="https://docs.docker.com/engine/reference/commandline/exec/">docker exec</a> command can be used.
+                        To run a command on a running container the <a href="https://docs.docker.com/engine/reference/commandline/exec/" target="new" rel="noopener">docker exec</a> command can be used.
                     </p>
                     <p>
                         <pre className="codeblock">{`  

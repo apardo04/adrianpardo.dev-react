@@ -1,8 +1,9 @@
 const BlogImage = props => {
+    let imgUrl = `../../assets/images/${props.identifier}/${props.image}.png`
     return(
         <p>
-            <a href={props.image} target="new">
-                <img src={"../../assets/images/" + props.identifier +"/" + props.image + ".png"} className="yellow-border-image" alt={props.identifier} />
+            <a href={imgUrl} target="new">
+                <img src={imgUrl} className="yellow-border-image" alt={props.identifier} />
             </a>
         </p>
     )

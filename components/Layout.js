@@ -1,4 +1,4 @@
-import Head from './Head'
+import Header from './Head'
 import Nav from './Nav'
 import Footer from './Footer'
 import React, { useEffect } from 'react';
@@ -15,7 +15,7 @@ const Layout = props => {
       });
     return (
         <React.Fragment>
-            <Head page={props.page} title={props.title} description={props.description} ogImage={"https://adrianpardo.dev"+props.ogImage} />
+            <Header page={props.page} title={props.title} description={props.description} ogImage={"https://adrianpardo.dev"+props.ogImage} />
             <Nav page={props.page} />
             {props.children}
             <Footer />

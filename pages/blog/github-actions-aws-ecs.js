@@ -30,16 +30,16 @@ export default function Post() {
         <div className="container info-blog">
           <h2 className="heading" tabIndex="0" id="objectives">Objectives</h2>
           <p>
-            The goal is to use <a href="https://github.com/features/actions" target="new">Github Actions</a> for continous deployment to an <a href="https://aws.amazon.com/ecs/" target="new">AWS ECS cluster</a>.
+            The goal is to use <a href="https://github.com/features/actions" target="new" rel="noopener">Github Actions</a> for continous deployment to an <a href="https://aws.amazon.com/ecs/" target="new" rel="noopener">AWS ECS cluster</a>.
           </p>
           <p>
               Before getting started, make sure you have an AWS account and have Git, Node and Docker installed.
           </p>
           <p>
-            We will start by forking this simple full stack <a href="https://github.com/apardo04/github-actions-to-aws-ecr-ecs" target="new">React/Express application</a>. Once forked into your Github account, make a clone on your local machine.
+            We will start by forking this simple full stack <a href="https://github.com/apardo04/github-actions-to-aws-ecr-ecs" target="new" rel="noopener">React/Express application</a>. Once forked into your Github account, make a clone on your local machine.
           </p>
           <p>
-            For local development I am using a <a href="https://docs.docker.com/compose/" target="new">docker-compose</a> enivornment. 
+            For local development I am using a <a href="https://docs.docker.com/compose/" target="new" rel="noopener">docker-compose</a> enivornment. 
             Docker Compose makes it very simple to link, build, and run multiple containers at the same time.
             For this project we have two containers, one for the React application and the other for MongoDB.
           </p>
@@ -68,16 +68,16 @@ export default function Post() {
               `}</pre>
           </p>
           <p>
-              You should now see the application runnning on <a href="http://localhost:3001/" target="new">http://localhost:3001/</a>.
+              You should now see the application runnning on <a href="http://localhost:3001/" target="new" rel="noopener">http://localhost:3001/</a>.
           </p>
 
 
           <h2 className="heading" tabIndex="0" id="iam-user">Identity and Access Management (IAM) User</h2>
           <p>
-              First we have to create a user within our AWS account that will have access to perform all the tasks required. For this we will use <a href="https://aws.amazon.com/iam/" target="new">Identity and Access Management (IAM)</a>
+              First we have to create a user within our AWS account that will have access to perform all the tasks required. For this we will use <a href="https://aws.amazon.com/iam/" target="new" rel="noopener">Identity and Access Management (IAM)</a>
           </p>
           <p> 
-              1) Within the <a href="https://console.aws.amazon.com/ecs" target="new">ECS Console</a>, click "IAM" on the navigation pane, then click "Users" under IAM Resources and finally click the "Add user" button.<br />
+              1) Within the <a href="https://console.aws.amazon.com/ecs" target="new" rel="noopener">ECS Console</a>, click "IAM" on the navigation pane, then click "Users" under IAM Resources and finally click the "Add user" button.<br />
           </p>
           <p>
               2) We'll name the user "User-ECR-ECS" and give it "Programmatic access".
@@ -114,7 +114,7 @@ export default function Post() {
               Now we need to create an IAM Role. This will provide access to other AWS service resources that are required to run Amazon ECS tasks.
           </p>
           <p>
-            1) Navigate back to <a href="https://console.aws.amazon.com/iam" target="new">AWS IAM</a> and click on "Roles" and then click the "Create role" button.
+            1) Navigate back to <a href="https://console.aws.amazon.com/iam" target="new" rel="noopener">AWS IAM</a> and click on "Roles" and then click the "Create role" button.
           </p>
           <p>
             2) Keep the default trusted entity type which should be "AWS service", click on "Elastic Container Service" which is highlighted below and then "Elastic Container Service Task" which is also highlighted.
@@ -139,11 +139,11 @@ export default function Post() {
           <BlogImage identifier={identifier} image="iam-role-name" />
           <h2 className="heading" tabIndex="0" id="ecr">Elastic Container Registry (ECR)</h2>
           <p>
-              Next we want to setup our Amazon <a href="https://aws.amazon.com/ecr/" target="new">Elastic Container Registry (ECR)</a>.
+              Next we want to setup our Amazon <a href="https://aws.amazon.com/ecr/" target="new" rel="noopener">Elastic Container Registry (ECR)</a>.
               This is where AWS will store our images.
           </p>
           <p>
-              1) Within the <a href="https://console.aws.amazon.com/ecs" target="new">ECS Console</a>, click “ECR” on the navigation pane, and then click the “Create repository” button.
+              1) Within the <a href="https://console.aws.amazon.com/ecs" target="new" rel="noopener">ECS Console</a>, click “ECR” on the navigation pane, and then click the “Create repository” button.
           </p>
           <p>
               2) We will name our repo 'my-ecr-repo' and then click "Create repository".
@@ -155,11 +155,11 @@ export default function Post() {
 
           <h2 className="heading" tabIndex="0" id="ecs-cluster">Elastic Container Service (ECS) Cluster</h2>
           <p>
-            Next we want to setup our Amazon <a href="https://aws.amazon.com/ecS/" target="new">Elastic Container Service (ECS)</a> Cluster.
+            Next we want to setup our Amazon <a href="https://aws.amazon.com/ecs/" target="new" rel="noopener">Elastic Container Service (ECS)</a> Cluster.
             This is where our images will be deplyed to.
           </p>
           <p>
-            1) Navigate to <a href="https://console.aws.amazon.com/ecs/" target="new">Amazon ECS</a> and click the "Get Started" button.
+            1) Navigate to <a href="https://console.aws.amazon.com/ecs/" target="new" rel="noopener">Amazon ECS</a> and click the "Get Started" button.
           </p>
           <p>
             2) Under "Container definition" select the "custom" image option and hit the "edit" button, as shown below.
@@ -203,10 +203,10 @@ export default function Post() {
 
           <h2 className="heading" tabIndex="0" id="ecs-task">Configure and add Task Definition to Repo</h2>
           <p>
-            Now we want to copy our <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html" target="new">Task Definition</a> into our projects repo. A Task Definition is a configuration file that specifies the container information for your application, such as how many containers are part of your task, what resources they will use, how they are linked together, and which host ports they will use.
+            Now we want to copy our <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html" target="new" rel="noopener">Task Definition</a> into our projects repo. A Task Definition is a configuration file that specifies the container information for your application, such as how many containers are part of your task, what resources they will use, how they are linked together, and which host ports they will use.
           </p>
           <p>
-            On the left side pane on the <a href="https://console.aws.amazon.com/ecs/" target="new">AWS ECS Console</a> click "Task Definitions". You should now see the newly created "my-task-definition".
+            On the left side pane on the <a href="https://console.aws.amazon.com/ecs/" target="new" rel="noopener">AWS ECS Console</a> click "Task Definitions". You should now see the newly created "my-task-definition".
           </p>
           <BlogImage identifier={identifier} image="ecs-task-definitions" />
           <p>
@@ -491,7 +491,7 @@ export default function Post() {
 
 
           <h2 className="heading" tabIndex="0" id="application-running">See The Application Running</h2>
-          <p>If you got no errors, then lets go back to our <a href="https://console.aws.amazon.com/ecs/" target="new">AWS ECS Console</a>.</p>
+          <p>If you got no errors, then lets go back to our <a href="https://console.aws.amazon.com/ecs/" target="new" rel="noopener">AWS ECS Console</a>.</p>
           <p>Click on "my-cluster"</p>
           <p>Click on "my-container-service"</p>
           <p>Click the "Tasks" tab</p>

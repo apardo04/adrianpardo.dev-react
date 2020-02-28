@@ -34,13 +34,13 @@ const Nav = props => {
               </li>
               <li>
                   <Link href="https://github.com/apardo04">
-                    <a target="_blank" tabIndex="0" className="hover-border prevent-default">Github</a>
+                    <a target="_blank" rel="noopener" tabIndex="0" className="hover-border prevent-default">Github</a>
                   </Link>
               </li>
 
               <li>
                   <Link href="/hire-me">
-                    <a tabIndex="0" className="hover-border">Need a Developer?</a>
+                    <a tabIndex="0" className="hover-border">Contact</a>
                   </Link>
               </li>
           </ul>
