@@ -31,7 +31,9 @@ export default function Post() {
                 <div className="container info-blog">
                     <h2 className="heading" tabIndex="0" id="contents">Contents</h2>
                     <ul>
-                        <li className="contents-list"><a href="#docker-run">Docker run</a></li>
+                        <li className="contents-list"><a href="#docker-build">Docker build</a></li>
+                        <li className="contents-list"><a href="#docker-run-simple">Docker run (Simple)</a></li>
+                        <li className="contents-list"><a href="#docker-run-advance">Docker run (Advance)</a></li>
                         <li className="contents-list"><a href="#docker-ps">Docker ps</a></li>
                         <li className="contents-list"><a href="#docker-stop">Docker stop</a></li>
                         <li className="contents-list"><a href="#docker-rm">Docker rm</a></li>
@@ -39,8 +41,21 @@ export default function Post() {
                         <li className="contents-list"><a href="#docker-rmi">Docker rmi</a></li>
                         <li className="contents-list"><a href="#docker-pull">Docker pull</a></li>
                         <li className="contents-list"><a href="#docker-exec">Docker exec</a></li>
+                        <li className="contents-list"><a href="#useful-links">Useful Links</a></li>
                     </ul>
-                    <h2 className="heading" tabIndex="0" id="docker-run">Docker run</h2>
+                    <h2 className="heading" tabIndex="0" id="docker-build">Docker build</h2>
+                    <p>
+                        The <a href="https://docs.docker.com/engine/reference/commandline/build/" target="new" rel="noopener">docker build</a> command can be used to create an image from an application.
+                    </p>
+                    <p>
+                        <pre className="codeblock">{`  
+    $ docker build -t server_web_1 -f Dockerfile .
+                        `}</pre>
+                    </p>
+                    <p>
+                        Here -t represents the name and tag of the image (example: 'name:tag'), and -f is the name and path to the Dockerfile.
+                    </p>
+                    <h2 className="heading" tabIndex="0" id="docker-run">Docker run (Simple)</h2>
                     <p>
                         The <a href="https://docs.docker.com/engine/reference/run/" target="new" rel="noopener">docker run</a> command is used to run a container from an image.
                     </p>
@@ -59,7 +74,32 @@ export default function Post() {
                         This is what the output looks like when the image is not already on the host:
                     </p>
                     <BlogImage identifier={identifier} image="docker-run-hello-world" />
-
+                    
+                    <h2 className="heading" tabIndex="0" id="docker-run-advance">Docker run (Advance)</h2>
+                    <p>
+                        For this section, docker run will be executed on a web server.
+                    </p>
+                    <p>
+                        <pre className="codeblock">{`  
+    $ docker run -i -p 3000:8000 server_web_1
+                        `}</pre>
+                    </p>
+                    <p>
+                        The -i option stands for 'interactive', meaning STDIN will stay opened.
+                    </p>
+                    <p>
+                        The -p option is for publishing a containers port. Here, this maps port 8000 in the Docker image to port 3000 on the local machine.
+                    </p>
+                    <BlogImage identifier={identifier} image="docker-run-server_web" />
+                    <p>
+                        To run the docker image as a background task the -d (detach) flag can be used rather than -i. This will keep the terminal available.
+                    </p>
+                    <p>
+                        <pre className="codeblock">{`  
+    $ docker run -d -p 3000:8000 server_web_1
+                        `}</pre>
+                    </p>
+                    <BlogImage identifier={identifier} image="docker-run-d-server_web" />
                     <h2 className="heading" tabIndex="0" id="docker-ps">Docker ps</h2>
                     <p>
                         The <a href="https://docs.docker.com/engine/reference/commandline/ps/" target="new" rel="noopener">docker ps</a> command lists all running containers.
@@ -176,6 +216,11 @@ export default function Post() {
 
                     <BlogImage identifier={identifier} image="docker-exec" />
 
+                    <h2 className="heading" tabIndex="0" id="useful-links">Useful Links</h2>
+                    <p>
+                        <a href="https://github.com/CloudNativeJS/docker" target="new" rel="noopener">Sample Dockerfile templates for building Dev, Debug, Test and Run images for your application</a>
+                    </p>
+
                     <Disqus.DiscussionEmbed
                         shortname={disqusShortname}
                         config={disqusConfig}
@@ -188,7 +233,7 @@ export default function Post() {
                     background-size: cover;
                 }
                 ul {
-                    width: 185px;
+                    width: 255px;
                     margin: 0 auto;
                     margin-bottom: 50px;
                     text-align: left;
