@@ -30,7 +30,7 @@ export default function Post() {
             <div className="info-container-2 text-center">
                 <div className="container info-blog">
                     <h2 className="heading" tabIndex="0" id="contents">Contents</h2>
-                    <ul>
+                    <ul className="blog-ul">
                         <li className="contents-list"><a href="#docker-build">Docker build</a></li>
                         <li className="contents-list"><a href="#docker-run-simple">Docker run (Simple)</a></li>
                         <li className="contents-list"><a href="#docker-run-advance">Docker run (Advance)</a></li>
@@ -231,13 +231,6 @@ export default function Post() {
                 .lead {
                     background: url("../../assets/images/${identifier}/docker.jpg");
                     background-size: cover;
-                }
-                ul {
-                    width: 255px;
-                    margin: 0 auto;
-                    margin-bottom: 50px;
-                    text-align: left;
-                    list-style: upper-roman;
                 }
         `}</style>
         </Layout>

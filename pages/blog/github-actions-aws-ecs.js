@@ -23,11 +23,24 @@ export default function Post() {
         <h1>{title}</h1>
           <h2>Feb 24, 2020 • Guide</h2>
         </div>
-        <SeeMore href="#objectives" />
+        <SeeMore href="#contents" />
         <div id="lead-overlay"></div>
       </div>
       <div className="info-container-2 text-center">
         <div className="container info-blog">
+        <h2 className="heading" tabIndex="0" id="contents">Contents</h2>
+        <ul className="blog-ul">
+            <li className="contents-list"><a href="#objectives">Objectives</a></li>
+            <li className="contents-list"><a href="#docker-compose">Docker Compose</a></li>
+            <li className="contents-list"><a href="#iam-user">Identity and Access Management (IAM) User</a></li>
+            <li className="contents-list"><a href="#iam-role">Identity and Access Management (IAM) Role</a></li>
+            <li className="contents-list"><a href="#ecr">Elastic Container Registry (ECR)</a></li>
+            <li className="contents-list"><a href="#ecs-cluster">Elastic Container Service (ECS) Cluster</a></li>
+            <li className="contents-list"><a href="#ecs-task">Configure and add Task Definition to Repo</a></li>
+            <li className="contents-list"><a href="#github-secrets">Github Secrets</a></li>
+            <li className="contents-list"><a href="#github-actions">Github Actions</a></li>
+            <li className="contents-list"><a href="#application-running">See The Application Running</a></li>
+        </ul>
           <h2 className="heading" tabIndex="0" id="objectives">Objectives</h2>
           <p>
             The goal is to use <a href="https://github.com/features/actions" target="new" rel="noopener">Github Actions</a> for continous deployment to an <a href="https://aws.amazon.com/ecs/" target="new" rel="noopener">AWS ECS cluster</a>.
@@ -286,7 +299,6 @@ export default function Post() {
 
 
           <h2 className="heading" tabIndex="0" id="github-secrets">Github Secrets</h2>
-          <p>Github Secrets is .... </p>
           <p>
             Head over to the forked repo's webpage on Github and click the "Settings" tab.
           </p>
