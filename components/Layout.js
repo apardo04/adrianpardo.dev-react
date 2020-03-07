@@ -1,5 +1,6 @@
 import Header from './Head'
 import Nav from './Nav'
+import Contact from './Contact'
 import Footer from './Footer'
 import React, { useEffect } from 'react';
 import { string } from 'prop-types'
@@ -18,6 +19,7 @@ const Layout = props => {
             <Header page={props.page} title={props.title} description={props.description} ogImage={"https://adrianpardo.dev"+props.ogImage} />
             <Nav page={props.page} />
             {props.children}
+            <Contact />
             <Footer />
         </React.Fragment>
     )

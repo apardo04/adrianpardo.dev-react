@@ -37,9 +37,8 @@ const Nav = props => {
                     <a target="_blank" rel="noopener" tabIndex="0" className="hover-border prevent-default">Github</a>
                   </Link>
               </li>
-
               <li>
-                  <Link href="/hire-me">
+                  <Link href="#contact">
                     <a tabIndex="0" className="hover-border">Contact</a>
                   </Link>
               </li>

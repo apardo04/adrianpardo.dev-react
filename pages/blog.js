@@ -9,7 +9,7 @@ const Blog = props => (
                 <h2 className="heading" tabIndex="0">Blog</h2>
                 <div className="info text-left">
                     <h3 className=""><a href="blog/docker-cheat-sheet">Docker Commands Cheat Sheet</a></h3>
-                    <div className="small-text">February 27, 2020 • Cheat Sheet</div>
+                    <div className="small-text">March 7, 2020 • Cheat Sheet</div>
                     <h3 className=""><a href="blog/github-actions-aws-ecs">CI/CD Github Actions to AWS ECR/ECS</a></h3>
                     <div className="small-text">February 24, 2020 • Guide</div>
                 </div>

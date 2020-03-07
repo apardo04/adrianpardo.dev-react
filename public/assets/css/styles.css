@@ -361,6 +361,7 @@ div#skills-list {
     display: inline-block;
 }
 span.skills-text {
+    font-size: 20px;
     cursor: pointer;
 }
 span.skills-text.active {
@@ -502,7 +503,7 @@ label {
         margin-top: 18px;
     }
     .skills-filter {
-        width: 40%;
+        width: 100%;
         text-align: center;
         margin-bottom: 10px;
     }

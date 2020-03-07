@@ -25,7 +25,7 @@ const HireMe = props => {
             {/* End #lead */}
 
             <div className="info-container-2" id="questionnaire">
-                <div className="container">
+                <div className="container text-center">
                     <h2 className="heading" tabIndex="0">Questionnaire</h2>
                     <div className="form info" id="questionnaire-form">
                         <form method="POST" action="https://formspree.io/apardo04@gmail.com">

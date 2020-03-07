@@ -525,6 +525,9 @@ export default function Post() {
         #lead-overlay {
           background: rgba(32, 46, 64, 0.65);
         }
+        .blog-ul {
+          width: 480px;
+        }
       `}</style>
     </Layout>
   );

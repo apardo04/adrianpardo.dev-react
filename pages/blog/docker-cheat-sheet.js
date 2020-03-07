@@ -22,7 +22,7 @@ export default function Post() {
             <div className="lead">
                 <div id="lead-content">
                 <h1>{title}</h1>
-                <h2>Feb 27, 2020 • Cheat Sheet</h2>
+                <h2>Mar 7, 2020 • Cheat Sheet</h2>
                 </div>
                 <SeeMore href="#contents" />
                 <div id="lead-overlay"></div>
@@ -55,7 +55,7 @@ export default function Post() {
                     <p>
                         Here -t represents the name and tag of the image (example: 'name:tag'), and -f is the name and path to the Dockerfile.
                     </p>
-                    <h2 className="heading" tabIndex="0" id="docker-run">Docker run (Simple)</h2>
+                    <h2 className="heading" tabIndex="0" id="docker-run-simple">Docker run (Simple)</h2>
                     <p>
                         The <a href="https://docs.docker.com/engine/reference/run/" target="new" rel="noopener">docker run</a> command is used to run a container from an image.
                     </p>
@@ -156,6 +156,14 @@ export default function Post() {
                     <BlogImage identifier={identifier} image="docker-rm" />
                     <BlogImage identifier={identifier} image="docker-rm-2" />
 
+                    <p>
+                        To delete all containers, the following command can be used.
+                    </p>
+                    <p>
+                        <pre className="codeblock">{`  
+    $ docker rm $(docker ps -a -q)
+                        `}</pre>
+                    </p>
                     <h2 className="heading" tabIndex="0" id="docker-images">Docker images</h2>
                     <p>
                         To see a list of images present on the host machine, the <a href="https://docs.docker.com/engine/reference/commandline/images/" target="new" rel="noopener">docker images</a> command can be used.
@@ -183,7 +191,14 @@ export default function Post() {
                         All dependent containers must be stopped and deleted, before being allowed to delete the image.
                     </p>
                     <BlogImage identifier={identifier} image="docker-rmi" />
-
+                    <p>
+                        To delete all images, the following command can be used.
+                    </p>
+                    <p>
+                        <pre className="codeblock">{`  
+    $ docker rmi $(docker ps -a -q)
+                        `}</pre>
+                    </p>
                     <h2 className="heading" tabIndex="0" id="docker-pull">Docker pull</h2>
                     <p>
                         Earlier when the command 'docker run hello-world' was executed, the image had to be downloaded and then ran.
@@ -220,6 +235,7 @@ export default function Post() {
                     <p>
                         <a href="https://github.com/CloudNativeJS/docker" target="new" rel="noopener">Sample Dockerfile templates for building Dev, Debug, Test and Run images for your application</a>
                     </p>
+                    <p><a href="https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes" target="new" rel="noopener">How To Remove Docker Images, Containers, and Volumes</a></p>
 
                     <Disqus.DiscussionEmbed
                         shortname={disqusShortname}
@@ -231,6 +247,9 @@ export default function Post() {
                 .lead {
                     background: url("../../assets/images/${identifier}/docker.jpg");
                     background-size: cover;
+                }
+                .blog-ul {
+                    width: 260px;
                 }
         `}</style>
         </Layout>
