@@ -1,8 +1,6 @@
 import Layout from '../components/Layout'
 import SeeMore from '../components/SeeMore'
 import React, { useState } from 'react'
-import '../public/assets/css/bootstrap.min.css'
-import '../public/assets/css/styles.css'
 
 const HireMe = props => {
     const [other, toggleOther] = useState(false);

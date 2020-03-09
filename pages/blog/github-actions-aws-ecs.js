@@ -1,8 +1,6 @@
 import Layout from '../../components/Layout';
 import SeeMore from '../../components/SeeMore';
 import BlogImage from '../../components/BlogImage'
-import '../../public/assets/css/bootstrap.min.css'
-import '../../public/assets/css/styles.css'
 import Disqus from "disqus-react"
 
 export default function Post() {

@@ -1,7 +1,5 @@
 import { useRouter } from 'next/router';
 import Layout from '../../components/Layout';
-import '../../public/assets/css/bootstrap.min.css'
-import '../../public/assets/css/styles.css'
 
 export default function Post() {
   const router = useRouter();
