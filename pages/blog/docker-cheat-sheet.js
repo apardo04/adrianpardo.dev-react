@@ -41,197 +41,118 @@ export default function Post() {
                         <li className="contents-list"><a href="#useful-links">Useful Links</a></li>
                     </ul>
                     <h2 className="heading" tabIndex="0" id="docker-build">Docker build</h2>
-                    <p>
-                        The <a href="https://docs.docker.com/engine/reference/commandline/build/" target="new" rel="noopener">docker build</a> command can be used to create an image from an application.
-                    </p>
-                    <p>
-                        <pre className="codeblock">{`  
+                    <p>The <a href="https://docs.docker.com/engine/reference/commandline/build/" target="new" rel="noopener">docker build</a> command can be used to create an image from an application.</p>
+                    <p><pre className="codeblock">{`  
     $ docker build -t server_web_1 -f Dockerfile .
-                        `}</pre>
-                    </p>
-                    <p>
-                        Here -t represents the name and tag of the image (example: 'name:tag'), and -f is the name and path to the Dockerfile.
-                    </p>
+                        `}</pre></p>
+                    <p>The -t flag represents the name and tag of the image (example: 'name:tag'), and -f is the name and path to the Dockerfile.</p>
+                    
                     <h2 className="heading" tabIndex="0" id="docker-run-simple">Docker run (Simple)</h2>
-                    <p>
-                        The <a href="https://docs.docker.com/engine/reference/run/" target="new" rel="noopener">docker run</a> command is used to run a container from an image.
-                    </p>
-                    <p>
-                        <pre className="codeblock">{`  
+                    <p>The <a href="https://docs.docker.com/engine/reference/run/" target="new" rel="noopener">docker run</a> command is used to run a container from an image.</p>
+                    <p><pre className="codeblock">{`  
     $ docker run hello-world
-                        `}</pre>
-                    </p>
-                    <p>
-                        The "docker run hello-world" command will run an instance of the <a href="https://hub.docker.com/_/hello-world" target="new" rel="noopener"> official hello-world image</a> on the docker host if it already exists.
-                    </p>
-                    <p>
-                        If the image is not present on the host, it will go out to docker hub and pull the image, but this is only done the first time. For the subsequent executions the same image on the host will be reused.
-                    </p>
-                    <p>
-                        This is what the output looks like when the image is not already on the host:
-                    </p>
+                        `}</pre></p>
+                    <p>The "docker run hello-world" command will run an instance of the <a href="https://hub.docker.com/_/hello-world" target="new" rel="noopener"> official hello-world image</a> on the docker host if it already exists.</p>
+                    <p>If the image is not present on the host, it will go out to docker hub and pull the image, but this is only done the first time. For the subsequent executions the same image on the host will be reused.</p>
+                    <p>This is what the output looks like when the image is not already on the host:</p>
                     <BlogImage identifier={identifier} image="docker-run-hello-world" />
                     
                     <h2 className="heading" tabIndex="0" id="docker-run-advance">Docker run (Advance)</h2>
-                    <p>
-                        For this section, docker run will be executed on a web server.
-                    </p>
-                    <p>
-                        <pre className="codeblock">{`  
+                    <p>For this section, docker run will be executed on a web server.</p>
+                    <p><pre className="codeblock">{`  
     $ docker run -i -p 3000:8000 server_web_1
-                        `}</pre>
-                    </p>
-                    <p>
-                        The -i option stands for 'interactive', meaning STDIN will stay opened.
-                    </p>
-                    <p>
-                        The -p option is for publishing a containers port. Here, this maps port 8000 in the Docker image to port 3000 on the local machine.
-                    </p>
+                        `}</pre></p>
+                    <p>The -i flag stands for 'interactive', meaning STDIN will stay opened.</p>
+                    <p>The -p flag is for publishing a containers port. Here, this maps port 8000 in the Docker image to port 3000 on the local machine.</p>
                     <BlogImage identifier={identifier} image="docker-run-server_web" />
                     <p>
-                        To run the docker image as a background task the -d (detach) flag can be used rather than -i. This will keep the terminal available.
-                    </p>
-                    <p>
+                        To run the docker image as a background task the -d (detach) flag can be used rather than -i. This will keep the terminal available:
                         <pre className="codeblock">{`  
     $ docker run -d -p 3000:8000 server_web_1
                         `}</pre>
                     </p>
                     <BlogImage identifier={identifier} image="docker-run-d-server_web" />
+                    
                     <h2 className="heading" tabIndex="0" id="docker-ps">Docker ps</h2>
-                    <p>
-                        The <a href="https://docs.docker.com/engine/reference/commandline/ps/" target="new" rel="noopener">docker ps</a> command lists all running containers.
-                    </p>
-                    <p>
-                        <pre className="codeblock">{`  
+                    <p>The <a href="https://docs.docker.com/engine/reference/commandline/ps/" target="new" rel="noopener">docker ps</a> command lists all running containers.</p>
+                    <p><pre className="codeblock">{`  
     $ docker ps
-                        `}</pre>
-                    </p>
-                    <p>
-                        This command will also provide information about the running containers. Such as container ID, the image used to create the container, current status and a randomly generated name by Docker. In this example the name is "dreamy_hopper"
-                    </p>
+                        `}</pre></p>
+                    <p>This command will also provide information about the running containers. Such as container ID, the image used to create the container, current status and a randomly generated name by Docker. In this example the name is "dreamy_hopper"</p>
                     <BlogImage identifier={identifier} image="docker-ps" />
 
-                    <p>
-                        <pre className="codeblock">{`  
+                    <p><pre className="codeblock">{`  
     $ docker ps -a
-                        `}</pre>
-                    </p>
-                    <p>
-                        The docker ps -a command will output all running containers as well ass previously stopped or exited containers.
-                    </p>
+                        `}</pre></p>
+                    <p>The docker ps -a command will output all running containers as well ass previously stopped or exited containers.</p>
                     <BlogImage identifier={identifier} image="docker-ps-a" />
 
                     <h2 className="heading" tabIndex="0" id="docker-stop">Docker stop</h2>
-                    <p>
-                        To stop a running container use the docker stop command. Either the container ID or name must be provided. We can use the "ps" command to get the container ID or name.
-                    </p>
-                    <p>
-                        <pre className="codeblock">{`  
+                    <p>To stop a running container use the docker stop command. Either the container ID or name must be provided. We can use the "ps" command to get the container ID or name.</p>
+                    <p><pre className="codeblock">{`  
     $ docker stop dreamy_hopper
-                        `}</pre>
-                    </p>
-                    <p>
-                        If successful, the name or ID will be printed, like below:
-                    </p>
+                        `}</pre></p>
+                    <p>If successful, the name or ID will be printed, like below:</p>
                     <BlogImage identifier={identifier} image="docker-stop" />
-                    <p>
-                        Now when docker ps is ran, there will be no running containers.
-                    </p>
+                    <p>Now when docker ps is ran, there will be no running containers.</p>
                     <BlogImage identifier={identifier} image="docker-stop-ps" />
+                    
                     <h2 className="heading" tabIndex="0" id="docker-rm">Docker rm</h2>
-                    <p>
-                        To permanently remove a stopped or exited container, the <a href="https://docs.docker.com/engine/reference/commandline/rm/" target="new" rel="noopener">docker rm</a> command can be used.
-                    </p>
-                    <p>
-                        <pre className="codeblock">{`  
+                    <p>To permanently remove a stopped or exited container, the <a href="https://docs.docker.com/engine/reference/commandline/rm/" target="new" rel="noopener">docker rm</a> command can be used.</p>
+                    <p><pre className="codeblock">{`  
     $ docker rm dreamy_hopper
-                        `}</pre>
-                    </p>
-                    <p>
-                        If successful, the name or ID will be printed, like below:
-                    </p>
+                        `}</pre></p>
+                    <p>If successful, the name or ID will be printed, like below:</p>
                     <BlogImage identifier={identifier} image="docker-rm" />
                     <BlogImage identifier={identifier} image="docker-rm-2" />
 
                     <p>
-                        To delete all containers, the following command can be used.
-                    </p>
-                    <p>
+                        To delete all containers, the following command can be used:
                         <pre className="codeblock">{`  
     $ docker rm $(docker ps -a -q)
                         `}</pre>
                     </p>
+                    
                     <h2 className="heading" tabIndex="0" id="docker-images">Docker images</h2>
-                    <p>
-                        To see a list of images present on the host machine, the <a href="https://docs.docker.com/engine/reference/commandline/images/" target="new" rel="noopener">docker images</a> command can be used.
-                    </p>
-                    <p>
-                        <pre className="codeblock">{`  
+                    <p>To see a list of images present on the host machine, the <a href="https://docs.docker.com/engine/reference/commandline/images/" target="new" rel="noopener">docker images</a> command can be used.</p>
+                    <p><pre className="codeblock">{`  
     $ docker images
-                        `}</pre>
-                    </p>
-                    <p>
-                        This command will also provide information about the image size, tag and creation date. The output below shows that the host has three saved images. 
-                    </p>
+                        `}</pre></p>
+                    <p>This command will also provide information about the image size, tag and creation date. The output below shows that the host has three saved images. </p>
                     <BlogImage identifier={identifier} image="docker-images" />
 
                     <h2 className="heading" tabIndex="0" id="docker-rmi">Docker rmi</h2>
-                    <p>
-                        The <a href="https://docs.docker.com/engine/reference/commandline/rmi/" target="new" rel="noopener">docker rmi</a> command can be used to remove an image that will no longer be used.
-                    </p>
-                    <p>
-                        <pre className="codeblock">{`  
+                    <p>The <a href="https://docs.docker.com/engine/reference/commandline/rmi/" target="new" rel="noopener">docker rmi</a> command can be used to remove an image that will no longer be used.</p>
+                    <p><pre className="codeblock">{`  
     $ docker rmi
-                        `}</pre>
-                    </p>
-                    <p>
-                        All dependent containers must be stopped and deleted, before being allowed to delete the image.
-                    </p>
+                        `}</pre></p>
+                    <p>All dependent containers must be stopped and deleted, before being allowed to delete the image.</p>
                     <BlogImage identifier={identifier} image="docker-rmi" />
-                    <p>
-                        To delete all images, the following command can be used.
-                    </p>
-                    <p>
+                    <p>To delete all images, the following command can be used:
                         <pre className="codeblock">{`  
     $ docker rmi $(docker ps -a -q)
                         `}</pre>
                     </p>
+
                     <h2 className="heading" tabIndex="0" id="docker-pull">Docker pull</h2>
-                    <p>
-                        Earlier when the command 'docker run hello-world' was executed, the image had to be downloaded and then ran.
-                    </p>
-                    <p>
-                        But, what if all that was required was to download the image? The <a href="https://docs.docker.com/engine/reference/commandline/pull/" target="new" rel="noopener">docker pull</a> command can be used.
-                    </p>
-                    <p>
-                        <pre className="codeblock">{`  
+                    <p>Earlier when the command 'docker run hello-world' was executed, the image was downloaded and then ran.</p>
+                    <p>To download an image but not run it, the <a href="https://docs.docker.com/engine/reference/commandline/pull/" target="new" rel="noopener">docker pull</a> command can be used.</p>
+                    <p><pre className="codeblock">{`  
     $ docker pull hello-world
-                        `}</pre>
-                    </p>
-                    <p>
-                        By running this command, there is no "Hello from Docker !" output. Just download information.
-                    </p>
+                        `}</pre></p>
+                    <p>By running this command, there is no "Hello from Docker !" output. Just information about the download.</p>
                     <BlogImage identifier={identifier} image="docker-pull" />
 
                     <h2 className="heading" tabIndex="0" id="docker-exec">Docker exec</h2>
-                    <p>
-                        To run a command on a running container the <a href="https://docs.docker.com/engine/reference/commandline/exec/" target="new" rel="noopener">docker exec</a> command can be used.
-                    </p>
-                    <p>
-                        <pre className="codeblock">{`  
+                    <p>To run a command on a running container the <a href="https://docs.docker.com/engine/reference/commandline/exec/" target="new" rel="noopener">docker exec</a> command can be used.</p>
+                    <p><pre className="codeblock">{`  
     $ docker exec server_web_1 cat /etc/hosts
-                        `}</pre>
-                    </p>
-                    <p>
-                        This command will print the contents of the 'hosts' file, inside the running container 'server_web_1'.
-                    </p>
-
+                        `}</pre></p>
+                    <p>This command will print the contents of the 'hosts' file, inside the running container 'server_web_1'.</p>
                     <BlogImage identifier={identifier} image="docker-exec" />
 
                     <h2 className="heading" tabIndex="0" id="useful-links">Useful Links</h2>
-                    <p>
-                        <a href="https://github.com/CloudNativeJS/docker" target="new" rel="noopener">Sample Dockerfile templates for building Dev, Debug, Test and Run images for your application</a>
-                    </p>
+                    <p><a href="https://github.com/CloudNativeJS/docker" target="new" rel="noopener">Sample Dockerfile templates for building Dev, Debug, Test and Run images for your application</a></p>
                     <p><a href="https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes" target="new" rel="noopener">How To Remove Docker Images, Containers, and Volumes</a></p>
 
                     <Disqus.DiscussionEmbed

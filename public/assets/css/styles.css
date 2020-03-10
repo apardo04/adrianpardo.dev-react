@@ -249,7 +249,7 @@ a.lead-download-btn:hover #lead-arrow {
     text-align: left;
     list-style: upper-roman;
 }
-.info-blog p {
+.info-blog div, .info-blog p {
     margin-bottom: 50px;
 }
 .codeblock {
