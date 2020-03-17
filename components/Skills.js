@@ -10,7 +10,7 @@ const SkillsList = (props) => {
         <li className="skill" key={item}>{item}</li>
     )
     return (
-        <ul>
+        <ul id={props.filter}>
             {listItems}
         </ul>
     )

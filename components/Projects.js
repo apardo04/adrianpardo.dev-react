@@ -49,7 +49,7 @@ const Projects = props => {
                     </div>
                 </div>
                 { moreProjects ? 
-                    <React.Fragment>
+                    <div id="hidden-projects">
                         <div className="row project-block">
                             <div className="col-md-4">
                                 <h3>Lacayo Law Firm</h3>
@@ -126,7 +126,7 @@ const Projects = props => {
                                 <img src="/assets/images/mineforcharity.jpg" alt="Mine For Charity Screenshot"/>
                             </div>
                         </div>
-                    </React.Fragment>
+                    </div>
                 : 
                     <span className="heading" id="show-more-projects" onClick={() => showMoreProjects(true)}>Show More Projects..</span> 
                 }

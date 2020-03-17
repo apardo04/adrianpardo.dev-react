@@ -5,8 +5,8 @@ const typingAnimation = (el, toRotate, period) => {
     let loopNum = 0;
     period = parseInt(period, 10) || 2000;
     let txt = '';
-    tick(el, toRotate, period, loopNum, txt, isDeleting);
     let isDeleting = false;
+    tick(el, toRotate, period, loopNum, txt, isDeleting);
 }
 
 const tick = (el, toRotate, period, loopNum, txt, isDeleting, props) => {
