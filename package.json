@@ -1,7 +1,7 @@
 {
   "name": "adrianpardo.dev",
   "scripts": {
-    "test": "jest --watch",
+    "test": "jest --watchAll",
     "dev": "node server.js",
     "build": "next build",
     "start": "next start -p 8000",
