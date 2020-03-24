@@ -1,3 +1,5 @@
-My Personal Portfolio
+My Personal Portfolio: [https://adrianpardo.dev](https://adrianpardo.dev)
 
-Built with Next and React
+Built with Next.js and React
+
+
