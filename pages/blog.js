@@ -6,6 +6,8 @@ const Blog = props => (
             <div className="container">
                 <h2 className="heading" tabIndex="0">Blog</h2>
                 <div className="info text-left">
+                    <h3 className=""><a href="blog/nextjs-testing-library">How To Test Next.js Apps With Testing Library & Jest</a></h3>
+                    <div className="small-text">March 24, 2020 • Guide</div>
                     <h3 className=""><a href="blog/docker-cheat-sheet">Docker Commands Cheat Sheet</a></h3>
                     <div className="small-text">March 7, 2020 • Cheat Sheet</div>
                     <h3 className=""><a href="blog/github-actions-aws-ecs">CI/CD Github Actions to AWS ECR/ECS</a></h3>

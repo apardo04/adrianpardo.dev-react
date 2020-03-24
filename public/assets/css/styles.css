@@ -249,6 +249,9 @@ a.lead-download-btn:hover #lead-arrow {
     text-align: left;
     list-style: upper-roman;
 }
+.info-blog .useful-links {
+    margin-bottom: 20px;
+}
 .info-blog div, .info-blog p {
     margin-bottom: 50px;
 }
@@ -256,6 +259,9 @@ a.lead-download-btn:hover #lead-arrow {
     text-align: left;
     background-color: var(--altBlue);
     border: 1px solid #a9b0b3;
+}
+div#disqus_thread {
+    margin-top: 50px;
 }
 /*
     -------------------------------

@@ -359,7 +359,8 @@ export default function Post() {
           <p>Click on the task it self that has a status "RUNNING"</p>
           <p>Look in the "Network" section for a "Public IP", copy and paste that IP into your web browser and you should see the application running and talking to the database (meaning you're recieving fortunes), like below:</p>
           <BlogImage identifier={identifier} image="application-running" />
-
+          <p>Didn't get the same result? Stuck? Or want to discuss? Leave a message in the <a href="#disqus_thread">Disqus Thread</a> or message me on <a href="https://twitter.com/apardo04" target="new" rel="noopener">Twitter</a>.</p>
+          
           <Disqus.DiscussionEmbed
             shortname={disqusShortname}
             config={disqusConfig}
