@@ -4,7 +4,7 @@ const SkillsList = (props) => {
     const skills = {
         "web" : ["React", "Next.js", "Python", "Flask", "MySQL", "SEO", "Bootstrap","jQuery","Wordpress","Wix","MongoDB","Node","Linux","Nginx","Apache","Amazon Web Services","Git","Client-side Optimization", "Tailwind.css", "Ant Design", "Responsive Design","UX/UI", "Illustrator/Photoshop"]
         ,"ecommerce" : ["Miva Merchant","Wordpress","Woocommerce", "UX/UI", "Client-side Optimization","E-Mail Marketing","PCI DSS","Illustrator/Photoshop"]   
-        ,"operations" : ["AWS","ECR/ECS","EC2","Github Actions CI/CD","Docker","Minikube","Python","MySQL","MongoDB","Linux","Git","Selenium"]
+        ,"operations" : ["AWS","Github Actions CI/CD","Linux","Docker","Minikube","ECR/ECS","EC2","Python","MySQL","MongoDB","Git","Selenium"]
     }
     const listItems = skills[props.filter].map((item) => 
         <li className="skill" key={item}>{item}</li>
