@@ -28,7 +28,9 @@ test('Skills Click is working', () => {
     fireEvent.click(getByText(/Operations/i));
     expect(document.getElementById("operations")).toBeInTheDocument();
 });
-
+test('fail test', () => {
+  expect(true).toBeFalsy()
+});
 /*describe('With React Testing Library Snapshot', () => {
   it('Should match Snapshot', () => {
     const { asFragment } = render(<App />)

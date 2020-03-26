@@ -5,7 +5,29 @@ on:
     branches: [ master ]
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Setup Node ${{ matrix.node-version }}
+      uses: actions/setup-node@master
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install
+      run: npm install
+    - name: npm test
+      run: CI=true npm test
+      env:
+        CI: true
+        
   ssh-deployment:
+    needs: test
     runs-on: ubuntu-latest
 
     strategy:
@@ -22,6 +44,4 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd /var/www/adrianpardo.dev-react/
-            git pull
-            npm run build
-            pm2 restart adrianpardo.dev
+            ls -la
