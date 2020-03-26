@@ -1,1 +1,5 @@
 stop tick() calls on new useEffect()
+
+git pull permission issue with remote ssh
+make ssh-deployment.yml only run if nodejs.yml is successfull
+rename nodejs.yml
