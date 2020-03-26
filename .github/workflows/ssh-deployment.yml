@@ -44,4 +44,7 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd /var/www/adrianpardo.dev-react/
-            ls -la
+            git pull
+            npm install --only=prod
+            npm run build
+            pm2 restart adrianpardo.dev
