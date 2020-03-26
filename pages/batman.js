@@ -25,7 +25,7 @@ const Blog = props => (
                                 </li>
                             ))}
                         </ul>
-                        <h1>Blogs</h1>
+                        <h1>Test Blog URLs</h1>
                         <ul>
                             <PostLink id="hello-nextjs" title="Hello Next.js" />
                             <PostLink id="learn-nextjs" title="Learn Next.js is awesome" />
