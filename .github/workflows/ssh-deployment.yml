@@ -62,3 +62,4 @@ jobs:
         uses: paramt/url-checker@master
         with:
           files: "README.md"
+          blacklist: "https://github.com/apardo04/adrianpardo.dev-react/workflows/Remote%20SSH%20Deployment/badge.svg"
