@@ -48,3 +48,9 @@ jobs:
             npm install --only=prod
             npm run build
             pm2 restart adrianpardo.dev
+
+    steps:
+      - name: Check URL
+        uses: paramt/url-checker@master
+        with:
+          files: "README.md"
