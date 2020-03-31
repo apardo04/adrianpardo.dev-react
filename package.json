@@ -11,9 +11,9 @@
     "disqus-react": "^1.0.7",
     "express": "^4.16.4",
     "isomorphic-unfetch": "^3.0.0",
-    "next": "^9.3.0",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
+    "next": "^9.3.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-ga": "^2.5.7"
   },
   "devDependencies": {
