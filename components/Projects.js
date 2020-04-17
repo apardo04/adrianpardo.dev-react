@@ -26,7 +26,7 @@ const Projects = props => {
                         </div>
                     </div>
                     <div className="col-md-8">
-                        <img src="/assets/images/stockportfolio.jpg" alt="Lacayo Law Firm Screenshot"/>
+                        <img src="/assets/images/projects/stockportfolio.jpg" alt="Lacayo Law Firm Screenshot"/>
                     </div>
                 </div>
                 <div className="row project-block">
@@ -45,7 +45,7 @@ const Projects = props => {
                         </div>
                     </div>
                     <div className="col-md-8">
-                        <img src="/assets/images/knightscode.jpg" alt="The Knights Code Screenshot"/>
+                        <img src="/assets/images/projects/knightscode.jpg" alt="The Knights Code Screenshot"/>
                     </div>
                 </div>
                 { moreProjects ? 
@@ -68,7 +68,7 @@ const Projects = props => {
                                 </div>
                             </div>
                             <div className="col-md-8">
-                                <img src="/assets/images/lacayolawfirm.jpg" alt="Lacayo Law Firm Screenshot"/>
+                                <img src="/assets/images/projects/lacayolawfirm.jpg" alt="Lacayo Law Firm Screenshot"/>
                             </div>
                         </div> 
                         <div className="row project-block">
@@ -87,7 +87,7 @@ const Projects = props => {
                                 </div>
                             </div>
                             <div className="col-md-8">
-                                <img src="/assets/images/awakenatman.jpg" alt="Awaken Atman Screenshot"/>
+                                <img src="/assets/images/projects/awakenatman.jpg" alt="Awaken Atman Screenshot"/>
                             </div>
                         </div>
                         <div className="row project-block">
@@ -104,7 +104,7 @@ const Projects = props => {
                                 </div>
                             </div>
                             <div className="col-md-8">
-                                <img src="/assets/images/letsgocoo.jpg" alt="Let's Go Coo Screenshot"/>
+                                <img src="/assets/images/projects/letsgocoo.jpg" alt="Let's Go Coo Screenshot"/>
                             </div>
                         </div>
                         <div className="row project-block">
@@ -123,7 +123,7 @@ const Projects = props => {
                                 </div>
                             </div>
                             <div className="col-md-8">
-                                <img src="/assets/images/mineforcharity.jpg" alt="Mine For Charity Screenshot"/>
+                                <img src="/assets/images/projects/mineforcharity.jpg" alt="Mine For Charity Screenshot"/>
                             </div>
                         </div>
                     </div>

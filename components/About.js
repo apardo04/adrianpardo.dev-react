@@ -8,14 +8,19 @@ const About = props => {
                 <div className="row">
                     <div className="col-md-4">
                         <h2 className="heading" tabIndex="0">About Me</h2>
+                        <div>
+                            <a href="https://www.certmetrics.com/amazon/public/badge.aspx?i=9&t=c&d=2020-04-16&ci=AWS00734694" target="_blank" rel="noopener">
+                                <img className="cert" src="../assets/images/aws-certified-cloud-practitioner.png" />
+                            </a>
+                        </div>
                     </div>
                     <div className="col-md-8">
                     <p>
                         I'm an experienced full stack web developer based in Miami, Fl.<br />
                         Currently working as a web developer for <a href="https://globalrose.com" target="_blank" rel="noopener">Globalrose.com LLC.</a><br /><br />
                         I have developed, launched, and maintained <a href="#projects">multiple projects</a> from scratch.<br /><br />
-                        Some of my strongest <a href="#skills">skills</a> include E-Commerce development, web frameworks & object oriented programming.<br /><br />
-                        I'm always looking to collaborate on interesting projects. Need a developer? - <Link href="/hire-me"><a className="underline-yellow">contact me</a></Link>
+                        Some of my strongest <a href="#skills">skills</a> include E-Commerce development, web frameworks, cloud development & object oriented programming.<br /><br />
+                        I'm always looking to collaborate on interesting projects. Need a developer? - <Link href="#contact"><a className="underline-yellow">contact me</a></Link>
                     </p>
                     </div>
                 </div>
@@ -27,17 +32,26 @@ const About = props => {
                             <h3>Florida International University</h3>
                             <h4>Bachelor of Science in Computer Science</h4>
                         </div>
-                        {/*  End .education-block */}  
-                
                         <div className="education-block">
                             <h3>Miami Dade College</h3>
                             <h4>Associates in Arts Music Business: Music Production</h4>
-                        </div>
-                        {/*  End .education-block */}  
+                        </div>    
+             
                     </div>
                 </div>
             </div>
             <SeeMore href="#projects" />
+            <style jsx>{`
+                .cert {
+                    width: 45%;
+                }
+                @media only screen and (max-width: 768px) {
+                    .cert {
+                        width: 60%;
+                        margin-bottom: 50px;
+                    }
+                }
+            `}</style>
         </div>
     )
 }
