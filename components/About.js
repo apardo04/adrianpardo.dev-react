@@ -9,7 +9,7 @@ const About = props => {
                     <div className="col-md-4">
                         <h2 className="heading" tabIndex="0">About Me</h2>
                         <div>
-                            <a href="https://www.certmetrics.com/amazon/public/badge.aspx?i=9&t=c&d=2020-04-16&ci=AWS00734694" target="_blank" rel="noopener">
+                            <a href="https://www.youracclaim.com/badges/a88f8719-21de-49fd-b869-fcd470ccb18d/public_url" target="_blank" rel="noopener">
                                 <img className="cert" src="../assets/images/aws-certified-cloud-practitioner.png" />
                             </a>
                         </div>
