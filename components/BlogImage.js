@@ -3,7 +3,7 @@ const BlogImage = props => {
     return(
         <div>
             <a href={imgUrl} target="new">
-                <img src={imgUrl} className="yellow-border-image" alt={props.identifier} />
+                <img src={imgUrl} className="yellow-border-image" alt={props.identifier + " " + props.image} />
             </a>
         </div>
     )
