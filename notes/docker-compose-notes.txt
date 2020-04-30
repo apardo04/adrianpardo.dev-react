@@ -3,3 +3,7 @@ https://stackoverflow.com/questions/43957259/run-multiple-docker-compose
 docker-compose -p adrianpardo-dev up -d
 
 https://stackoverflow.com/questions/42302632/docker-compose-continuous-deployment-setup
+
+
+Connect AWS ECR to docker CLI
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 848358406428.dkr.ecr.us-east-1.amazonaws.com
