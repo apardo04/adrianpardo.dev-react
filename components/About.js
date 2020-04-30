@@ -19,7 +19,7 @@ const About = props => {
                         I'm an experienced full stack web developer based in Miami, Fl.<br />
                         Currently working as a web developer for <a href="https://globalrose.com" target="_blank" rel="noopener">Globalrose.com LLC.</a><br /><br />
                         I have developed, launched, and maintained <a href="#projects">multiple projects</a> from scratch.<br /><br />
-                        Some of my strongest <a href="#skills">skills</a> include E-Commerce development, web frameworks, cloud development & object oriented programming.<br /><br />
+                        Some of my strongest <a href="#skills">skills</a> include E-Commerce development, web frameworks & cloud development.<br /><br />
                         I'm always looking to collaborate on interesting projects. Need a developer? - <Link href="#contact"><a className="underline-yellow">contact me</a></Link>
                     </p>
                     </div>
