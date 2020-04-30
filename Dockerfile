@@ -5,7 +5,7 @@ FROM node:alpine
 WORKDIR /usr/app
 
 # Install PM2 globally
-RUN npm install --global pm2
+#RUN npm install --global pm2
 
 # Copy package.json and package-lock.json before other files
 # Utilise Docker cache to save re-installing dependencies if unchanged
@@ -25,7 +25,8 @@ EXPOSE 8000
 
 # Run container as non-root (unprivileged) user
 # The node user is provided in the Node.js Alpine base image
-USER node
+#USER node
 
-# Run npm start script with PM2 when container starts
-CMD [ "pm2-runtime", "npm", "--", "start" ]
+# Run npm start script when container starts
+#CMD [ "pm2-runtime", "npm", "--", "start" ]
+CMD [ "npm", "start" ]

@@ -26,9 +26,6 @@ How You deploy a new version on server:
 Initial Deploy:
     pm2 start npm --name "adrianpardo.dev-next9" -- start
     pm2 start npm --name StockApp -- run start2
-
-issues after next9 update:
-    going directly to a page thats not homepage, doesnt load css
     
 
 https://steveholgado.com/nginx-for-nextjs/

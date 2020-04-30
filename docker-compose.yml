@@ -1,0 +1,8 @@
+version: "3"
+services:
+  web:
+    #build: .
+    image: 848358406428.dkr.ecr.us-east-1.amazonaws.com/adrianpardo.dev:latest
+    restart: always
+    ports:
+        - "8000:8000"
