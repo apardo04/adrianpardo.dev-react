@@ -1,8 +1,15 @@
 version: "3"
 services:
   web:
-    #build: .
-    image: 848358406428.dkr.ecr.us-east-1.amazonaws.com/adrianpardo.dev:latest
+    build: .
+    #image: 848358406428.dkr.ecr.us-east-1.amazonaws.com/adrianpardo.dev:latest
     restart: always
+    volumes:
+      # Required to sync file changes.
+      - .:/usr/app
+      # Required to not break node modules.
+      - /usr/app/node_modules
+      # Required for next.js to do it's thing.
+      - /usr/app/.next
     ports:
         - "8000:8000"

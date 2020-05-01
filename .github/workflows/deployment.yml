@@ -29,7 +29,6 @@ jobs:
 
   ecr:
     needs: test
-    name: Push to ECR
     runs-on: ubuntu-latest
 
     steps:
