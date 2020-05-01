@@ -56,3 +56,40 @@ jobs:
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:latest"
+
+  ssh-deployment:
+    needs: ecr
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: SSH Deployment
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          debug: true
+          script_stop: true
+          script: |
+            export NVM_DIR=~/.nvm
+            source ~/.nvm/nvm.sh
+            cd /var/www/adrianpardo.dev-react/
+            git pull
+            npm install --only=prod
+            npm run build
+            docker-compose pull
+            docker-compose stop
+            docker-compose rm -f
+            docker-compose up -d
+
+  url-checker:
+    needs: ssh-deployment
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check URL
+        uses: paramt/url-checker@master
+        with:
+          files: "README.md"
+          blacklist: "https://github.com/apardo04/adrianpardo.dev-react/workflows/Remote%20SSH%20Deployment/badge.svg"
