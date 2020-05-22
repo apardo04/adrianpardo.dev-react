@@ -84,13 +84,17 @@ jobs:
             docker-compose rm -f
             docker-compose up -d
 
-  url-checker:
+  load-test:
     needs: ssh-deployment
     runs-on: ubuntu-latest
-
     steps:
-      - name: Check URL
-        uses: paramt/url-checker@master
+      - name: Simple Load Test
+        uses: apardo04/locust-github-action@master
         with:
-          files: "README.md"
-          blacklist: "https://github.com/apardo04/adrianpardo.dev-react/workflows/Remote%20SSH%20Deployment/badge.svg"
+          LOCUSTFILE: "locustfile.py"
+          URL:  "https://adrianpardo.dev"
+          USERS: "5"
+          RATE: "5"
+          RUNTIME: "5s"
+
+

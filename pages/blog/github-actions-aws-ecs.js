@@ -48,6 +48,7 @@ export default function Post() {
             For this project we have two containers, one for the React application and the other for MongoDB.
           </p>
           <p>For our production cloud environment we will be using AWS ECR and ECS.</p>
+          <p>*This guide uses the AWS Web GUI. If I were to do this today I would lean more towads AWS CLI. But none the less it was a good way for me to learn the material and maybe for you too.</p>
 
           <h2 className="heading" tabIndex="0" id="docker-compose">Docker Compose</h2>
           <p>To get the local docker-compose environment running, there are a few steps to take.</p>
