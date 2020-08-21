@@ -9,9 +9,7 @@ const About = props => {
                     <div className="col-md-4">
                         <h2 className="heading" tabIndex="0">About Me</h2>
                         <div>
-                            <a href="" target="_blank" rel="noopener">
-                                <img className="cert" id="nike-cert" src="../assets/images/2020-nike-intern-logo.png" />
-                            </a>
+                            <img className="cert" id="nike-cert" src="../assets/images/2020-nike-intern-logo.png" />
                         </div>
                         <div>
                             <a href="https://www.youracclaim.com/badges/a88f8719-21de-49fd-b869-fcd470ccb18d/public_url" target="_blank" rel="noopener">
