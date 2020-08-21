@@ -1,2 +1,1 @@
 stop tick() calls on new useEffect()
-ADD: git reset --hard to SSH deployment. This is for merge conflict with package-lock.json when updating packages
