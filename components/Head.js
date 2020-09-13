@@ -2,7 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import { string } from 'prop-types'
 
-const defaultDescription = 'Hello, I am a freelance fullstack web developer and software enginner that can help you build your site from the ground up. I offer services such as SEO, E-Commerce, website hosting, web design, web development, ADA Assesibility Compliance and more'
+const defaultDescription = 'Hello, I am a fullstack web developer and software enginner that can help you build your site from the ground up. I offer services such as SEO, E-Commerce, website hosting, web design, web development, ADA Assesibility Compliance and more'
 const defaultOGImage = '../assets/images/favicon/android-chrome-512x512.png'
 const siteName = "<Adrian Pardo/> Fullstack Developer | Software Engineer"
 

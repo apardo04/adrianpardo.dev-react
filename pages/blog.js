@@ -1,7 +1,7 @@
 import Layout from '../components/Layout'
 
 const Blog = props => ( 
-    <Layout page="blog" title="Blog &lt;Adrian Pardo/&gt; Freelance Fullstack Web Developer"> 
+    <Layout page="blog" title="Blog &lt;Adrian Pardo/&gt; Fullstack Web Developer"> 
         <div className="info-container-2 text-center" id="blog">
             <div className="container">
                 <h2 className="heading" tabIndex="0">Blog</h2>

@@ -17,7 +17,7 @@ const Nav = props => {
           <ul id="menu">
               <li>
               {props.page != "index" &&
-                <Link href="/index">
+                <Link href="/">
                   <a tabIndex="0" className="hover-border prevent-default">Home</a>
                 </Link>
               }
@@ -28,7 +28,7 @@ const Nav = props => {
                   </Link>
               </li>
               <li>
-                <Link href="/index#projects">
+                <Link href="/#projects">
                   <a tabIndex="0" className="hover-border prevent-default">Projects</a>
                 </Link>
               </li>

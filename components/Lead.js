@@ -60,7 +60,7 @@ const Lead = (props) => {
         <div className="lead">
             <div id="lead-content">
                 <h1>ADRIAN PARDO</h1>
-                <h2 id="typewrite" className="typewrite" data-period="2000" data-type='[ "FullStack Developer", "Software Engineer", "FullStack Developer | Software Engineer" ]'>
+                <h2 id="typewrite" className="typewrite" data-period="2000" data-type='["Software Engineer", "FullStack Developer", "Software Engineer | FullStack Developer"]'>
                     <span className="wrap"></span>
                 </h2>
                 <a href="#projects" className="lead-download-btn">
