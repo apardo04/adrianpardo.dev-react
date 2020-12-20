@@ -10,7 +10,7 @@ const Footer = () => (
             <div className="row">
                 <div className="col-sm-5 copyright">
                     <p>
-                        Copyright &copy; 2020 Adrian Pardo
+                        Copyright &copy; 2021 Adrian Pardo
                     </p>
                 </div>
                 <div className="col-sm-2 top">

@@ -12,7 +12,7 @@ const Nav = props => {
       <nav onClick={() => toggleMobileMenu(!mobileMenu)} className={ mobileMenu ? "active" : undefined }>
         {/* End #mobile-menu-toggle */}
         <div id="mobile-menu-close">
-              <span>Close</span><i className="fa fa-times" aria-hidden="true"></i>
+              <span id="mobile-close">Close</span><i className="fa fa-times" aria-hidden="true"></i>
           </div>
           <ul id="menu">
               <li>
@@ -110,6 +110,9 @@ const Nav = props => {
         .hover-border:hover:after {
             -webkit-transform: scale(1);
             transform: scale(1);
+        }
+        #mobile-close {
+          margin-right:5px;
         }
         #mobile-menu-open {
             display: none;

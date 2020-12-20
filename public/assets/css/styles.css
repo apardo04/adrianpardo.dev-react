@@ -104,9 +104,6 @@ ul.small {
 .background-alt {
     background: var(--altBlue);
 }
-.padding-top {
-    padding-top: 65px;
-}
 .text-left {
     text-align: left;
 }
@@ -518,6 +515,9 @@ label {
     }
     .yellow-border-image {
         max-width: 100%;
+    }
+    .padding-top-25 {
+        padding-top: 25px;
     }
 }
 @media only screen and (max-width: 768px) {

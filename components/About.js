@@ -26,13 +26,13 @@ const About = props => {
                     </p>
                     </div>
                 </div>
-                <div className="row padding-top">
+                <div className="row padding-top-25">
                     <div className="col-md-4">
                     </div>
                     <div className="col-md-8">
                         <div className="education-block">
                             <h3>Florida International University</h3>
-                            <h4>Bachelor of Science in Computer Science</h4>
+                            <h4>Bachelor of Arts in Computer Science</h4>
                         </div>
                         <div className="education-block">
                             <h3>Miami Dade College</h3>
