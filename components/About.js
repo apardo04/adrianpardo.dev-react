@@ -21,8 +21,8 @@ const About = props => {
                         <p id="about-text">
                             I'm an experienced software engineer based in Miami, Fl.<br /><br />
                             I have developed, launched, and maintained <a href="#projects">multiple projects</a> from scratch.<br /><br />
-                            Some of my strongest <a href="#skills">skills</a> include web development, cloud computing & e-commerce.<br /><br />
-                            I'm always looking to collaborate on interesting projects. Need a developer? - <Link href="#contact"><a className="underline-yellow">contact me</a></Link>
+                            Some of my strongest <a href="#skills">skills</a> include cloud computing, web development & e-commerce.<br /><br />
+                            Although I'm not currently looking for any new opportunities, my inbox is always open. Whether you have a question or just want to chat. - <Link href="#contact"><a className="underline-yellow">contact me</a></Link>
                         </p>
                         <div className="education-block">
                             <h3>Florida International University</h3>

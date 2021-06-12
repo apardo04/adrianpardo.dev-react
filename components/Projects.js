@@ -18,7 +18,7 @@ const Projects = props => {
                             <span className="slash"> / </span>
                             <span className="neon-blue">Next.js</span>
                         </p>
-                        <p className="project-description">Full Stack App made for stock/investment portfolio management. Implemented REST API and user authentication.</p>
+                        <p className="project-description">A web app for stock portfolio management. Add stocks, remove stocks, get recent news and detailed information about each stock. <br></br>MySQL, REST API, User Authentication, IEX API.</p>
                         <div className="project-url-container">
                             <a href="https://stockify.app"  target="_blank" rel="noopener" tabIndex="0"><span className="project-url underline-yellow">See it live</span></a>
                             <span className="project-url yellow"> | </span>    
