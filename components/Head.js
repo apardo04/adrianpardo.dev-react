@@ -2,9 +2,9 @@ import React from 'react'
 import Head from 'next/head'
 import { string } from 'prop-types'
 
-const defaultDescription = 'Full Stack Web Developer, Software Engineer'
+const defaultDescription = 'Software Engineer, Site Reliability Engineer, Web Developer'
 const defaultOGImage = '../assets/images/favicon/android-chrome-512x512.png'
-const siteName = "<Adrian Pardo/> Fullstack Developer | Software Engineer"
+const siteName = "<Adrian Pardo/> Software Engineer | SRE | Web Developer"
 
 const Header = props => (
   <Head>
