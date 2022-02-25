@@ -182,12 +182,6 @@ export default function Post() {
                 .blog-ul {
                     width: 360px;
                 }
-                .breakdown-ul {
-                    text-align: left;
-                }
-                .breakdown-ul li {
-                    margin-bottom: 10px;
-                }
              `}</style>
         </Layout>
     )
