@@ -1,6 +1,5 @@
 import Layout from '../../components/Layout';
 import SeeMore from '../../components/SeeMore';
-import BlogImage from '../../components/BlogImage'
 import Disqus from "disqus-react"
 
 export default function Post() {
@@ -19,7 +18,7 @@ export default function Post() {
             <div className="lead">
                 <div id="lead-content">
                 <h1>{title}</h1>
-                <h2>Feb 25, 2022 • Guide</h2>
+                <h2>Mar 1, 2022 • Guide</h2>
                 </div>
                 <SeeMore href="#contents" />
                 <div id="lead-overlay"></div>
@@ -31,20 +30,19 @@ export default function Post() {
                         <ul className="blog-ul">
                             <li className="contents-list"><a href="#cloud-certificate">Cloud Certificate</a></li>
                             <li className="contents-list"><a href="#operating-systems">Operating Systems</a></li>
+                            <li className="contents-list"><a href="#networking">Networking</a></li>
                             <li className="contents-list"><a href="#docker">Docker</a></li>
                             <li className="contents-list"><a href="#terraform">Terraform</a></li>
                             <li className="contents-list"><a href="#ci-cd">CI/CD</a></li>
                             <li className="contents-list"><a href="#monitoring-logging-alerting">Monitoring, Logging, Alerting</a></li>
-                            <li className="contents-list"><a href="#networking">Networking</a></li>
                             <li className="contents-list"><a href="#programming-language">Programming Language</a></li>
                             <li className="contents-list"><a href="#sre-interview">The Interview - How to Prepare</a></li>
-                            <li className="contents-list"><a href="#interview">Resources</a></li>
                         </ul>
                     </div>
 
                     <div>
                         <h2 className="heading" tabIndex="0" id="cloud">Cloud Certificate</h2>
-                        <p>If you don't have a Cloud Certificate yet, I would recomend either the <a href="https://aws.amazon.com/certification/certified-cloud-practitioner/?ch=cta&cta=header&p=2" target="new" rel="noopener">AWS Certified Cloud Practitioner</a> or <a href="https://docs.microsoft.com/en-us/learn/certifications/azure-fundamentals/" target="new" rel="noopener">Microsoft Certified: Azure Fundamentals</a> exams. These are the intro level certificates for each cloud service. Having one of these will definitely help your chances of landing an interview.</p>
+                        <p>If you don't have a Cloud Certificate yet, I would recommend either the <a href="https://aws.amazon.com/certification/certified-cloud-practitioner/?ch=cta&cta=header&p=2" target="new" rel="noopener">AWS Certified Cloud Practitioner</a> or <a href="https://docs.microsoft.com/en-us/learn/certifications/azure-fundamentals/" target="new" rel="noopener">Microsoft Certified: Azure Fundamentals</a> exams. These are the intro level certificates for each cloud service. Having one of these will definitely help your chances of landing an interview.</p>
                         <h3 className="blog-heading yellow-border white">Study Material</h3>
                         <p>
                             <ul className="breakdown-ul">
@@ -55,26 +53,35 @@ export default function Post() {
                                 <li><a href="https://explore.skillbuilder.aws/learn/public/learning_plan/view/82/cloud-foundations-learning-plan?cta=lacp_topbanner" target="new" rel="noopener">Official AWS Cloud Foundations Learning Plan</a></li>
                             </ul>
                         </p>
+                        <p>While studying I highly recommend you create an account and follow along. All the public cloud providers provide some free services or free credits to get you started.</p>
                     </div>
                     <div>
-                        <h2 className="heading" tabIndex="0" id="operaing-systems">Operating Systems</h2>
+                        <h2 className="heading" tabIndex="0" id="operating-systems">Operating Systems</h2>
                         <p>No two SRE roles are created equal. Most will have you working on Linux Systems, some Windows, some both.</p>
 
                         <h3 className="blog-heading yellow-border white">Scripting Languages</h3>
-                        <p>Bash is the command shell and scripting language for the majority of Linux systems.<br/>
-                        While PowerShell is the command shell and scripting language for the majority of Windows systems.</p>
+                        <p><a href="https://www.learnshell.org/" target="new" rel="noopener">Bash</a> is the command shell and scripting language for the majority of Linux systems.<br/>
+                        While <a href="https://docs.microsoft.com/en-us/learn/paths/powershell/" target="new" rel="noopener">PowerShell</a> is the command shell and scripting language for the majority of Windows systems.</p>
                         
 
                         <p>Some of the most important concepts to know are Process Management, Networking, Threads/Concurrency, Text Manipulation Tools, I/O Management, Virtualization, Memory storage, and File systems.</p>
                     </div>
                     <div>
+                        <h2 className="heading" tabIndex="0" id="networking">Networking</h2>
+                        <p>This is a very broad topic, but some of the most important concepts are Virtual Networks, <a href="https://www.learningjournal.guru/article/public-cloud-infrastructure/what-is-bastion-host-server/" target="new" rel="noopener">Bastions</a></p> 
+                        <p>It is good to be familiar with the <a href="https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/" target="new" rel="noopener">OSI Model</a>. It is the universal language for computer networking. It splits up the communication system into seven abstract layers. This can be useful when debugging networking issues.</p>
+                    </div>
+                    <div>
                         <h2 className="heading" tabIndex="0" id="docker">Docker</h2>
                         <p>In reality, this section is also about <a href="https://www.docker.com/resources/what-container" target="new" rel="noopener">containers</a>.</p>
+                        <p>Best thing you can do is, install <a href="https://www.docker.com/products/docker-desktop" target="new" rel="noopener">Docker Desktop</a> and find a <a href="https://docs.docker.com/get-started/" target="new" rel="noopener">tutorial like this one</a> to get you started.</p>
+                        <p>Once you're somewhat comfortable, take it to the next level by installing Docker on an AWS or Azure instance and run some sort of web application on it. See if you can access the web application from a public address. Doing this will start to combine everything you've learned so far together. This is the kind of experimenting that will begin to give you the experience needed for Cloud based role.</p>
                         
                     </div>
                     <div>
                         <h2 className="heading" tabIndex="0" id="terraform">Terraform</h2>
-                        <p>Get your hands dirty and use those free Azure/AWS credits.</p>
+                        <p>Now that you're familiar with Cloud Providers and Containers, let's keep using those Azure/AWS credits and take it up one more level.</p>
+                        <p>The next step is to have <a href="https://learn.hashicorp.com/terraform?utm_source=terraform_io&utm_content=terraform_io_hero" target="new" rel="noopener">Terraform</a> create our infrastructure/instances for us. As a best practice clicking around in the Cloud UI should be kept to a minimum.</p>
                     </div>
                     <div>
                         <h2 className="heading" tabIndex="0" id="ci-cd">CI/CD</h2>
@@ -85,41 +92,15 @@ export default function Post() {
                         <p></p>
                     </div>
                     <div>
-                        <h2 className="heading" tabIndex="0" id="networking">Networking</h2>
-                        <p>
-                            <h3 className="blog-heading yellow-border white">OSI Model</h3>
-                            <br/>Consists of 7 layers, each one consisting of a package of protocols.
-                            <ul className="breakdown-ul">
-                                <li>The Physical Layer</li>
-                                <li>The Data Link Layer</li>
-                                <li>The Network Layer</li>
-                                <li>The Transport Layer</li>
-                                <li>The Session Layer</li>
-                                <li>The Presentation Layer</li>
-                                <li>The Application Layer</li>
-                            </ul>
-                        </p>
-                        
-
-
-
-                    </div>
-                    <div>
                         <h2 className="heading" tabIndex="0" id="sre-interview">Interview - How to Prepare</h2>
                         <p>Besides being moderately comfortable with everything mentioned above, there a few things you can do to better prepare for an SRE interview.</p>
                         <p>You should read the entire <a href="https://sre.google/sre-book/table-of-contents/" target="new" rel="noopener">Google SRE Book</a> and <a href="https://sre.google/workbook/table-of-contents/" target="new" rel="noopener">Google SRE Workbook</a>, these are the unofficial SRE bibles.</p>
-                        <p>Sites like Leetcode, are great for the coding part of the interview. They also have problemsets on <a href="https://leetcode.com/problemset/concurrency/Concurrency" target="new" rel="noopener">Concurrency/Race Conditions</a>, which are typically seen in SRE interviews.</p>
-                    </div>
-                    <div>
-                        <h2 className="heading" tabIndex="0" id="resourcess">Resources</h2>
-                        <p>
-                            <ul className="breakdown-ul">
-                                <li><a href="https://sre.google/sre-book/table-of-contents/" target="new" rel="noopener">Google SRE Book</a></li>
-                            </ul>
-                        </p>
-                    </div>
-                    
-                    
+                        <p>Sites like Leetcode are great for the coding part of the interview. They also have problem sets on <a href="https://leetcode.com/problemset/concurrency/Concurrency" target="new" rel="noopener">Concurrency/Race Conditions</a>, which are typically seen in SRE interviews.</p>
+                    </div> 
+                    <Disqus.DiscussionEmbed
+                        shortname={disqusShortname}
+                        config={disqusConfig}
+                    />           
                 </div>
             </div>
             <style jsx>{`
