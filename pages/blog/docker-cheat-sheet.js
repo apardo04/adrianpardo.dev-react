@@ -207,6 +207,11 @@ export default function Post() {
                 .blog-ul {
                     width: 260px;
                 }
+                @media only screen and (max-width: 992px) {
+                    .lead {
+                        background-size: contain;
+                    }
+                }
         `}</style>
         </Layout>
     )

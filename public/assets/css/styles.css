@@ -118,11 +118,21 @@ ul.small {
     border: 1px solid var(--yellow);
     max-width: 850px;
 }
+.yellow-border, span.skills-text.active  {
+    border-bottom: 4px solid var(--yellow);
+    border-right: 3px solid transparent;
+    border-left: 3px solid transparent;
+    padding: 3px;
+    display: inline-block;
+}
 .yellow {
     color: var(--yellow);
 }
 .neon-blue {
     color: var(--blue); 
+}
+.white {
+    color: white;
 }
 .no-margin {
     margin: 0 !important;
@@ -246,11 +256,21 @@ a.lead-download-btn:hover #lead-arrow {
     text-align: left;
     list-style: upper-roman;
 }
+.breakdown-ul {
+    text-align: left;
+}
+.breakdown-ul li {
+    margin-bottom: 10px;
+}
 .info-blog .useful-links {
     margin-bottom: 20px;
 }
 .info-blog div, .info-blog p {
     margin-bottom: 50px;
+}
+h3.blog-heading {
+    margin-bottom: 25px;
+    font-size: 20px;
 }
 .codeblock {
     text-align: left;
@@ -366,12 +386,6 @@ div#skills-list {
 span.skills-text {
     font-size: 20px;
     cursor: pointer;
-}
-span.skills-text.active {
-    border-bottom: 4px solid var(--yellow);
-    border-right: 3px solid transparent;
-    border-left: 3px solid transparent;
-    padding: 3px;
 }
 #skills ul {
     display: block;
