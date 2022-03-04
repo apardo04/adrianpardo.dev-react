@@ -18,7 +18,7 @@ export default function Post() {
             <div className="lead">
                 <div id="lead-content">
                 <h1>{title}</h1>
-                <h2>Mar 1, 2022 • Guide</h2>
+                <h2>Mar 4, 2022 • Guide</h2>
                 </div>
                 <SeeMore href="#contents" />
                 <div id="lead-overlay"></div>

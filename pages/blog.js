@@ -7,7 +7,7 @@ const Blog = props => (
                 <h2 className="heading" tabIndex="0">Blog</h2>
                 <div className="info text-left">
                     <h3 className=""><a href="blog/how-to-land-an-sre-role">How To Land an SRE Role</a></h3>
-                    <div className="small-text">February 25, 2022 • Guide</div>
+                    <div className="small-text">March 4, 2022 • Guide</div>
                     <h3 className=""><a href="blog/using-docker-compose-and-locust-for-load-testing">Using Docker Compose and Locust for Load Testing</a></h3>
                     <div className="small-text">August 20, 2020 • Guide</div>
                     <h3 className=""><a href="blog/nextjs-testing-library">How To Test Next.js Apps With Testing Library & Jest</a></h3>
