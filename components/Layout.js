@@ -1,3 +1,4 @@
+import React from 'react'
 import Header from './Head'
 import Nav from './Nav'
 import Contact from './Contact'

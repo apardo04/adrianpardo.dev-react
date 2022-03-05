@@ -29,5 +29,3 @@ Initial Deploy:
     
 
 https://steveholgado.com/nginx-for-nextjs/
-Docker:
-    docker build --tag adrianpardo-dev .

@@ -1,0 +1,11 @@
+Before pushing:
+    test:
+        npm run test
+    dev:
+        npm run dev
+    build:
+        npm run build
+        npm run start
+    Docker:
+        docker build --tag adrianpardo-dev .
+        docker run -d -p 8000:8000 adrianpardo-dev

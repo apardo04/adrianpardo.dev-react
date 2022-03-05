@@ -14,7 +14,7 @@ export default function Post() {
     }
 
     return (
-        <Layout page={"blog/" + identifier} title="&lt;Adrian Pardo/&gt; How to become a Site Reliability Engineer" description="A step by step guide on how to become a Site Reliability Engineer" ogImage={"/assets/images/" + identifier + "/this-is-fine.jpeg"}>
+        <Layout page={"blog/" + identifier} title="&lt;Adrian Pardo/&gt; How to land a Site Reliability Engineer role" description="A step by step guide on how to become a Site Reliability Engineer" ogImage={"/assets/images/" + identifier + "/this-is-fine.jpeg"}>
             <div className="lead">
                 <div id="lead-content">
                 <h1>{title}</h1>

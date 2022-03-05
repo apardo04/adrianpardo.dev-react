@@ -1,7 +1,8 @@
-import Lead from '../components/Lead';
+import React from 'react'
+import Lead from '../components/Lead'
 import About from '../components/About'
-import Projects from '../components/Projects';
-import Skills from '../components/Skills';
+import Projects from '../components/Projects'
+import Skills from '../components/Skills'
 
 const Home = props => {
     return(
